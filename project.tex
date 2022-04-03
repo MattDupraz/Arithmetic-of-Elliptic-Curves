@@ -179,11 +179,11 @@ homeomorphic to a torus.
 				\wp(z; \Lambda) = \frac{1}{z^2}
 				+ \sum_{\lambda \in \Lambda\setminus\{0\}}
 				\left(
-					\frac{1}{(1-\lambda)^2} - \frac{1}{\lambda^2}
+					\frac{1}{(z-\lambda)^2} - \frac{1}{\lambda^2}
 				\right)
 			\end{equation*}
 		\item
-			The Eisensteins series (of $\Lambda$) of weight $k$,
+			The Eisenstein series (of $\Lambda$) of weight $k$,
 			where $k \geq 2$ is an integer
 			is the series
 			\begin{equation*}
@@ -198,6 +198,42 @@ homeomorphic to a torus.
 	$\wp(z)$ and $G_k$ for $\wp(z; \Lambda), G_k(\Lambda)$
 	respectively.
 \end{notation}
+
+% Theorem 3.1
+\begin{proposition}
+	Let $\Lambda$ be a lattice.
+	\begin{enumerate}
+		\item	The Eisenstein series $G_k(\Lambda)$ is absolutely convergent
+			for all $k \geq 3$.
+		\item The series defining the Weierstrass $\wp$-function converges
+			absolutely and uniformly on every compact subset of
+			$\C\setminus\Lambda$. It defines a meromorphic function on $\C$ with 
+			double poles of residue 0 at each lattice point.
+		\item The Weierstrass $\wp$-function is an even elliptic function.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}
+	\item	Let $\lambda_1, \lambda_2$ be basis vectors of $\Lambda$
+		of minimal length, with $|\lambda_1| \leq |\lambda_2|$.
+		Let $A_N := \{n\lambda_1 + m\lambda_2 \in \Lambda \mid
+		\max(|n|, |m|) = N\}$.
+		Then 
+		\begin{equation*}
+			\#A_N = (2N + 1)^2 - (2N - 1)^2 = 8N.
+		\end{equation*}
+		Furthermore, $\min\{|\lambda|, \lambda \in A_N\} = N|\lambda_1|$, so we
+		get
+		\begin{equation*}
+			\sum_{\lambda \in \Lambda\setminus 0}\frac{1}{|\lambda|^k}
+			\leq \sum_{N=1}^\infty \frac{\#A_N}{\min\{|\lambda|, \lambda \in
+			A_N\}^k}
+			= \sum_{N=1}^{\infty} \frac{8}{|\lambda_1|N^{k-1}} < \infty.
+		\end{equation*}
+
+	\end{enumerate}
+\end{proof}
 
 % Proposition VI.3.6
 \begin{theorem}
