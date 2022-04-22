@@ -1,0 +1,146 @@
+\section{Elliptic Curves over Finite Fields}
+
+For this section we fix a prime $p$ and $q$ a power of $p$.
+
+\begin{definition}
+	The zeta function of $V/\F_q$ is defined as the power series
+	\begin{equation*}
+		Z(V/\F_q; T) = \exp\left(\sum_{n=1}^\infty (\#V(\F_{q^n}))
+		\frac{T^n}{n}\right)
+	\end{equation*}
+\end{definition}
+
+\begin{notation}
+	When $V/\F_q$ is known from context, we write simply $Z(T)$
+	instead of $Z(V/\F_q; T)$
+\end{notation}
+
+\begin{theorem}[Weil Conjectures]
+	\label{thm:weil}
+	Let $V/\F_q$ be a smooth projective variety of dimension $N$.
+	\begin{enumerate}[label=(\alph*)]
+		\item Rationality: $Z(T) \in \Q(T)$. More precisely, 
+			there is a factorization
+			\begin{equation*}
+				Z(T) = \frac{P_1(T)\cdots P_{2n-1}(T)}
+				{P_0(T)P_2(T) \cdots P_{2n}(T)},
+			\end{equation*}
+			where $P_0(T) = 1 - T, P_{2n}(T) = 1 - q^nT$ and for each
+			$1 \leq i \leq 2n - 1$, $P_i(T)$ factors (over $\C$) as
+			\begin{equation*}
+				P_i(T) = \prod_j (1 - \alpha_{ij}T)
+			\end{equation*}
+		\item Functional Equation: The zeta function satisfies
+			\begin{equation*}
+				Z\left(\frac{1}{q^NT}\right) = \pm q^{N\frac{\epsilon}{2}}
+				T^{\epsilon} Z(T),
+			\end{equation*}
+			for some integer $\epsilon$ (called the Euler characteristic of $V$)
+		\item Riemann Hypothesis: $|\alpha_{ij}| = q^{i/2}$
+			for all $1 \leq i \leq 2n - 1$ and all $j$.
+		\item Betti Numbers: If $V/\F_q$ is a reduction mod $p$ of a
+			non-singular projective variety $W/K$, where $K$ is a number
+			field embedded in the field of complex numbers, then the degree
+			of $P_i$ is the $i$\textsuperscript{th} Betti number of the space
+			of complex points of $W$.
+	\end{enumerate}
+\end{theorem}
+
+We will now verify Weil's conjecture for elliptic curves. For this we will 
+make use of the homomorphism $\End(E) \to \End(T_l(E)), \psi \mapsto \psi_l$,
+where $l$ is a prime different from $p$. If we fix a $\Z_l$-basis
+of $T_l(E)$, we can write $\psi_l$ as a $2\times 2$ matrix and so we can 
+compute $\det(\psi_l), \tr(\psi_l) \in \Z_l$.
+
+The following proposition tells us that these quantities are not only
+independent of the choice of basis, but also of the choice of $l$.
+
+\begin{proposition}
+	Let $\psi \in \End(E)$. Then
+	\begin{equation*}
+		\det(\psi_l) = \deg(\psi)\textrm{ and }
+		\tr(\psi_l) = 1 + deg(\psi) - \deg(1 - \psi).
+	\end{equation*}
+	In particular, $\det(\psi_l), \tr(\psi_l) \in \Z$
+\end{proposition}
+
+\begin{proposition}
+	\label{prop:frob-char-poly}
+	Let $E/\F_q$ be an elliptic curve, and
+	\begin{equation*}
+		\phi: E \to E, (x, y) \mapsto (x^q, y^q)
+	\end{equation*}
+	the $q$\ts{th} Frobenius endomorphism.
+	Let $\alpha, \beta \in \C$ be the roots of the characteristic polynomial
+	of $\phi_l$, that is
+	\begin{equation*}
+		\det(T - \phi_l) = T^2 - \tr(\phi_l)T + \det(\phi_l),
+	\end{equation*}
+	then $\alpha, \beta$ are complex conjugates satisfying
+	$|\alpha| = |\beta| = \sqrt{q}$. Furthermore, for every $n \geq 1$, we
+	have
+	\begin{equation*}
+		\#E(\F_{q^n}) = q^n + 1 - \alpha^n - \beta^n
+	\end{equation*}
+\end{proposition}
+
+\begin{proof}
+	Fix $v_1, v_2$ a $\Z_l$-basis for
+	$T_l(E)$, and write the matrix of $\psi_l$ for this basis as
+	\begin{equation*}
+		\psi_l = 
+		\begin{bmatrix}
+			a & b \\
+			c & d
+		\end{bmatrix}
+		.
+	\end{equation*}
+	We have the non-degenerate, bilinear, alternating pairing
+	\begin{equation*}
+		e: T_l(E) \times T_l(E) \to T_l(\mu)
+	\end{equation*}
+\end{proof}
+
+\begin{theorem}
+	Let $E/\F_q$ be an elliptic curve. Then there exists an $a \in \Z$ such that
+	\begin{equation*}
+		Z(T) = \frac{1 - aT + qT^2}{(1-T)(1-qT)}.
+	\end{equation*}
+	Furthermore,
+	\begin{equation*}
+		Z\left(\frac{1}{qT}\right) = Z(T)
+	\end{equation*}
+	and
+	\begin{equation*}
+		1 - aT + qT^2 = (1 - \alpha T)(1 - \beta T)
+	\end{equation*}
+	with $|\alpha| = |\beta| = \sqrt{q}$
+\end{theorem}
+
+\begin{proof}
+	Using the definition of $Z(E/\F_q; T)$, we get
+	\begin{align*}
+		\log Z(E/\F_q; T) &= \sum_{n=1}^\infty (\#E(\F_{q^n}))\frac{T^n}{n}\\
+		&= \sum_{n=1}^\infty (q^n + 1 - \alpha^n - \beta^n)\frac{T^n}{n}
+		\qquad \textrm{(\ref{prop:frob-char-poly})}\\
+		&= -\log(1 - qT) - \log(1 - T) + \log(1 - \alpha T) + \log(1 - \beta T)
+	\end{align*}
+	and hence we get
+	\begin{equation*}
+		Z(E/\F_q; T) = \frac{(1 - \alpha T)(1 - \beta T)}{(1 - T)(1 - qT)},
+	\end{equation*}
+	which has the desired form.
+	Indeed from (\ref{prop:frob-char-poly}), 
+	$|\alpha| = |\beta| = \sqrt{q}$, and
+	\begin{align*}
+		a = \alpha + \beta = \tr(\phi_l) &= 1 + \deg(\phi) - \deg(1 - \phi)\\
+		&= 1 + q - \#E(\F_q) \in \Z.
+	\end{align*}
+
+\end{proof}
+
+Hence the Weil conjectures are verified for elliptic curves. Notice that
+using the notation from theorem \ref{thm:weil},
+$\deg P_0 = 1$, $\deg P_1 = 2$, $\deg P_2 = 1$, hence we would expect
+the Betti numbers of $E/\C$ to coincide with these values, and indeed, these
+are exactly the Betti numbers we calculated in Section \ref{sec:over-C}.

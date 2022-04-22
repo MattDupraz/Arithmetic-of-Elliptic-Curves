@@ -1,0 +1,203 @@
+\section{Elliptic Curves over \texorpdfstring{$\C$}{C}}
+\label{sec:over-C}
+
+The goal of this section is to show an elliptic curve is
+homeomorphic to a torus.
+
+\begin{definition}
+	Let $\Lambda \subseteq \C$ be a lattice
+	\begin{enumerate}[label=(\alph*)]
+		\item
+			The Weierstrass
+			elliptic function ($\wp$-function),
+			is defined by the series
+			\begin{equation*}
+				\wp(z; \Lambda) = \frac{1}{z^2}
+				+ \sum_{\lambda \in \Lambda\setminus\{0\}}
+				\left(
+					\frac{1}{(z-\lambda)^2} - \frac{1}{\lambda^2}
+				\right)
+			\end{equation*}
+		\item
+			The Eisenstein series (of $\Lambda$) of weight $k$,
+			where $k \geq 2$ is an integer
+			is the series
+			\begin{equation*}
+				G_k(\Lambda) = \sum_{\lambda \in \Lambda\setminus\{0\}}
+				\lambda^{-k}
+			\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+\begin{notation}
+	If $\Lambda$ is known from context, we write simply
+	$\wp(z)$ and $G_k$ for $\wp(z; \Lambda), G_k(\Lambda)$
+	respectively.
+\end{notation}
+
+% Theorem VI.3.1
+\begin{proposition}
+	Let $\Lambda$ be a lattice.
+	\begin{enumerate}[label=(\alph*)]
+		\item	The Eisenstein series $G_k(\Lambda)$ is absolutely convergent
+			for all $k \geq 3$.
+		\item The series defining the Weierstrass $\wp$-function converges
+			absolutely and uniformly on every compact subset of
+			$\C\setminus\Lambda$. It defines a meromorphic function on $\C$ with 
+			double poles of residue 0 at each lattice point.
+		\item The Weierstrass $\wp$-function is an even elliptic function.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}[label=(\alph*)]
+	\item	Let $\lambda_1, \lambda_2$ be basis vectors of $\Lambda$.
+		Let 
+		\begin{equation*}
+			A_N := \{n\lambda_1 + m\lambda_2 \in \Lambda \mid
+			n, m \in \Z, \max(|n|, |m|) = N\}.
+		\end{equation*}
+		Let also 
+		\begin{equation*}
+			m = \min\{|a\lambda_1 + b\lambda_2| \mid 
+			a, b \in \R, \max(|a|,|b|) = 1\},
+		\end{equation*}
+		then $m$ is well defined and strictly positive,
+		as it's the minimum of a compact subset of $\R$, which does
+		not contain zero. We have that
+		\begin{equation*}
+			\#A_N = (2N + 1)^2 - (2N - 1)^2 = 8N.
+		\end{equation*}
+		Furthermore, $\min\{|\lambda|, \lambda \in A_N\} \geq Nm$, so we
+		get
+		\begin{equation*}
+			\sum_{\lambda \in \Lambda\setminus 0}\frac{1}{|\lambda|^k}
+			\leq \sum_{N=1}^\infty \frac{\#A_N}{\min\{|\lambda|, \lambda \in
+			A_N\}^k}
+			= \sum_{N=1}^{\infty} \frac{8}{m^kN^{k-1}} < \infty.
+		\end{equation*}
+	\item
+		If $|\lambda| > 2|z|$, then we have that
+		\begin{equation*}
+			|2\lambda - z| \leq 2|\lambda| + |z| \leq \frac{5}{2}|\lambda|
+		\end{equation*}
+		and
+		\begin{equation*}
+			|z - \lambda| = |\lambda|\left|\frac{z}{\lambda} - 1\right| \geq
+			\frac{1}{2}|\lambda|.
+		\end{equation*}
+		These imply that
+		\begin{equation*}
+			\left| \frac{1}{(z - \lambda)^2} - \frac{1}{\lambda^2}\right|
+			= \left| \frac{z(2\lambda - z)}{\lambda^2(z - \lambda)^2}\right|
+			\leq 10\frac{|z|}{|\lambda|^3}
+		\end{equation*}
+		Hence using (a) we see that for $z \in \C \setminus \Lambda$,
+		the series for $\wp(z)$ converges absolutely and uniformly on any 
+		compact subset of $\C \setminus \Lambda$. It follows that
+		the series defines a holomorphic function on $\C \setminus \Lambda$,
+		furthermore, it is clear from the series expansion that $\wp$ has
+		a double pole with residue $0$ at each point of $\Lambda$.
+	\item TO BE ADDED
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	\label{prop:diffeq}
+	Let $\Lambda$ be a lattice.
+	For all $z \in \C \setminus \Lambda$, we have that
+	\begin{equation*}
+		\wp'(z)^2 = 4\wp(z)^3 - 60G_4\wp(z) - 140G_6
+	\end{equation*}
+\end{proposition}
+
+\begin{remark}
+	We write
+	\begin{equation*}
+		g_2 = g_2(\Lambda) = 60G_4
+		\textrm{ and }
+		g_3 = g_3(\Lambda) = 60G_3.
+	\end{equation*}
+	Then the equation in \ref{prop:diffeq} becomes
+	\begin{equation*}
+		\wp'(z)^2 = 4\wp(z)^3 - g_2\wp(z) - g_3
+	\end{equation*}
+\end{remark}
+
+% Proposition VI.3.6
+\begin{theorem}
+	\label{thm:lattice-curve}
+	Let $\Lambda \subseteq \C$ be a lattice
+	and $g_2, g_3$ its associated quantities.
+	Let $E/\C$ be the curve given by the equation
+	\begin{equation*}
+		E: y^2 = 4x^3 - g_2 x - g_3
+	\end{equation*}
+	then $E$ is an elliptic curve and the map
+	\begin{align*}
+		\phi: \C/\Lambda &\to E\\
+		z &\mapsto 
+		\begin{cases}
+			[\wp(z), \wp'(z), 1] &\textrm{if } z \not\in \Lambda\\
+			[0, 1, 0] &\textrm{if } z \in \Lambda
+		\end{cases}
+	\end{align*}
+	is a complex analytic isomorphism of complex Lie groups.
+\end{theorem}
+
+The following theorem gives the converse to \ref{thm:lattice-curve}
+
+% Theorem VI.5.1
+\begin{theorem}
+	\label{thm:curve-lattice}
+	Let $E/\C$ be a non-singular curve given by the equation
+	\begin{equation*}
+		E: y^2 = 4x^3 - ax - b.
+	\end{equation*} 
+	Then there exists a lattice
+	$\Lambda \subseteq \C$ unique up to homothety, such that
+	$a = g_2(\Lambda)$ and $b = g_3(\Lambda)$
+\end{theorem}
+
+Since any elliptic curve is isomorphic to a curve given by an equation as in
+\ref{thm:curve-lattice}, we deduce that all curves are homeomorphic
+to a torus $\T^2$. This allows us to calculate its homology groups.
+
+The torus can be given the following $\Delta$-complex structure
+as in Figure \ref{fig:torus-delta}.
+\begin{figure}[h]
+	\centering 
+	\includegraphics[width=0.4\columnwidth]{torus-delta.pdf}
+	\caption[torus-delta]{$\Delta$-complex structure of a torus}
+	\label{fig:torus-delta}
+\end{figure}
+The associated chain complex for taking simplicial homology is 
+\begin{equation*}
+	\begin{tikzcd}[row sep=tiny]
+	\cdots & 0 & {E\Z \oplus F\Z} & {a\Z\oplus b\Z\oplus c\Z} & u\Z & 0 \\
+	&&& {a,b,c} & 0 \\
+	&& {E,F} & {a +b-c}
+	\arrow["\partial_1", from=1-4, to=1-5]
+	\arrow["\partial_2", from=1-3, to=1-4]
+	\arrow[from=1-5, to=1-6]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-1, to=1-2]
+	\arrow[maps to, from=3-3, to=3-4]
+	\arrow[maps to, from=2-4, to=2-5]
+\end{tikzcd}
+\end{equation*}
+Hence we get that
+\begin{align*}
+	H_0(\T^2) &\cong \Z,\\
+	H_1(\T^2) &= \ker \partial_1 / \im \partial_2
+	= a\Z \oplus b\Z \oplus c\Z / (a + b - c)\Z \cong \Z^2,\\
+	H_2(\T^2) &= \ker \partial_2 = (E-F)\Z \cong \Z,
+\end{align*}
+and $H_n(\T^2) = 0$ for $n \geq 3$.
+We deduce that the associated Betti numbers are
+\begin{align*}
+	b_0(\T^2) &= \rk(\Z) = 1,\\
+	b_1(\T^2) &= \rk(\Z^2) = 2,\\
+	b_2(\T^2) &= \rk(\Z) = 1,
+\end{align*}
+and $b_n(\T^2) = 0$ for $n \geq 3$.
