@@ -4,8 +4,61 @@
 The goal of this section is to show an elliptic curve is
 homeomorphic to a torus.
 
+First, let's start with the definition and some basic properties of elliptic functions.
+
+Throughout this section, let $\Lambda \subseteq \C$ be an arbitrary lattice.
+
 \begin{definition}
-	Let $\Lambda \subseteq \C$ be a lattice
+	An \emph{elliptic function} (relative to the lattice $\Lambda$) is a meromorphic function
+	$f$ on $\C$, which satisfies
+	\begin{equation*}
+		f(z + \lambda) = f(z)\qquad\textrm{ for all } \lambda \in \Lambda, z \in \C
+	\end{equation*}
+\end{definition}
+
+\begin{notation}
+	The set of elliptic functions relative to the lattice $\Lambda$ is denoted
+	$\C(\lambda)$.
+\end{notation}
+
+\begin{remark}
+	$\C(\Lambda)$ is a field with the usual operations of 
+	addition and multiplication of complex functions.
+\end{remark}
+
+\begin{definition}
+	A \emph{fundamental parallelogram} for $\Lambda$ is a set of the form
+	\begin{equation*}
+		D = \{a + r \lambda_1 + s \lambda_2 \mid r, s \in [0, 1)\},
+	\end{equation*}
+	where $a \in \C$ and $\lambda_1, \lambda_2$ is a basis for $\Lambda$.
+\end{definition}
+
+\begin{proposition}
+	\label{prop:no-poles}
+	An elliptic function with no poles (or no zeros) is constant.
+\end{proposition}
+
+\begin{notation}
+	For $f \in \C(\Lambda), z \in \C/\Lambda$, we write $f(z), \res_z(f)$ and $\ord_z(f)$ for
+	$f(\bar{z}), \res_{\bar{z}}(f)$ and $\ord_{\bar{z}}(f)$ respectively,
+	for any one representative
+	$\bar{z} \in \C$ of the coset $z$. This is well defined by the
+	$\Lambda$-periodicity of $f$.
+\end{notation}
+
+\begin{proposition}
+	Let $f \in \C(\Lambda)$.
+	\begin{enumerate}[label=(\alph*)]
+		\item $\sum_{z \in \C/\Lambda} \res_z(f) = 0$.
+		\item $\sum_{z \in \C/\Lambda} \ord_z(f) = 0$.
+	\end{enumerate}
+\end{proposition}
+
+Next let us introduce the Weierstrass $\wp$-function, which will serve
+as a connecting link between elliptic curves and elliptic functions.
+
+\begin{definition}
 	\begin{enumerate}[label=(\alph*)]
 		\item
 			The Weierstrass
@@ -37,7 +90,7 @@ homeomorphic to a torus.
 
 % Theorem VI.3.1
 \begin{proposition}
-	Let $\Lambda$ be a lattice.
+	\label{prop:wp-properties}
 	\begin{enumerate}[label=(\alph*)]
 		\item	The Eisenstein series $G_k(\Lambda)$ is absolutely convergent
 			for all $k \geq 3$.
@@ -102,9 +155,31 @@ homeomorphic to a torus.
 	\end{enumerate}
 \end{proof}
 
+\begin{theorem}
+	\label{thm:wp-generates}
+	We have that
+	\begin{equation*}
+		\C(\Lambda) = \C(\wp, \wp')
+	\end{equation*}
+\end{theorem}
+
+%\begin{definition}
+%	The \emph{Weierstrass $\sigma$-function} (relative to $\Lambda$) is the
+%	function defined by
+%	\begin{equation*}
+%		\sigma(z; \Lambda) = z \prod_{\lambda\in\Lambda\setminus 0}
+%		\left(1 - \frac{z}{\lambda}\right)
+%		\exp\left(\frac{z}{\lambda} + \frac{1}{2}\left(\frac{z}{\lambda}\right)^2\right)
+%	\end{equation*}
+%\end{definition}
+
+%\begin{notation}
+%	As before, we write just $\sigma(z)$ for $\sigma(z; \Lambda)$ when $\Lambda$
+%	is clear from context.
+%\end{notation}
+
 \begin{proposition}
 	\label{prop:diffeq}
-	Let $\Lambda$ be a lattice.
 	For all $z \in \C \setminus \Lambda$, we have that
 	\begin{equation*}
 		\wp'(z)^2 = 4\wp(z)^3 - 60G_4\wp(z) - 140G_6
@@ -127,8 +202,8 @@ homeomorphic to a torus.
 % Proposition VI.3.6
 \begin{theorem}
 	\label{thm:lattice-curve}
-	Let $\Lambda \subseteq \C$ be a lattice
-	and $g_2, g_3$ its associated quantities.
+	Let $g_2, g_3$ be the quantities associated to $\Lambda$ as in the above
+	remark.
 	Let $E/\C$ be the curve given by the equation
 	\begin{equation*}
 		E: y^2 = 4x^3 - g_2 x - g_3
@@ -145,7 +220,7 @@ homeomorphic to a torus.
 	is a complex analytic isomorphism of complex Lie groups.
 \end{theorem}
 
-The following theorem gives the converse to \ref{thm:lattice-curve}
+The following theorem (which we will not prove) gives the converse to \ref{thm:lattice-curve}
 
 % Theorem VI.5.1
 \begin{theorem}
@@ -163,7 +238,7 @@ Since any elliptic curve is isomorphic to a curve given by an equation as in
 \ref{thm:curve-lattice}, we deduce that all curves are homeomorphic
 to a torus $\T^2$. This allows us to calculate its homology groups.
 
-The torus can be given the following $\Delta$-complex structure
+The torus can be given a $\Delta$-complex structure
 as in Figure \ref{fig:torus-delta}.
 \begin{figure}[h]
 	\centering 
