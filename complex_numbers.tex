@@ -48,6 +48,7 @@ Throughout this section, let $\Lambda \subseteq \C$ be an arbitrary lattice.
 \end{notation}
 
 \begin{proposition}
+	\label{prop:residue}
 	Let $f \in \C(\Lambda)$.
 	\begin{enumerate}[label=(\alph*)]
 		\item $\sum_{z \in \C/\Lambda} \res_z(f) = 0$.
@@ -219,6 +220,55 @@ as a connecting link between elliptic curves and elliptic functions.
 	\end{align*}
 	is a complex analytic isomorphism of complex Lie groups.
 \end{theorem}
+
+\begin{proof}
+	To show $E$ is an elliptic curve, we have to show that it is non-singular.	
+	From \ref{prop:singular-determinant} this is the case if and only if
+	the determinant $\Delta$ of the polynomial $f(x) = 4x^3 - g_2x - g_3$
+	is non-zero, in other words if and only if $f$ has no repeated roots. 
+	Let $\{\lambda_1, \lambda_2\}$ be a basis of $\Lambda$,
+	let $\lambda_3 = \lambda_1 + \lambda_2$. then since $\wp'$ is
+	an odd elliptic function, we have that for $i \in \{1, 2, 3\}$
+	\begin{equation*}
+		\wp'(\lambda_i/2) = -\wp'(-\lambda_i/2) = -\wp'(\lambda_i/2)
+	\end{equation*}
+	and hence $\wp'(\lambda_i/2) = 0$. It follows from $\ref{prop:diffeq}$
+	that $\wp(\lambda_i/2)$ is a root of $f$. So we need to show that the
+	$\wp(\lambda_i/2)$ are all distinct.
+	The function $\wp(z) - \wp(\lambda_i/2)$ has a double zero at $\lambda_i/2$,
+	since its derivative is $\wp'(z)$ which vanishes at $\lambda_i/2$.
+	Using \ref{prop:residue} and \ref{prop:wp-properties}, we deduce that these
+	are the only zeroes and hence the $\wp(\lambda_i/2)$ are all distinct.
+	Hence $E$ is indeed an elliptic curve.
+
+	The image of $\phi$ is contained in $E(\C)$ by \ref{prop:diffeq}.
+	Let $[x, y, 1] \in E(\C)$, then we have that $\wp(z) - x$ is a non-constant
+	elliptic function, so by \ref{prop:no-poles}, it has a zero $a \in \C$.
+	Hence $\wp(a) = x$ and hence by \ref{prop:diffeq}, 
+	\begin{equation*}
+		\wp'(a)^2 = f(\wp(a)) = f(x) = y^2.
+	\end{equation*}
+	It follows that $\wp'(a) = \pm y$, hence by replacing $a$ with $-a$ in
+	the case $\wp'(a) =-y$, we get that $\wp'(a) = y$.
+	Hence $\phi(a) = [x, y, 1]$. This shows the surjectivity of $\phi$.
+
+	Now to show injectivity, suppose $z_1, z_2 \in \C$ are such that
+	$\phi(z_1) = \phi(z_2)$. Suppose $z_1 \not\equiv -z_1 \mod \Lambda$.
+	The function $\wp(z) - \wp(z_1)$ admits the roots $z_1, -z_1, z_2$, but being
+	of order 2, two of these values are congruent mod $\Lambda$.
+	Hence $z_2 \equiv \pm z_1 \mod \Lambda$. But since
+	$\wp'(z_1) = \wp'(z_2)$, we get necessarily $z_2 \equiv z_1 \mod \lambda$.
+	
+	Now, if $z_1 \equiv -z_1 \mod \Lambda$, then
+	\begin{equation*}
+		\frac{\partial}{\partial z}(\wp(z) - \wp(z_1)) = \wp'(z)
+	\end{equation*}
+	and $\wp'(z_1) = \wp'(-z_1) = -\wp'(z_1)$ and hence $\wp'(z_1) = 0$.
+	It follows that $z_1$ is a double root of $\wp(z) - \wp(z_1)$, which is of
+	order 2. Hence $z_2$, being also a root of $\wp(z) - \wp(z_1)$, is
+	necessarily congruent to $z_1$ mod $\Lambda$. This shows the injectivity
+	of $\phi$.
+\end{proof}
 
 The following theorem (which we will not prove) gives the converse to \ref{thm:lattice-curve}
 

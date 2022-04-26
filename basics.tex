@@ -1,0 +1,138 @@
+\section{Basic Definitions and Facts}
+
+\subsection{Weierstrass Equation}
+
+Our main interest are \emph{elliptic curves}, which are curves
+in $\proj^2$ of genus 1. These are characterized by the
+homogeneous equation
+\begin{equation}
+	\label{weierstrass-eq-1}
+	Y^2Z + aXYZ + bYZ^2 = X^3 + cX^2Z + dXZ^2 + eZ^3
+\end{equation}
+for some $a, b, c, d, e \in \F$.
+Setting $U_Z = \{[X, Y, Z] \in \proj^2 \mid Z \neq 0\}$, we can
+study the solutions of (\ref{weierstrass-eq-1}) on
+$U_Z$ using the change of coordinates $x = X/Z$
+and $y = Y/Z$. We obtain the following equation
+\begin{equation}
+	\label{weierstrass-eq-2}
+	y^2 + axy + by = x^3 + cx^2 + dx + e
+\end{equation}
+We can further simplify this equation with linear
+changes of variables. First notice that if $\chr(\F) \neq 2$,
+the left hand side can be
+written as
+\begin{align*}
+	y(y + ax + b) &= (y + \frac{1}{2}(ax + b) - \frac{1}{2}(ax + b))
+	(y + \frac{1}{2}(ax + b) + \frac{1}{2}(ax + b))\\
+	&= (y + \frac{1}{2}(ax + b))^2 - \frac{1}{4}(ax + b)^2
+\end{align*}
+Hence by replacing $y$ with $y + \frac{1}{2}(ax + b)$ and
+collecting the terms in each monomial, we get an equation
+of the form
+\begin{equation}
+	y^2 = x^3 + \alpha x^2 + \beta x + \gamma
+\end{equation}
+If $\chr(\F) \neq 3$, we can also get rid of the term in 
+$x^2$ with a linear change
+of variables. replacing $x$ with $x - \frac{1}{3}\alpha$ yields
+\begin{align*}
+	y^2 &= (x - \frac{1}{3}\alpha)^3 + \alpha(x-\frac{1}{3}\alpha)^2
+	+ \beta(x - \frac{1}{3}\alpha) + \gamma\\
+	&= x^3 - \alpha x^2 + \frac{1}{3}\alpha^2 x
+	- \frac{1}{27}\alpha^3 + \alpha x^2 - \frac{2}{3}\alpha^2 x
+	+ \frac{1}{9}\alpha^3 + \beta x - \frac{1}{3}\alpha \beta
+	+ \gamma
+\end{align*}
+Collecting the terms in each monomial, we get an equation of the
+form
+\begin{equation}
+	y^2 = x^3 + Ax + B
+\end{equation}
+with $A, B \in \F$.
+Plugging back the substitutions $x = X/Z$ and $y = Y/Z$, we obtain
+the homogeneous equation
+\begin{equation}
+	Y^2Z = X^3 + AXZ^2 + BZ^3
+\end{equation}
+
+\subsection{Singularities}
+
+We suppose $\F$ is algebraically closed.
+	
+We have that an elliptic curve $V \subset \proj_2(\F)$
+is the projective variety
+\begin{equation}
+	V = V(X^3 + AXZ^2 + BZ^3 - Y^2Z) = V(F)
+\end{equation}
+We are interested in the case where the curve is smooth.
+By the regular preimage theorem, $V$ is smooth if all its points
+are non-singular, i.e. if for all $P = [x, y, z] \in V$,
+\begin{equation*}
+	\nabla F(P) = 
+	\begin{bmatrix}
+		3x^2 + Az^2\\
+		-2yz\\
+		2Axz + 3Bz^2 - y^2
+	\end{bmatrix}
+	\neq 0
+\end{equation*}
+If $P = [0, 1, 0]$, then 
+\begin{equation*}
+	\nabla F(P) = 
+	\begin{bmatrix}
+		0\\
+		0\\
+		-1
+	\end{bmatrix} \neq 0
+\end{equation*}
+hence the point at infinity is never singular. It follows
+that when looking for singularities, we can consider just
+the case where $z \neq 0$, since else we have necessarily $x = 0$
+and so $P = [0, 1, 0]$. So if there are any singularities of $V$,
+they are on $V \cap U_Z$. So $V$ is non-singular precisely when
+$V \cap U_Z$ is non-singular. Using the isomorphism
+$V \cap U_Z \to W, [X, Y, Z] \mapsto (\frac{X}{Z}, \frac{Y}{Z})$ it
+suffices to study singularities on $W = V(x^3 + Ax + B - y^2)
+= V(f)$
+
+Let $\Delta = 4A^3 + 27B^2$ be the discriminant of the polynomial
+$g(x) = x^3 + Ax + B$, we have the following criteria for the
+existence of singularities of $V$.
+
+\begin{proposition}
+	\label{prop:singular-determinant}
+	W (and equivalently V)
+	is non-singular if and only if $\Delta \neq 0$.
+\end{proposition}
+\begin{proof}
+	Suppose there is a point $P = (x_0, y_0) \in W$ that is singular,
+	then we have
+	\begin{equation*}
+		\begin{bmatrix}
+			3x_0^2 + A\\
+			-2y_0\\
+		\end{bmatrix} = 0
+	\end{equation*}
+	Hence we have that $g'(x_0) = 3x_0^2 + A = 0$ and $y_0 = 0$.
+	In particular, since $P \in W$, also 
+	$g(x_0) = 0$, and hence since $g(x_0) = g'(x_0) = 0$,
+	$x_0$ is a double root of $g$ and so the discriminant
+	$\Delta = 4A^3 + 27B^2$ of $g$ is zero.
+
+	Suppose instead that $\Delta = 0$, then $g$ admits a double root
+	$x_0 \in \F$ (since we supposed $\F$ algebraically closed)
+	which is unique since $g$ is a cubic polynomial.
+	Then $P = (x_0, 0) \in V$.
+	Furthermore,
+	\begin{equation*}
+		\nabla f(P) =
+		\begin{bmatrix}
+			3x^2 + A\\
+			0\\
+		\end{bmatrix}
+	\end{equation*}
+	We have that $3x^2 + A = g'(x) = 0$, hence $\nabla f(P) = 0$
+	and so $W$ is singular at $P$.
+\end{proof}
+
