@@ -1,0 +1,6 @@
+- Riemann Roch - pourquoi les courbes de genre 1 sont les 
+equations de Weierstrass
+- Equivalences de definition de morphisme de variete projective
+- Comparaison des definition des lois de groupes (diviseurs
+vs intersection)
+

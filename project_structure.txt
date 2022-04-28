@@ -1,0 +1,114 @@
+Chapter I (Algebraic varieties)
+ Section I.1 (Affine varieties)
+ - [?] Basic definitions (not necessarily redefine everything from the course)
+ - [] Definition of smooth variety
+ - [] Definition of local ring (maybe compare definitions?)
+
+ Section I.2 (Projective varieties)
+ - [?] Basic definitions (again, maybe unnecessary to redefine everything from the course)
+ - [] Definition of K(P) (compare?)
+ - [?] Definition of projective variety?
+ - [?] Proposition 2.6 (property of closure?)
+ - [?] Definition of dimension (maybe compare?)
+ - [] Definition of smooth projective variety
+ - [] Definition of function field
+
+ Section I.3 (Maps between varieties)
+ - [] Definition of rational map
+ - [] Definition of regular map (compare)
+ - [] Definition of morphism (compare)
+ - [?] Definition of isomorphism (?)
+
+Chapter II (Algebraic curves)
+ Section II.1 (Curves)
+ - [] Proposition 1.1 (K[C]_P is a discrete valuation ring)
+ - [] Definition of order on K[C]_P
+ - [] Definition of zero, pole, regular
+ - [?] Proposition 1.4 (K(C) is a finite separable extension of K(t))
+
+ Section II.2 (Maps between curves)
+ - [] Proposition 2.1 (Rational maps are regular where C is smooth)
+ - [] Theorem 2.3 (Morphism of curves is either constant or surjective)
+ - [?] Theorem 2.4 (?)
+ - [] Definition of degree of a map, separable, inseparable
+ - [?] Definition of pushforward map on rational function field (?)
+ - [] Corollary 2.4.1 (Degree one map between smooth curves is isomorphism)
+ - [] Definition of ramification index
+ - [] Proposition 2.6 (Properties of ramification index)
+ - [] Corollary 2.7 (Characterization of being unramified)
+ - [] Definition of Frobenius morphism
+ - [] Proposition 2.11 (Properties of Frobenius morphism)
+ - [] Corollary 2.12 (Factoring of maps of smooth curves)
+ 
+ Section II.3 (Divisors)
+ - [] Definition of a divisor
+ - [] Proposition 3.1 (Basic properties of divisors)
+ - [] Definition of maps of divisor group
+ - [] Proposition 3.6 (Basic properties of maps of divisor groups)
+ 
+ Section II.5 (Riemann-Roch)
+ - [] Theorem 5.4 (Riemann-Roch, admitted)
+ - [?] Theorem 5.9 (Riemann-Hurwitz formula, admitted, unsure if needed)
+
+Chapter III (Elliptic curves)
+ Section III.1 (Weierstrass equation)
+ - [OK] Show how we get the simplified equation
+ - [OK] Proposition 1.4 (Singularity of curve)
+
+ Section III.2 (Group law)
+ - [] Composition law on E
+ - [] Proposition 2.2 (properties of composition law)
+ - Not sure about the rest - Review
+
+ Section III.3 (Elliptic curves)
+ - [] Definition of Elliptic curve
+ - [] Proposition 3.1 (Form of eq. defining E/K up to isom)
+ - [] Corollary 3.1.1 (K(E) definition)
+ - [] Lemma 3.3 ((P) ~ (Q) iff P = Q)
+ - [] Proposition 3.4 (Equivalence of "geometric group law" to "algebraic group law")
+ - [] Corollary 3.5 (Characterization of principal divisors)
+ - [] Theorem 3.6 (Addition and inverse are morphisms)
+ 
+ Section III.4 (Isogenies)
+ - [] Definition of isogeny
+ - [] Definition of isogeny [m]
+ - [] Proposition 4.2 (some properties of [m], Hom(E_1, E_2), not sure where it's used)
+ - [] Definition of m-torsion subgroup
+ - [] Theorem 4.8 (Isogenies preserve group law)
+ - [] Corollary 4.9 (ker phi is a finite group)
+ - [] Theorem 4.10 (cardinality of ker, phi^{-1})
+ - [] Corollary 4.11 (Existence of factor isogeny)
+
+ Section III.5 (Invariant Differential)
+ - [] Corollary 5.3 ([]*w = mw, admitted? needed for III.6.1 case 2)
+ - [] Corollary 5.5 (1 - phi is separable, admitted? to show that #E(F_q) = deg(1 - phi)) 
+
+ Section III.6 (Dual Isogeny)
+ - [] Theorem 6.1 (Definition of dual isogeny)
+ - [] Theorem 6.2 (Properties of dual isogeny)
+ - [] Corollary 6.4 (Structure of E[m])
+
+ Section III.7 (Tate Module)
+ - [] Definition of Tate Module
+ - [] Proposition 7.1 (Structure of Tate module)
+ - [] Representation of Galois group on T_l(E)
+ - [] 7.3.1 (Tate module as a homology group)
+ 
+ Section III.8 (Weil pairing)
+ - [] Definition of Weil pairing
+ - [] Proposition 8.1 (Properties of Weil pairing)
+ - [] Corollary 8.1.1 (Surjectivity of Weil pairing)
+ - [] Proposition 8.2 (Duality w.r.t. the Weil pairing)
+ - [] Proposition 8.3 (Existence of Weil pairing with Tate modules)
+ - [] Proposition 8.6 (deg and tr formulas)
+
+Chapter V (Elliptic curves over F_q)
+- [] Proposition 2.3 (III.8.6, i.e. remind)
+- [OK] Theorem 2.3.1 (Number of zeroes over F_q^n, Frobenius endomorphism polynomial)
+- [OK] Theorem 2.4 (Weil conjectures for elliptic curves)
+
+Chapter VI (Elliptic curves over C)
+- [] complex topology of E(C) and Riemann surface structure
+- [OK] definitions (elliptic function, Weierstrass etc.)
+- [] everything from chapter VI.2,3 + uniformization theorem
+- [OK] homology groups of torus, betti numbers
