@@ -4,12 +4,82 @@
 The goal of this section is to show an elliptic curve is
 isomorphic to a torus as a Riemann surface.
 
-First, let's start with the definition and some basic properties of elliptic functions.
-
-Throughout this section, let $\Lambda \subseteq \C$ be an arbitrary lattice.
+First, let's discuss the Riemann surface structure that an elliptic curve has.
 
 \begin{definition}
-	An \emph{elliptic function} (relative to the lattice $\Lambda$) is a meromorphic function
+	The \emph{complex topology} on $\proj^n$ is the quotient topology induced
+	by the Euclidean topology on $\C^{n+1}$.
+\end{definition}
+
+Throughout this section we will consider $\proj^n$ with the complex topology,
+and hence an elliptic curve $E(\C) \subset \proj^2$ will be equipped with
+the subspace topology.
+
+\begin{proposition}
+	\label{prop:riemann-surf-struct}
+	Let $E(\C) \subset \proj^2$ be an elliptic curve, then $E(\C)$ admits
+	the structure of a Riemann surface.
+\end{proposition}
+
+\begin{proof}
+	Let $y^2 - x^3 - ax - b = f(x, y) = 0$ be the equation defining $E(\C)$.
+	So for all $P = (x_P, y_P) \in E(\C)$ with $y_P \neq 0$,
+	$\frac{\partial f}{\partial y}(P) \neq 0$ and hence by the implicit function
+	theorem there exists an open set $V_P \subseteq \C$ containing $x_P$ and an
+	analytic function $g_P: V_P \to \C$, such that $g_P(x_P) = y_P$ and
+	$f(x, g_P(x)) = 0$ for all $x \in V_P$. 
+	Furthermore $U_P = \mathcal{G}(g_P) = (\id\times g_P)(V_P) \subset E(\C)$,
+	is an open subset of $E(\C)$.
+	Hence we define
+	$\phi_P: U_P \to \C, (x, y) \mapsto x$ which is a homeomorphism to its
+	image $\phi_P(U_P) = V_P$ (the inverse to which is given by
+	$x \mapsto (x, g_P(x))$). Hence $\phi_P$ defines a chart of $E(\C)$.
+
+	For all $P = (x_P, 0) \in E(\C)$ we define the chart $\phi_P: U_P \to \C$
+	similarly, except we inverse the roles of $x$ and $y$ in the above reasoning.
+	Indeed, $\frac{\partial f}{\partial x}(P) \neq 0$, since $E(\C)$ is smooth,
+	hence we get the existence of $V_P \subset \C$ containing $y_P$ and
+	$h_P: V_P \mapsto \C$, such that $h_P(y_P) = x_P$ and
+	$f(h_P(y), y) = 0$ for all $y \in V_P$. We set
+	$U_P := (h_P \times \id)(V_P)$ and 
+	$\phi_P: U_P \to \C, (x, y) \mapsto y$.
+
+	Finally, we have yet to define a chart whose domain covers the point at
+	infinity $O = [0, 1, 0] \in E(\C)$. To do this, we can look at $E(\C)$ in
+	the chart $U_Y$ instead. We get that in this chart, $E(\C)$ is given by
+	the equation. 
+	\begin{equation*}
+		z - x^3 - axz^2 - bz^3 = \tilde f(x, z) = 0.
+	\end{equation*}
+	We have that $\frac{\partial \tilde f}{\partial z} (O) = 1 \neq 0$, hence we
+	can again apply the reasoning from above. We obtain the chart
+	$\phi_O: U_O \to \C, [x, 1, z] \mapsto x$ with inverse
+	$\phi_0^{-1}: \phi_O(U_O) \to \C, x \mapsto [x, 1, \tilde g(x)]$.
+
+	Now let $P, Q \in E(\C) \setminus \{O\}$, with $y_P \neq 0$ and $y_Q = 0$.
+	We have that
+	\begin{align*}
+		\phi_P \circ \phi_Q^{-1} (y) &= \phi_P(h_Q(y), y) = h_Q(y)\\
+		\phi_Q \circ \phi_P^{-1} (x) &= \phi_{Q}(x, g_P(x)) = g_P(x)\\
+		\phi_P\circ \phi_O^{-1}(x) &= \phi_P([x, 1, \tilde g(x)])
+		= \phi_P\left(\frac{x}{\tilde g(x)},
+		\frac{1}{\tilde g(x)}\right) = \frac{x}{\tilde g(x)}\\
+		\phi_O\circ \phi_P^{-1}(x) &= \phi_O(x, g_P(x))
+		= \phi_O\left(\left[\frac{x}{g_P(x)}, 1, \frac{1}{g_P(x)}\right]\right)
+		= \frac{x}{g_P(x)}
+	\end{align*}
+	All of these transition maps are holomorphic and by transitivity so are
+	$\phi_O \circ \phi_Q^{-1}$ and $\phi_Q \circ \phi_O^{-1}$.
+	This gives $E(\C)$ the structure of a Riemann surface.
+\end{proof}
+
+Let's introduce the definition and some basic properties of elliptic functions.
+For the rest of this section,
+let $\Lambda \subseteq \C$ be an arbitrary lattice.
+
+\begin{definition}
+	An \emph{elliptic function} (relative to the lattice $\Lambda$)
+	is a meromorphic function
 	$f$ on $\C$, which satisfies
 	\begin{equation*}
 		f(z + \lambda) = f(z)\qquad\textrm{ for all } \lambda \in \Lambda, z \in \C
@@ -164,20 +234,32 @@ as a connecting link between elliptic curves and elliptic functions.
 	\end{equation*}
 \end{theorem}
 
-%\begin{definition}
-%	The \emph{Weierstrass $\sigma$-function} (relative to $\Lambda$) is the
-%	function defined by
-%	\begin{equation*}
-%		\sigma(z; \Lambda) = z \prod_{\lambda\in\Lambda\setminus 0}
-%		\left(1 - \frac{z}{\lambda}\right)
-%		\exp\left(\frac{z}{\lambda} + \frac{1}{2}\left(\frac{z}{\lambda}\right)^2\right)
-%	\end{equation*}
-%\end{definition}
+\begin{definition}
+	The \emph{Weierstrass $\sigma$-function} (relative to $\Lambda$) is the
+	function defined by
+	\begin{equation*}
+		\sigma(z; \Lambda) = z \prod_{\lambda\in\Lambda\setminus 0}
+		\left(1 - \frac{z}{\lambda}\right)
+		\exp\left(\frac{z}{\lambda} + \frac{1}{2}\left(\frac{z}{\lambda}\right)^2\right)
+	\end{equation*}
+\end{definition}
 
-%\begin{notation}
-%	As before, we write just $\sigma(z)$ for $\sigma(z; \Lambda)$ when $\Lambda$
-%	is clear from context.
-%\end{notation}
+\begin{notation}
+	As before, we write just $\sigma(z)$ for $\sigma(z; \Lambda)$ when $\Lambda$
+	is clear from context.
+\end{notation}
+
+\begin{proposition}
+	\label{prop:complex-divisors}
+	Let $n_1, \dots, n_r \in \Z$ and $z_1, \dots, z_n \in \C$, such that
+	\begin{equation*}
+		\sum n_i = 0 \textrm{ and } \sum n_iz_i \in \Lambda.
+	\end{equation*}
+	Then there exists an elliptic function $f(z) \in \C(\Lambda)$ satisfying
+	\begin{equation*}
+		\div(f) = \sum n_i(z_i).
+	\end{equation*}
+\end{proposition}
 
 \begin{proposition}
 	\label{prop:diffeq}
@@ -269,7 +351,45 @@ as a connecting link between elliptic curves and elliptic functions.
 	necessarily congruent to $z_1$ mod $\Lambda$. This shows the injectivity
 	of $\phi$.
 
-
+	Now we will show $\phi$ is an isomorphism of Riemann surfaces.
+	Denote by $\xi: \C \mapsto \C/\Lambda$, the quotient map.
+	Then the charts of $\C/\Lambda$ are given by local sections of $\xi$.
+	Let $z \in \C$ and $U \ni (x, y)$ an open set such that 
+	$\xi\vert_U$ is injective. Let $\psi$ be a chart of $E(\C)$
+	which we can suppose (up to shrinking $U$) to be defined on
+	$\phi(\xi(U))$.
+	Depending on the value of $P = \phi(\xi(z))$, $\psi$ will be of one of the
+	three forms as described in the proof of 
+	Proposition \ref{prop:riemann-surf-struct}.
+	We get that
+	\begin{equation*}
+		\psi\circ\phi\circ\xi = 
+		\begin{cases}
+			\wp &\textrm{ if } P \neq O\textrm{ and }\wp'(z) \neq 0\\
+			\wp' &\textrm{ if } P \neq O\textrm{ and }\wp'(z) = 0\\
+			\frac{\wp}{\wp'} &\textrm{ if }P = O
+		\end{cases}
+	\end{equation*}
+	and hence $\psi\circ\phi\circ\xi$ is holomorphic (and seen as a map to its
+	image, it is bijective, and hence biholomorphic). It follows that
+	$\phi$ is biholomorphic and hence an isomorphism of Riemann surfaces.
+	
+	Finally, we want to show that $\phi$ is a group homomorphism.
+	Let $z_1, z_2 \in \C$, then from \ref{prop:complex-divisors}, there exists
+	a function $f \in \C(\Lambda)$ with divisor
+	\begin{equation*}
+		\div(f) = (z_1 + z_2) - (z_1) - (z_2) + (0)
+	\end{equation*}
+	Now, by \ref{thm:wp-generates}, we can write $f(z) = F(\wp(z), \wp'(z))$ for
+	some rational function $F(X, Y) \in \C(X, Y)$. We can see $F$ in
+	$\C(E)$ and hence $f = F \circ \phi$. It follows that
+	\begin{equation*}
+		\div (F) = (\phi(z_1 + z_2)) - (\phi(z_1)) - (\phi(z_2)) + (0)
+	\end{equation*}
+	By Proposition \ref{missing-reference}, it follows that
+	\begin{equation*}
+		\phi(z_1 + z_2) = \phi(z_1) + \phi(z_2)
+	\end{equation*}
 \end{proof}
 
 The following theorem (which we will not prove) gives the converse to \ref{thm:lattice-curve}
