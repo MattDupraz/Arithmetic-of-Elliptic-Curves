@@ -14,9 +14,9 @@ Chapter I (Algebraic varieties)
  - [] Definition of function field
 
  Section I.3 (Maps between varieties)
- - [] Definition of rational map
- - [] Definition of regular map (compare)
- - [] Definition of morphism (compare)
+ - [OK] Definition of rational map
+ - [OK] Definition of regular map (compare)
+ - [OK] Definition of morphism (compare)
  - [?] Definition of isomorphism (?)
 
 Chapter II (Algebraic curves)

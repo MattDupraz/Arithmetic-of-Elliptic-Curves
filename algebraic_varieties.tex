@@ -1,0 +1,71 @@
+\section{Algebraic Varieties}
+
+\begin{definition}
+	Let $V_1 \subseteq \proj^n, V_2 \subseteq \proj^m$ be projective varieties.
+	A \emph{rational map} from $V_1$ to $V_2$ is a map of the form
+	\begin{align*}
+		\phi: V_1 &\to V_2\\
+		P &\mapsto [f_0(P), \dots, f_m(P)],
+	\end{align*}
+	where $f_0, \dots, f_m \in K(V_1)$ are such that
+	for all $P \in V_1$ at which $f_0, \dots, f_n$ are all defined, 
+	$\phi(P) \in V_2$.
+\end{definition}
+
+\begin{definition}
+	A rational map $\phi = [f_0, \dots, f_m]: V_1 \to V_2$
+	is \emph{regular} at $P \in V_1$ if there is a function $g \in K(V_1)$,
+	such that
+	\begin{enumerate}[label=(\roman*)]
+		\item each $gf_i$ is regular at $P$
+		\item for some $i$, $(gf_i)(P) \neq 0$
+	\end{enumerate}
+	If such a $g$ exists, we set
+	\begin{equation*}
+		\phi(P) = [(gf_0)(P), \dots, (gf_m)(P)]
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Let $\phi = [f_1, \dots, f_m]: V_1 \to V_2$ be a rational map. Then
+	$\phi$ is regular at all $P \in V_1$ if and only if
+	$\phi$ is a morphism.
+\end{proposition}
+
+\begin{proof}
+	Suppose first that $\phi$ is a morphism, let $P \in V_1$.
+	Choose $i$ such that $\phi(P) \in U_i \subseteq V_2$.
+	For each $j$, define the map
+	\begin{align*}
+		h_j: V_2\cap U_i &\to K\\
+		[x_0, \dots, x_m] &\mapsto \frac{x_j}{x_i}
+	\end{align*}
+	By definition, $h_j \in \O(V_2\cap U_i)$.
+	Since $\phi$ is a morphism, we get that
+	$h_j \circ \phi = \frac{f_j}{f_i}: \phi^{-1}(V_2\cap U_i) \to K$ is regular.
+	%In particular, since $f_i(u) \neq 0$ for all $u \in \phi^{-1}(V_2\cap U_i)$,
+	%we get that
+	%$1/f_i \in \O(\phi^{-1}(V_2\cap U_i))$.
+	Setting $g = 1/f_i \in K(V_1)$, we get that
+	$gf_j$ is regular at $P$ for all $j$ and $gf_i = 1 \neq 0$.
+	Hence $\phi$ is regular at $P$.
+
+	For the other implication, suppose $\phi$ is regular at all $P \in V_1$.
+	Let $W \subseteq V_2$ open and $f \in \O(W)$, we have to show that
+	$f\circ\phi: \phi^{-1}(W) \to K$ is regular.
+	Let $P \in \phi^{-1}(W)$, then since $\phi$ is regular at $P$,
+	there exists $g \in K(V_1)$ such that each $gf_i$ is regular at $P$
+	and for some $i$, $(gf_i)(P) \neq 0$.
+	Since $f$ is regular at $\phi(P)$, there exist polynomials
+	$p, q \in K[x_0, \dots, x_n]$ homogeneous of the same degree
+	with $q(\phi(P)) \neq 0$ and 
+	$f(Q) = \frac{p(Q)}{q(Q)}$ for all $Q \in W\setminus q^{-1}(0)$. Then
+	\begin{equation*}
+		f \circ \phi = \frac{p(f_0, \dots, f_m)}{q(f_0, \dots f_m)}
+		= \frac{p(gf_0, \dots, gf_m)}{q(gf_0, \dots, gf_m)}
+	\end{equation*}
+	We have that both $p(gf_0, \dots, gf_m)$ and $q(gf_0, \dots, gf_m)$ are
+	regular. Furthermore, $q(gf_0, \dots, gf_m)(P) = q(\phi(P)) \neq 0$
+	and hence we deduce that $f\circ \phi$ is regular.
+	This implies that $\phi$ is a morphism.
+\end{proof}
