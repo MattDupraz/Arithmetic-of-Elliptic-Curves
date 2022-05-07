@@ -28,12 +28,13 @@ the subspace topology.
 	theorem there exists an open set $V_P \subseteq \C$ containing $x_P$ and an
 	analytic function $g_P: V_P \to \C$, such that $g_P(x_P) = y_P$ and
 	$f(x, g_P(x)) = 0$ for all $x \in V_P$. 
-	Furthermore $U_P = \mathcal{G}(g_P) = (\id\times g_P)(V_P) \subset E(\C)$,
-	is an open subset of $E(\C)$.
+	Furthermore $U_P = (\id\times g_P)(V_P) \subset E(\C)$,
+	is an open subset of $E(\C)$. Indeed, $U_P = \pi_x^{-1}(V_P)$, where
+	$\pi_x: E(\C)\setminus\{O\} \to \C, (x, y) \mapsto x$.
 	Hence we define
-	$\phi_P: U_P \to \C, (x, y) \mapsto x$ which is a homeomorphism to its
+	$\phi_P = \pi_x\vert_{U_P}$ which is a homeomorphism to its
 	image $\phi_P(U_P) = V_P$ (the inverse to which is given by
-	$x \mapsto (x, g_P(x))$). Hence $\phi_P$ defines a chart of $E(\C)$.
+	$x \mapsto (x, g_P(x))$).
 
 	For all $P = (x_P, 0) \in E(\C)$ we define the chart $\phi_P: U_P \to \C$
 	similarly, except we inverse the roles of $x$ and $y$ in the above reasoning.
@@ -45,8 +46,9 @@ the subspace topology.
 	$\phi_P: U_P \to \C, (x, y) \mapsto y$.
 
 	Finally, we have yet to define a chart whose domain covers the point at
-	infinity $O = [0, 1, 0] \in E(\C)$. To do this, we can look at $E(\C)$ in
-	the chart $U_Y$ instead. We get that in this chart, $E(\C)$ is given by
+	infinity $O = [0, 1, 0] \in E(\C)$. To do this, we can look at $E(\C)$
+	in $\{[X, Y, Z] \in \proj^2 \mid Y \neq 0\}$ instead.
+	We get that in this copy of $\A^2$, $E(\C)$ is given by
 	the equation. 
 	\begin{equation*}
 		z - x^3 - axz^2 - bz^3 = \tilde f(x, z) = 0.
@@ -70,7 +72,9 @@ the subspace topology.
 	\end{align*}
 	All of these transition maps are holomorphic and by transitivity so are
 	$\phi_O \circ \phi_Q^{-1}$ and $\phi_Q \circ \phi_O^{-1}$.
-	This gives $E(\C)$ the structure of a Riemann surface.
+	Hence the the atlas $\mathcal{A} = \{\phi_P \mid P \in E(\C)\}$ is
+	holomorphic
+	and so gives $E(\C)$ the structure of a Riemann surface.
 \end{proof}
 
 Let's introduce the definition and some basic properties of elliptic functions.
@@ -354,7 +358,7 @@ as a connecting link between elliptic curves and elliptic functions.
 	Now we will show $\phi$ is an isomorphism of Riemann surfaces.
 	Denote by $\xi: \C \mapsto \C/\Lambda$, the quotient map.
 	Then the charts of $\C/\Lambda$ are given by local sections of $\xi$.
-	Let $z \in \C$ and $U \ni (x, y)$ an open set such that 
+	Let $z \in \C$ and $U \subseteq \C$ containing $z$ an open set such that 
 	$\xi\vert_U$ is injective. Let $\psi$ be a chart of $E(\C)$
 	which we can suppose (up to shrinking $U$) to be defined on
 	$\phi(\xi(U))$.
@@ -371,8 +375,9 @@ as a connecting link between elliptic curves and elliptic functions.
 		\end{cases}
 	\end{equation*}
 	and hence $\psi\circ\phi\circ\xi$ is holomorphic (and seen as a map to its
-	image, it is bijective, and hence biholomorphic). It follows that
-	$\phi$ is biholomorphic and hence an isomorphism of Riemann surfaces.
+	image, it is bijective, and hence biholomorphic). Since $\phi$ is
+	bijective and locally biholomorphic, it is
+	biholomorphic and hence an isomorphism of Riemann surfaces.
 	
 	Finally, we want to show that $\phi$ is a group homomorphism.
 	Let $z_1, z_2 \in \C$, then from \ref{prop:complex-divisors}, there exists
@@ -382,7 +387,8 @@ as a connecting link between elliptic curves and elliptic functions.
 	\end{equation*}
 	Now, by \ref{thm:wp-generates}, we can write $f(z) = F(\wp(z), \wp'(z))$ for
 	some rational function $F(X, Y) \in \C(X, Y)$. We can see $F$ in
-	$\C(E)$ and hence $f = F \circ \phi$. It follows that
+	$\C(E) = \C(E\cap \A^2) = \C(x, y)$
+	and hence $f = F \circ \phi$. It follows that
 	\begin{equation*}
 		\div (F) = (\phi(z_1 + z_2)) - (\phi(z_1)) - (\phi(z_2)) + (0)
 	\end{equation*}

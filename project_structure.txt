@@ -1,16 +1,16 @@
 Chapter I (Algebraic varieties)
  Section I.1 (Affine varieties)
- - [?] Basic definitions (not necessarily redefine everything from the course)
- - [] Definition of smooth variety
- - [] Definition of local ring (maybe compare definitions?)
+ - [X] Basic definitions (not necessarily redefine everything from the course)
+ - [OK] Definition of smooth variety
+ - [X] Definition of local ring (maybe compare definitions?)
 
  Section I.2 (Projective varieties)
- - [?] Basic definitions (again, maybe unnecessary to redefine everything from the course)
+ - [X] Basic definitions (again, maybe unnecessary to redefine everything from the course)
  - [] Definition of K(P) (compare?)
  - [?] Definition of projective variety?
  - [?] Proposition 2.6 (property of closure?)
  - [?] Definition of dimension (maybe compare?)
- - [] Definition of smooth projective variety
+ - [OK] Definition of smooth projective variety
  - [] Definition of function field
 
  Section I.3 (Maps between varieties)
