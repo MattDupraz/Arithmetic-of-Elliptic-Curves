@@ -138,4 +138,84 @@ existence of singularities of $V$.
 
 \subsection{Group Law}
 
-Let $E$ be an elliptic curve.
+Let $E$ be an elliptic curve. For any line $L \subset \proj^2$, $L$ intersects
+$E$ in exactly 3 points (taken with multiplicity). This allows us
+to define a composition law $+$ on $E$ as
+follows.
+
+\begin{definition}
+	Let $P, Q \in E$ and $L$ the line connecting $P$ and $Q$ (or the tangent line
+	to $E$ at $P$ if $P = Q$). Let $R$ be the third point of intersection of $L$
+	with $E$. Let $L'$ be the line connecting $R$ and $O$. We define $P + Q$
+	be the third point of intersection of $L'$ with $E$.
+\end{definition}
+
+% Proposition: properties, it makes E an abelian group with identity O
+
+\begin{notation}
+	For $m \in \N\setminus\{0\}$ and $P \in E$ we define
+	\begin{equation*}
+		[m]P = \underbrace{P + \dots + P}_{m\textrm{ times}}.
+	\end{equation*}
+	We extend this definition to $m \in \Z$ with $[0]P = O$ and
+	$[m]P = [-m](-P)$ for $m < 0$.
+\end{notation}
+
+As we have seen, any elliptic curve can be written up to isomorphism
+under the form
+\begin{equation*}
+	E: y^2 = x^3 + ax + b
+\end{equation*}
+Since this isomorphism is induced by linear changes of variables, it
+sends lines to lines and hence this preserves the group structure on
+$E$ induced by $+$. Hence in what follows, we consider simply elliptic curves of
+the above form.
+Let $F(x, y) = y^2 - x^3 - ax - b$, so that $E$ is given by the equation
+$F(x, y) = 0$.
+
+Let $P = (x_P, y_P) \in E$, then we
+\begin{equation*}
+	-P = (x_P, -y_P),
+\end{equation*}
+which is clear by inspection of the composition law.
+
+Now let $Q = (x_Q, y_Q) \in E$ different from $-P$. Then $P + Q \neq O$.
+Suppose $P \neq Q$, then $x_P \neq x_Q$. 
+We have that the line passing through $P$ and $Q$ is given by
+\begin{equation*}
+	L: y = \frac{y_Q - y_P}{x_Q - x_P}(x - x_P) + y_P
+\end{equation*}
+Setting 
+\begin{equation*}
+	\lambda = \frac{y_Q - y_P}{x_Q - x_P}
+	\quad\textrm{ and }\quad
+	\nu = \frac{x_Qy_P - x_Py_Q}{x_Q - x_P}
+\end{equation*}
+we can rewrite $L: y = \lambda x - \nu$.
+
+If $P = Q$, then $L$ is the tangent to $E$ at $P$, which is given by
+\begin{equation*}
+	L: (3x_P^2 + a)(x - x_P) - 2y_P(y - y_P) = 0
+\end{equation*}
+To obtain again an equation of the form $L = \lambda x - \nu$, we have to set
+\begin{equation*}
+	\lambda = \frac{3x_P^2 + a}{2y_P}
+	\quad\textrm{ and }\quad
+	\nu = \frac{-3x_P^3 - ax_P + 2y_P^2}{2y_P} = \frac{-x_P^3 + ax_P + 2b}{2y_P}.
+\end{equation*}
+
+So let $\lambda$ and $\nu$ be as above corresponding to the case.
+Let $R$ be the third point of intersection of $L$ with $E$.
+We have that the equation $F(x, \lambda x + \nu) = 0$ with respect to $x$
+admits exactly the zeroes $x_P, x_Q, x_R$ and hence
+\begin{equation*}
+	F(x, \lambda x + \nu) = c(x - x_P)(x - x_Q)(x - x_R)
+\end{equation*}
+Since the coefficient of $x^3$ in $F(x, \lambda x + \nu)$ is $-1$, we obtain
+$c = -1$. By equating the coefficient of $x^2$, we obtain
+$\lambda^2 = x_P + x_Q + x_R$ and hence
+\begin{align*}
+	x_R &= \lambda^2 - x_P - x_Q\\
+	y_R &= \lambda x_R + \nu
+\end{align*}
+Finally, we obtain $P + Q = (x_R, -y_R)$.
