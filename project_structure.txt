@@ -6,12 +6,12 @@ Chapter I (Algebraic varieties)
 
  Section I.2 (Projective varieties)
  - [X] Basic definitions (again, maybe unnecessary to redefine everything from the course)
- - [] Definition of K(P) (compare?)
- - [?] Definition of projective variety?
+ - [OK] Definition of K(P) (compare?)
+ - [X] Definition of projective variety?
  - [?] Proposition 2.6 (property of closure?)
  - [?] Definition of dimension (maybe compare?)
  - [OK] Definition of smooth projective variety
- - [] Definition of function field
+ - [OK] Definition of function field
 
  Section I.3 (Maps between varieties)
  - [OK] Definition of rational map
@@ -21,27 +21,28 @@ Chapter I (Algebraic varieties)
 
 Chapter II (Algebraic curves)
  Section II.1 (Curves)
- - [] Proposition 1.1 (K[C]_P is a discrete valuation ring)
- - [] Definition of order on K[C]_P
- - [] Definition of zero, pole, regular
+ - [NP] Proposition 1.1 (K[C]_P is a discrete valuation ring)
+ - [OK] Definition of order on K[C]_P
+ - [OK] Definition of zero, pole, regular
  - [?] Proposition 1.4 (K(C) is a finite separable extension of K(t))
 
  Section II.2 (Maps between curves)
- - [] Proposition 2.1 (Rational maps are regular where C is smooth)
- - [] Theorem 2.3 (Morphism of curves is either constant or surjective)
+ - [NP] Proposition 2.1 (Rational maps are regular where C is smooth)
+ - [NP] Theorem 2.3 (Morphism of curves is either constant or surjective)
  - [?] Theorem 2.4 (?)
- - [] Definition of degree of a map, separable, inseparable
+ - [OK] Definition of degree of a map, separable, inseparable
  - [?] Definition of pushforward map on rational function field (?)
  - [] Corollary 2.4.1 (Degree one map between smooth curves is isomorphism)
- - [] Definition of ramification index
+ - [OK] Definition of ramification index
  - [] Proposition 2.6 (Properties of ramification index)
  - [] Corollary 2.7 (Characterization of being unramified)
- - [] Definition of Frobenius morphism
+ - [OK] Definition of Frobenius morphism
  - [] Proposition 2.11 (Properties of Frobenius morphism)
  - [] Corollary 2.12 (Factoring of maps of smooth curves)
  
  Section II.3 (Divisors)
- - [] Definition of a divisor
+ - [OK] Definition of a divisor
+ - [?] Definition of divisor class group
  - [] Proposition 3.1 (Basic properties of divisors)
  - [] Definition of maps of divisor group
  - [] Proposition 3.6 (Basic properties of maps of divisor groups)
