@@ -144,6 +144,7 @@ to define a composition law $+$ on $E$ as
 follows.
 
 \begin{definition}
+	\label{def:group-law}
 	Let $P, Q \in E$ and $L$ the line connecting $P$ and $Q$ (or the tangent line
 	to $E$ at $P$ if $P = Q$). Let $R$ be the third point of intersection of $L$
 	with $E$. Let $L'$ be the line connecting $R$ and $O$. We define $P + Q$
@@ -197,6 +198,9 @@ If $P = Q$, then $L$ is the tangent to $E$ at $P$, which is given by
 \begin{equation*}
 	L: (3x_P^2 + a)(x - x_P) - 2y_P(y - y_P) = 0
 \end{equation*}
+If $y_P = 0$, $L$ is the line $x = x_P$ and so the third point of intersection
+is $O$, whence $P + Q = O$, which contradicts our assumption, and so 
+$y_P \neq 0$.
 To obtain again an equation of the form $L = \lambda x - \nu$, we have to set
 \begin{equation*}
 	\lambda = \frac{3x_P^2 + a}{2y_P}
@@ -219,3 +223,68 @@ $\lambda^2 = x_P + x_Q + x_R$ and hence
 	y_R &= \lambda x_R + \nu
 \end{align*}
 Finally, we obtain $P + Q = (x_R, -y_R)$.
+
+This can be summarized in the following proposition:
+\begin{proposition}
+	Let $E$ be an elliptic curve given by the Weierstrass equation
+	\begin{equation*}
+		E: y^2 = x^3 + ax + b.
+	\end{equation*}
+	Let $P = (x_P, y_P), Q = (x_Q, y_Q) \in E$ be two points with $P \neq \pm Q$.
+	Then 
+	\begin{enumerate}
+		\item The addition formula:
+			\begin{align*}
+				x_{P + Q} &= \left( \frac{y_Q - y_P}{x_Q - x_P} \right)^2
+				- x_P - x_Q\\
+				y_{P + Q} &= -\frac{y_Q - y_P}{x_Q - x_P}x_{P+Q} + \frac{x_Qy_P -
+				x_Py_Q}{x_Q - x_P}
+			\end{align*}
+		\item The duplication formula. Write $P = (x, y)$, then
+			\begin{align*}
+				x_{[2]P} &= \left( \frac{3x^2 + a}{2y} \right)^2
+				- 2x\\
+				&= \frac{x^4 - 2ax^2 - 8bx + a^2}{4(x^3 + ax + b)}\\
+				y_{[2]P} &= - \frac{3x^2 + a}{2y}x_{[2]P}
+				+ \frac{-x^3 + ax + 2b}{2y}
+			\end{align*}
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{lemma}
+	Let $C$ be a curve of genus 1, and let $P, Q \in C$. Then
+	\begin{equation*}
+		(P) \sim (Q)
+		\quad\textrm{if and only if}\quad
+		P = Q
+	\end{equation*}
+\end{lemma}
+
+\begin{proof}
+	Suppose $(P) \sim (Q)$, then there exists some $f \in K(C)$ such that
+	\begin{equation*}
+		\div(f) = (P) - (Q).
+	\end{equation*}
+	We have that $f \in \L((Q))$ and by Riemann-Roch (\ref{thm:riemann-roch}),
+	it follows that
+	\begin{equation*}
+		\dim \L((Q)) = \deg((Q)) - g + 1 = 1.
+	\end{equation*}
+	Since $\L((Q))$ already contains the constant functions, $f \in \L((Q)) = K$
+	and so $P = Q$.
+\end{proof}
+
+\begin{proposition}
+	Let $E$ be an elliptic curve. Then $E$ equipped with the group law from 
+	\ref{def:group-law}
+	and $\Cl^0(E)$ are isomorphic. The isomorphism is given by the map
+	\begin{align*}
+		\kappa: E &\to \Cl^0(E)\\
+		P &\mapsto [(P) - (O)]
+	\end{align*}
+\end{proposition}
+
+\begin{proof}
+	
+\end{proof}

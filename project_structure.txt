@@ -57,7 +57,7 @@ Chapter III (Elliptic curves)
  - [OK] Proposition 1.4 (Singularity of curve)
 
  Section III.2 (Group law)
- - [] Composition law on E
+ - [OK] Composition law on E
  - [] Proposition 2.2 (properties of composition law)
  - Not sure about the rest - Review
 

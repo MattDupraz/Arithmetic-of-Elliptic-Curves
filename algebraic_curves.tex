@@ -1,5 +1,7 @@
 \section{Algebraic Curves}
 
+\subsection{Basic properties}
+
 % Is it true for K non algebraicaly closed?
 \begin{proposition}
 	Let $C$ be a curve and $P \in C$ a smooth point.
@@ -90,6 +92,7 @@
 	\end{align*}
 \end{definition}
 
+\subsection{Divisors}
 
 \begin{definition}
 	The \emph{divisor group of a curve} $C$, denoted $\Div(C)$ is the free
@@ -129,7 +132,46 @@
 
 \begin{definition}
 	A divisor $D \in \Div(C)$ is \emph{principal} if it has the form
-	$D = \div(f)$ for some $f \in K(C)$.
+	$D = \div(f)$ for some $f \in K(C)$. The subgroup of principal divisors
+	is denoted $\PDiv(C)$
 	Two divisors $D_1, D_2$ are \emph{linearly equivalent}, which we denote
 	$D_1 \sim D_2$, if $D_1 - D_2$ is principal.
 \end{definition}
+
+\begin{definition}
+	The \emph{divisor class group} of a curve $C$,
+	denoted $\Cl(C)$, is the quotient $\Div(C)/\PDiv(C)$.
+	Principal divisors have degree $0$ and hence it makes sense to speak about
+	the degree of elements in $\Cl(C)$. The sugroup of elements of $\Cl(C)$ of
+	degree $0$ is denoted $\Cl^0(C)$.
+\end{definition}
+
+\begin{definition}
+	A divisor $D = \sum n_P(P) \in \Div(C)$ is \emph{positive}, denoted by
+	$D \geq 0$, if $n_P \geq 0$ for all $P \in C$.
+	For two divisors $D_1, D_2 \in \Div(C)$, we write $D_1 \geq D_2$
+	to indicate that $D_1 - D_2$ is positive.
+\end{definition}
+
+\begin{definition}
+	Let $D \in \Div(C)$. We associate to $D$ the set of functions
+	\begin{equation*}
+		\L(D) = \{f \in K(C)^\times: \div(f) \geq -D\} \cup \{ 0 \}.
+	\end{equation*}
+	It can be shown $\L(D)$ is finite-dimensional. We denote its dimension by
+	\begin{equation*}
+		l(D) = \dim_K \L(D).
+	\end{equation*}
+\end{definition}
+
+We now state (without proof) a corrolary of the Riemann-Roch theorem, which will be
+useful in the following chapters.
+
+\begin{theorem}[Riemann-Roch]
+	\label{thm:riemann-roch}
+	Let $C$ be a smooth curve of genus $g$. Let $D \in \Div(C)$, then if
+	$\deg(D) > 2g - 2$, we have that
+	\begin{equation*}
+		l(D) = \deg(D) - g + 1
+	\end{equation*}
+\end{theorem}
