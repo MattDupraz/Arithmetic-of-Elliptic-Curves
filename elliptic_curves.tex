@@ -253,6 +253,7 @@ This can be summarized in the following proposition:
 
 
 \begin{lemma}
+	\label{lem:sim-implies-eq}
 	Let $C$ be a curve of genus 1, and let $P, Q \in C$. Then
 	\begin{equation*}
 		(P) \sim (Q)
@@ -286,5 +287,51 @@ This can be summarized in the following proposition:
 \end{proposition}
 
 \begin{proof}
+	Let $D \in Div^0(E)$ be a divisor. Since $E$ has genus 1, 
+	by the Riemann-Roch theorem (\ref{thm:riemann-roch}), we have that
+	\begin{equation*}
+		\dim\L(D + (O)) = 1.
+	\end{equation*}
+	Let $f \in K(E)$ be a generator for $\L(D + (O))$. Since
+	\begin{equation*}
+		\div(f) \geq -D -(O)
+		\quad\textrm{ and }\quad
+		\deg(\div(f)) = 0,
+	\end{equation*}
+	we have necessarily that 
+	\begin{equation*}
+		\div(f) = -D -(O) + (P)
+	\end{equation*}
+	for some $P \in E$.
+	Hence 
+	\begin{equation*}
+		D \sim (P) - (O).
+	\end{equation*}
+	Suppose there is some other $P' \in E$, such that $D \sim (P') - (O)$.
+	Then $(P) \sim (P')$, but then $P = P'$ from \ref{lem:sim-implies-eq}.
 	
+	This allows us to define
+	\begin{equation*}
+		\sigma: \Div^0(E) \to E,
+	\end{equation*}
+	which sends a divisor $D \in \Div^0(E)$ to the corresponding point $P \in E$
+	as above.
+
+	This map is clearly surjective, as $\sigma((P) - (O)) = P$. Furthermore, we
+	have that $\sigma(D_1) = \sigma(D_2)$ if and only if $D_1 \sim D_2$.
+	Indeed, if $D_1 \sim D_2$, then 
+	\begin{equation*}
+		(\sigma(D_1)) - (O) \sim (\sigma(D_2)) - (O)
+	\end{equation*}	
+	and hence $\sigma(D_1) = \sigma(D_2)$ by \ref{lem:sim-implies-eq}.
+	Conversely, if $\sigma(D_1) = \sigma(D_2)$, then clearly
+	\begin{equation*}
+		D_1 \sim (\sigma(D_1)) - (O) = (\sigma(D_2)) - (O) \sim D_2.
+	\end{equation*}
+	We deduce that $\sigma$ induces a bijection $\cl{\sigma}: \Cl^0(E) \to E$.
+	Furthermore, clearly $\overline{\sigma} = \kappa^{-1}$.
+
+	It remains to show that $\kappa$ is a group homomorphism.
+	Clearly, $\kappa(O) = 0$, so we have to show that for $P, Q \in E$,
+	$\kappa(P + Q) = \kappa(P) + \kappa(Q)$.
 \end{proof}
