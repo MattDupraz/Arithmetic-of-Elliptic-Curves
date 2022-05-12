@@ -42,13 +42,13 @@ Chapter II (Algebraic curves)
  
  Section II.3 (Divisors)
  - [OK] Definition of a divisor
- - [?] Definition of divisor class group
- - [] Proposition 3.1 (Basic properties of divisors)
+ - [OK] Definition of divisor class group
+ - [OK] Proposition 3.1 (Basic properties of divisors)
  - [] Definition of maps of divisor group
  - [] Proposition 3.6 (Basic properties of maps of divisor groups)
  
  Section II.5 (Riemann-Roch)
- - [] Theorem 5.4 (Riemann-Roch, admitted)
+ - [OK] Theorem 5.4 (Riemann-Roch, admitted)
  - [?] Theorem 5.9 (Riemann-Hurwitz formula, admitted, unsure if needed)
 
 Chapter III (Elliptic curves)
@@ -58,16 +58,16 @@ Chapter III (Elliptic curves)
 
  Section III.2 (Group law)
  - [OK] Composition law on E
- - [] Proposition 2.2 (properties of composition law)
+ - [OK] Proposition 2.2 (properties of composition law)
  - Not sure about the rest - Review
 
  Section III.3 (Elliptic curves)
  - [] Definition of Elliptic curve
  - [] Proposition 3.1 (Form of eq. defining E/K up to isom)
  - [] Corollary 3.1.1 (K(E) definition)
- - [] Lemma 3.3 ((P) ~ (Q) iff P = Q)
- - [] Proposition 3.4 (Equivalence of "geometric group law" to "algebraic group law")
- - [] Corollary 3.5 (Characterization of principal divisors)
+ - [OK] Lemma 3.3 ((P) ~ (Q) iff P = Q)
+ - [OK] Proposition 3.4 (Equivalence of "geometric group law" to "algebraic group law")
+ - [OK] Corollary 3.5 (Characterization of principal divisors)
  - [] Theorem 3.6 (Addition and inverse are morphisms)
  
  Section III.4 (Isogenies)
@@ -109,7 +109,7 @@ Chapter V (Elliptic curves over F_q)
 - [OK] Theorem 2.4 (Weil conjectures for elliptic curves)
 
 Chapter VI (Elliptic curves over C)
-- [] complex topology of E(C) and Riemann surface structure
+- [OK] complex topology of E(C) and Riemann surface structure
 - [OK] definitions (elliptic function, Weierstrass etc.)
 - [] everything from chapter VI.2,3 + uniformization theorem
 - [OK] homology groups of torus, betti numbers

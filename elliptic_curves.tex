@@ -334,4 +334,69 @@ This can be summarized in the following proposition:
 	It remains to show that $\kappa$ is a group homomorphism.
 	Clearly, $\kappa(O) = 0$, so we have to show that for $P, Q \in E$,
 	$\kappa(P + Q) = \kappa(P) + \kappa(Q)$.
+
+	Let
+	\begin{equation*}
+		f(X, Y, Z) = \alpha X + \beta Y + \gamma Z = 0
+	\end{equation*}
+	give the line $L$ in $\proj^2$ going through $P, Q$ and let $R$ be the third
+	point of intersection.
+	We then have that $f/Z \in K(E)$ and since $Z$ intersects $E$ at $O$ with
+	multiplicity 3, we have
+	\begin{equation*}
+		\div(f/Z) = \sum_{P \in E}\ord_P(f)(P) - \ord_P(Z)(P)
+		= (P) + (Q) + (R) - 3(O).
+	\end{equation*}
+	Now let 
+	\begin{equation*}
+		f'(X, Y, Z) = \alpha' X + \beta' Y + \gamma' Z = 0
+	\end{equation*}
+	be the line $L'$ through $R$ and $O$. Then by the definition of addition on
+	$E$, we have that the third point of intersection of $L'$ with $E$ is 
+	$P + Q$. As above, $f'/Z \in K(E)$ and we have
+	\begin{equation*}
+		\div(f'/Z) = (R) + (O) + (P + Q) - 3(O) = (R) + (P + Q) - 2(O).
+	\end{equation*}
+	It follows that
+	\begin{equation*}
+		\div(f'/f) = \div(f'/Z) - \div(f/Z) = (P + Q) - (P) - (Q) + (O)
+	\end{equation*}
+	And hence
+	\begin{align*}
+		\kappa(P + Q) - \kappa(P) - \kappa(Q) &= 
+		[(P + Q) - (O)] - [(P) - (O)] - [(Q) - (O)]\\
+		&= [(P + Q) - (P) - (Q) + (O)] = 0.
+	\end{align*}
 \end{proof}
+
+\begin{corollary}
+	Let $E$ be an elliptic curve and $D = \sum n_P(P) \in \Div(E)$. Then $D$
+	is principal if and only if $\sum n_P = 0$ and $\sum [n_P]P = O$
+\end{corollary}
+
+\begin{proof}
+	Suppose $D$ is principal, so $D\sim 0$. 
+	Principal divisors have degree $0$,
+	hence $\sum n_P = 0$. It follows that
+	\begin{align*}
+		\kappa\left(\sum [n_P]P\right) &= \sum n_P\kappa(P) = \sum n_P [(P) -
+		(O)]\\
+		&= \left[\sum n_P (P)\right] = 0
+	\end{align*}
+	And hence $\sum [n_P]P = 0$ by injectivity of $\kappa$.
+
+	Now suppose $\sum n_P = 0$ and $\sum [n_P] P = O$,
+	then by the above calculation,
+	\begin{equation*}
+		[D] = \left[\sum n_P(P)\right] = \kappa\left(\sum [n_P] P\right) = 0
+	\end{equation*}
+	and so $D \sim 0$.
+\end{proof}
+
+\subsection{Isogenies}
+
+\subsection{The Dual Isogeny}
+
+\subsection{The Tate Module}
+
+\subsection{The Weil Pairing}
