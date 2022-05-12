@@ -395,6 +395,30 @@ This can be summarized in the following proposition:
 
 \subsection{Isogenies}
 
+\begin{definition}
+	Let $E_1$ and $E_2$ be elliptic curves. An \emph{isogeny} between
+	$E_1$ and $E_2$ is a morphism
+	\begin{equation*}
+		\phi: E_1 \to E_2
+	\end{equation*}
+	satisfying $\phi(O) = O$. $E_1$ and $E_2$ are \emph{isogenous} if
+	there exists a non-constant isogeny $\phi$ between them.
+\end{definition}
+
+\begin{definition}
+	Let $E$ be an elliptic curve and $m \in \Z$, $m \neq 0$. The
+	$m$-\emph{torsion subgroup} of $E$, denoted $E[m]$, is the set of
+	points of order $m$ in $E$.
+	\begin{equation*}
+		E[m] = \{P \in E \mid [m]P = O\}.
+	\end{equation*}
+	The \emph{torsion subgroup} of $E$, denoted $E_\tors$, is the set of
+	points of finite order in $E$.
+	\begin{equation*}
+		E_\tors = \bigcup_{m=1}^\infty E[m]
+	\end{equation*}
+\end{definition}
+
 \subsection{The Dual Isogeny}
 
 \subsection{The Tate Module}

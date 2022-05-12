@@ -49,7 +49,8 @@ Chapter II (Algebraic curves)
  
  Section II.5 (Riemann-Roch)
  - [OK] Theorem 5.4 (Riemann-Roch, admitted)
- - [?] Theorem 5.9 (Riemann-Hurwitz formula, admitted, unsure if needed)
+ - [] Theorem 5.9 (Riemann-Hurwitz formula, admitted, unsure if needed)
+ - [] Exercise 2.7
 
 Chapter III (Elliptic curves)
  Section III.1 (Weierstrass equation)
@@ -66,15 +67,17 @@ Chapter III (Elliptic curves)
  - [] Proposition 3.1 (Form of eq. defining E/K up to isom)
  - [] Corollary 3.1.1 (K(E) definition)
  - [OK] Lemma 3.3 ((P) ~ (Q) iff P = Q)
+ - [] Justify number of intersections
+ - [] Detail formula for inverse. And why P+Q = R^{-1}?
  - [OK] Proposition 3.4 (Equivalence of "geometric group law" to "algebraic group law")
  - [OK] Corollary 3.5 (Characterization of principal divisors)
  - [] Theorem 3.6 (Addition and inverse are morphisms)
  
  Section III.4 (Isogenies)
- - [] Definition of isogeny
+ - [OK] Definition of isogeny
  - [] Definition of isogeny [m]
  - [] Proposition 4.2 (some properties of [m], Hom(E_1, E_2), not sure where it's used)
- - [] Definition of m-torsion subgroup
+ - [OK] Definition of m-torsion subgroup
  - [] Theorem 4.8 (Isogenies preserve group law)
  - [] Corollary 4.9 (ker phi is a finite group)
  - [] Theorem 4.10 (cardinality of ker, phi^{-1})
