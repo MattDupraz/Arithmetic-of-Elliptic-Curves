@@ -46,16 +46,19 @@ Chapter II (Algebraic curves)
  - [OK] Proposition 3.1 (Basic properties of divisors)
  - [] Definition of maps of divisor group
  - [] Proposition 3.6 (Basic properties of maps of divisor groups)
- 
+
+ Section II.4 (Differentials)
+ - [OK] Definitions and basic properties (no proofs)
+
  Section II.5 (Riemann-Roch)
  - [OK] Theorem 5.4 (Riemann-Roch, admitted)
- - [] Theorem 5.9 (Riemann-Hurwitz formula, admitted, unsure if needed)
+ - [OK] Theorem 5.9 (Riemann-Hurwitz formula, admitted)
  - [] Exercise 2.7
 
 Chapter III (Elliptic curves)
  Section III.1 (Weierstrass equation)
- - [OK] Show how we get the simplified equation
- - [OK] Proposition 1.4 (Singularity of curve)
+ - [OK?] Show how we get the simplified equation
+ - [REDO] Proposition 1.4 (Singularity of curve)
 
  Section III.2 (Group law)
  - [OK] Composition law on E
@@ -63,8 +66,8 @@ Chapter III (Elliptic curves)
  - Not sure about the rest - Review
 
  Section III.3 (Elliptic curves)
- - [] Definition of Elliptic curve
- - [] Proposition 3.1 (Form of eq. defining E/K up to isom)
+ - [OK] Definition of Elliptic curve
+ - [NP] Proposition 3.1 (Form of eq. defining E/K up to isom)
  - [] Corollary 3.1.1 (K(E) definition)
  - [OK] Lemma 3.3 ((P) ~ (Q) iff P = Q)
  - [] Justify number of intersections
@@ -120,3 +123,9 @@ Chapter VI (Elliptic curves over C)
 
 GENERAL NOTES
 - Underline importance of separability! (III.4.10/5.4-5/6.4)
+
+QUESTION MARKS
+- How de we prove Exercise 2.7 lol
+- How does the group structure depend on the choice of O? If we choose a
+different O then maybe the tangent at O does not intersect E at O with
+multiplicity 3 anymore...
