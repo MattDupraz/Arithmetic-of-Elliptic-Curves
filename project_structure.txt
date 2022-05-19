@@ -91,6 +91,7 @@ Chapter III (Elliptic curves)
  - [] Theorem 6.1 (Definition of dual isogeny)
  - [] Theorem 6.2 (Properties of dual isogeny)
  - [] Corollary 6.4 (Structure of E[m])
+ - [] Exercise 3.30
 
  Section III.7 (Tate Module)
  - [] Definition of Tate Module
@@ -116,3 +117,6 @@ Chapter VI (Elliptic curves over C)
 - [OK] definitions (elliptic function, Weierstrass etc.)
 - [] everything from chapter VI.2,3 + uniformization theorem
 - [OK] homology groups of torus, betti numbers
+
+GENERAL NOTES
+- Underline importance of separability! (III.4.10/5.4-5/6.4)
