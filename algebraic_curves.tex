@@ -184,9 +184,11 @@ By a \emph{curve} we always mean a projective variety of dimension one.
 
 \subsection{Differentials}
 
-To be able to define the genus of a curve, and state the Riemann-Roch theorem,
-we need to introduce the notion of differentials. Since these are not central
-for the goals of this paper, we will gloss over the main definitions
+In this section we introduce the notion of differential forms on a curve.
+This will allow us to state the Riemann-Roch theorem and define the genus of a
+curve. Furthermore, differentials turn out to be very useful for determining
+when map between curves is separable.
+For the goals of this paper, it will suffice to gloss over the main definitions
 and properties without providing proofs.
 
 \begin{definition}
@@ -220,7 +222,7 @@ and properties without providing proofs.
 \end{proposition}
 
 \begin{notation}
-	Let $\omega \in \Omega_C$. Then by \label{prop:forms-dimension} there exists
+	Let $\omega \in \Omega_C$. Then by \ref{prop:forms-dimension} there exists
 	$g \in K(C)$ such that $\omega = g\,dt$. We denote $g$ by $\omega/dt$.
 \end{notation}
 
@@ -240,16 +242,106 @@ The following proposition will allow us to define the order of a differential.
 	$\ord_P(\omega)$.
 \end{definition}
 
-We now state (without proof) a corrolary of the Riemann-Roch theorem, which will be
-useful in the following chapters.
+\begin{proposition}
+	For all but finitely many $P \in \C$, 
+	\begin{equation*}
+		\ord_P(\omega) = 0.
+	\end{equation*}
+\end{proposition}
 
+We can now define the notion of divisor of a differential.
+\begin{definition}
+	Let $\omega \in \Omega_C$. The divisor associated to $\omega$ is
+	\begin{equation*}
+		\div(\omega) = \sum_{P \in C} \ord_P(\omega)\cdot (P) \in \Div(C)
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+	A differential $\omega \in \Omega_C$ is \emph{regular} (or \emph{holomorphic})
+	if for all $P \in C$,
+	\begin{equation*}
+		\ord_P(\omega) \geq 0.
+	\end{equation*}
+	If is \emph{non-vanishing} if for all $P \in C$,
+	\begin{equation*}
+		\ord_P(\omega) \leq 0.
+	\end{equation*}
+\end{definition}
+
+Now, if $\omega_1$ and $\omega_2 \in \Omega_C$ are non-zero differentials, then
+there exists $f\in K(C)^\times$ such that $\omega_1 = f\omega_2$.
+This implies that
+\begin{equation*}
+	\div(\omega_1) = \div(f) + \div(\omega_2).
+\end{equation*}
+It follows that the divisors of all differentials are in the same class in
+$\Cl(C)$ and so the following definition makes sense.
+
+\begin{definition}
+	The \emph{canonical divisor class} on $C$ is the image in $\Cl(C)$ of
+	$\div(\omega)$ for any non-zero differential $\omega \in \Omega_C$.
+	Any divisor in this class is called a \emph{canonical divisor}.
+\end{definition}
+
+\subsection{Genus of a Curve and the Riemann-Roch Theorem}
+
+We now set the grounds to be able to state the Riemann-Roch theorem, which will
+allow us to define the notion of a genus of a curve. Furthermore, the theorem
+will turn out to be very useful in the chapters that follow.
+
+The proof being outside of the scope of this paper, it will not be provided.
 \begin{theorem}[Riemann-Roch]
 	\label{thm:riemann-roch}
-	Let $C$ be a smooth curve of genus $g$. Let $D \in \Div(C)$, then if
-	$\deg(D) > 2g - 2$, we have that
+	Let $C$ be a smooth curve and $K_C$ a canonical divisor on $C$.
+	There exists some integer $g \geq 0$, such that for every divisor
+	$D \in \Div(C)$,
 	\begin{equation*}
-		l(D) = \deg(D) - g + 1
+		l(D) - l(K_C - D) = \deg D - g + 1.
 	\end{equation*}
 \end{theorem}
+
+\begin{definition}
+	The integer $g$ is called the \emph{genus} of $C$.
+\end{definition}
+
+\begin{corollary}
+	In the same setup as the Riemann-Roch theorem, we have the following properties
+	\begin{enumerate}[itemsep=0em, label=(\alph*)]
+		\item $l(K_C) = g$.
+		\item $\deg K_C = 2g - 2$.
+		\item If $\deg(D) > 2g - 2$, we have that
+			\begin{equation*}
+				l(D) = \deg(D) - g + 1
+			\end{equation*}	
+	\end{enumerate}
+\end{corollary}
+
+\begin{theorem}[Riemann-Hurwitz]
+	Let $C_1, C_2$ be smooth curves of genus $g_1, g_2$ respectively.
+	Let $\phi: C_1 \to C_2$ be a non-constant separable map, then
+	\begin{equation*}
+		2g_1 - 2 \geq (\deg \phi) (2g_2 - 2) + \sum_{P \in C_1}(e_\phi(P) - 1).
+	\end{equation*}
+	Furthermore, the above is an equality if and only if either:
+	\begin{enumerate}[itemsep=0em, label=(\roman*)]
+		\item $\chr(K) = 0$, or
+		\item $\chr(K) = p > 0$ and $p$ does not divide $e_\phi(P)$ for all
+			$P \in C_1$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+	Let $F \in K[X, Y, Z]$ be homogeneous of degree $d \geq 1$, and suppose that
+	the curve $C$ in $\proj^2$ given by the equation $F = 0$ is non-singular.
+	Then
+	\begin{equation*}
+		\genus(C) = \frac{(d-1)(d-2)}{2}.
+	\end{equation*}
+\end{corollary}
+
+\begin{proof}
+	
+\end{proof}
 
 
