@@ -286,29 +286,29 @@ $\Cl(C)$ and so the following definition makes sense.
 
 \subsection{Genus of a Curve and the Riemann-Roch Theorem}
 
-We now set the grounds to be able to state the Riemann-Roch theorem, which will
-allow us to define the notion of a genus of a curve. Furthermore, the theorem
-will turn out to be very useful in the chapters that follow.
+We can finally define what the genus of a curve is.
+\begin{definition}
+	Let $C$ be a curve, let $K_C$ be a canonical divisor,
+	the \emph{genus} of $C$ is defined to be $\dim_K \L(K_C) = l(K_C)$.
+\end{definition}
 
+The genus is an important invariant of algebraic curves.
+For example, we have the Riemann-Roch theorem, which will
+turn out to be very useful in the chapters that follow.
 The proof being outside of the scope of this paper, it will not be provided.
 \begin{theorem}[Riemann-Roch]
 	\label{thm:riemann-roch}
-	Let $C$ be a smooth curve and $K_C$ a canonical divisor on $C$.
-	There exists some integer $g \geq 0$, such that for every divisor
-	$D \in \Div(C)$,
+	Let $C$ be a smooth curve of genus $g$ and $K_C$ a canonical divisor on $C$.
+	Then for every divisor $D \in \Div(C)$,
 	\begin{equation*}
 		l(D) - l(K_C - D) = \deg D - g + 1.
 	\end{equation*}
 \end{theorem}
 
-\begin{definition}
-	The integer $g$ is called the \emph{genus} of $C$.
-\end{definition}
-
 \begin{corollary}
+	\label{cor:riemann-roch}
 	In the same setup as the Riemann-Roch theorem, we have the following properties
 	\begin{enumerate}[itemsep=0em, label=(\alph*)]
-		\item $l(K_C) = g$.
 		\item $\deg K_C = 2g - 2$.
 		\item If $\deg(D) > 2g - 2$, we have that
 			\begin{equation*}
@@ -317,6 +317,35 @@ The proof being outside of the scope of this paper, it will not be provided.
 	\end{enumerate}
 \end{corollary}
 
+The theorem turns out to be very useful, for example we get the following 
+powerful result.
+\begin{proposition}
+	\label{prop:sim-implies-eq}
+	Let $C$ be a curve of genus 1, and let $P, Q \in C$. Then
+	\begin{equation*}
+		(P) \sim (Q)
+		\quad\textrm{if and only if}\quad
+		P = Q
+	\end{equation*}
+\end{proposition}
+
+\begin{proof}
+	Suppose $(P) \sim (Q)$, then there exists some $f \in K(C)$ such that
+	\begin{equation*}
+		\div(f) = (P) - (Q).
+	\end{equation*}
+	We have that $f \in \L((Q))$ and by Riemann-Roch (\ref{cor:riemann-roch}),
+	it follows that
+	\begin{equation*}
+		\dim \L((Q)) = \deg((Q)) - g + 1 = 1.
+	\end{equation*}
+	Since $\L((Q))$ already contains the constant functions, $f \in \L((Q)) = K$
+	and so $P = Q$.
+\end{proof}
+
+Thanks to the Riemann-Roch theorem, we can also link the genera of 
+curves with a non-constant separable map between them.
+The following theorem makes this concrete.
 \begin{theorem}[Riemann-Hurwitz]
 	Let $C_1, C_2$ be smooth curves of genus $g_1, g_2$ respectively.
 	Let $\phi: C_1 \to C_2$ be a non-constant separable map, then
@@ -331,7 +360,10 @@ The proof being outside of the scope of this paper, it will not be provided.
 	\end{enumerate}
 \end{theorem}
 
+Using the Riemann-Hurwitz formula, we get a very simple formula describing
+the genus of a plane curve.
 \begin{corollary}
+	\label{cor:genus-formula}
 	Let $F \in K[X, Y, Z]$ be homogeneous of degree $d \geq 1$, and suppose that
 	the curve $C$ in $\proj^2$ given by the equation $F = 0$ is non-singular.
 	Then

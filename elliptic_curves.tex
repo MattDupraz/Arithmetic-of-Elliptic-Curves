@@ -11,8 +11,13 @@ We will see later that $E$ can be given the structure of a group, which is the
 reason why we
 specify a point $O$, which will act as the identity element.
 
+\begin{remark}
+	From \ref{cor:genus-formula}, we get that any smooth cubic
+	plane curve with a specified point $O$ is an elliptic curve.
+\end{remark}
+
 A \emph{Weierstrass equation} is an equation of a 
-projective curve $C \subset \proj^2$ of the form
+cubic plane curve $C \subset \proj^2$ of the form
 \begin{equation*}
 	Y^2Z + aXYZ + bYZ^2 = X^3 + cX^2Z + dXZ^2 + eZ^3.
 \end{equation*}
@@ -37,7 +42,8 @@ with smooth curves given by a Weierstrass equation.
 				\phi: E &\to \proj^2\\
 				P &\mapsto [x(P), y(P), 1]
 			\end{align*}
-			gives an isomorphism of $E$  onto a curve given by the Weierstrass equation
+			gives an isomorphism of $E$  onto a curve given by 
+			the Weierstrass equation
 			\begin{equation*}
 				C: Y^2 + aXY + bY = X^3 + cX^2 + dX + e
 			\end{equation*}
@@ -50,12 +56,10 @@ with smooth curves given by a Weierstrass equation.
 				Y &= u^3Y' + su^2X' + t
 			\end{align*}
 			with $u, r, s, t \in K, u \neq 0$.
-		\item Conversely any smooth curve $C$ given by a Weierstrass equation as in (a)
-			is an elliptic curve with origin $O = [0, 1, 0]$.
 	\end{enumerate}
 \end{proposition}
 
-Now let $E$ be an elliptic curve defined by the Weierstrass equation
+Now, let $E$ be an elliptic curve defined by the Weierstrass equation
 \begin{equation}
 	\label{weierstrass-eq}
 	E: Y^2 + aXY + bY = X^3 + cX^2 + dX + e
@@ -114,7 +118,6 @@ The following proposition answers the question of when that is the case.
 	\end{equation*}
 	and so $O$ is a smooth point of $C$.
 	
-
 	Suppose there is a point $P = (x, y) \in C$ that is singular,
 	then we have
 	\begin{equation*}
@@ -147,71 +150,19 @@ The following proposition answers the question of when that is the case.
 
 \subsection{Group Law}
 
-Let $E$ be an elliptic curve. By Bézout's theorem,
-for any line $L \subset \proj^2$, $L$ intersects
-$E$ in exactly 3 points (taken with multiplicity). This allows us
-to define a composition law $\oplus$ on $E$ as
-follows.
+In this section, we will define a composition law on elliptic curves.
+Usually, the composition law is defined geometrically for cubic plane curves.
+To stay as general as possible, we will first define the composition law
+using the degree 0 part of the divisor class group and then show that
+the two group laws are the same.
 
-\begin{definition}
-	\label{def:group-law}
-	Let $P, Q \in E$ and $L$ the line connecting $P$ and $Q$ (or the tangent line
-	to $E$ at $P$ if $P = Q$). Let $R$ be the third point of intersection of $L$
-	with $E$. Let $L'$ be the line connecting $R$ and $O$. We define $P \oplus Q$
-	be the third point of intersection of $L'$ with $E$.
-\end{definition}
-
-\begin{notation}
-	For $m \in \N\setminus\{0\}$ and $P \in E$ we define
-	\begin{equation*}
-		[m]P = \underbrace{P \oplus \dots \oplus P}_{m\textrm{ times}}.
-	\end{equation*}
-	We extend this definition to $m \in \Z$ with $[0]P = O$ and
-	$[m]P = [-m](-P)$ for $m < 0$.
-\end{notation}
-
-As seen in the course ``Algebraic curves", this composition law gives $E$
-the structure of an abelian group with identity element $O$. We will give
-a different proof of this fact in what follows.
-
-\begin{lemma}
-	\label{lem:sim-implies-eq}
-	Let $C$ be a curve of genus 1, and let $P, Q \in C$. Then
-	\begin{equation*}
-		(P) \sim (Q)
-		\quad\textrm{if and only if}\quad
-		P = Q
-	\end{equation*}
-\end{lemma}
-
-\begin{proof}
-	Suppose $(P) \sim (Q)$, then there exists some $f \in K(C)$ such that
-	\begin{equation*}
-		\div(f) = (P) - (Q).
-	\end{equation*}
-	We have that $f \in \L((Q))$ and by Riemann-Roch (\ref{thm:riemann-roch}),
-	it follows that
-	\begin{equation*}
-		\dim \L((Q)) = \deg((Q)) - g + 1 = 1.
-	\end{equation*}
-	Since $\L((Q))$ already contains the constant functions, $f \in \L((Q)) = K$
-	and so $P = Q$.
-\end{proof}
 \begin{proposition}
 	Let $(E, O)$ be an elliptic curve. The map
 	\begin{align*}
 		\kappa: E &\to \Cl^0(E)\\
 		P &\mapsto \cl{(P) - (O)}
 	\end{align*}
-	is a bijection. Furthermore, the group law on $E$ induced by addition in
-	$\Cl^0(E)$ agrees 
-	with the composition law $\oplus$ defined in \ref{def:group-law},
-	i.e. for all $P, Q \in E$, 
-	\begin{equation*}
-		\kappa(P \oplus Q) = \kappa(P) + \kappa(Q)
-	\end{equation*}
-	In particular, $(E, \oplus)$ is an abelian group with identity element $O$,
-	which is isomorphic to $\Cl^0(E)$.
+	is a bijection.
 \end{proposition}
 
 \begin{proof}
@@ -236,7 +187,7 @@ a different proof of this fact in what follows.
 		D \sim (P) - (O).
 	\end{equation*}
 	Suppose there is some other $P' \in E$, such that $D \sim (P') - (O)$.
-	Then $(P) \sim (P')$, but then $P = P'$ from \ref{lem:sim-implies-eq}.
+	Then $(P) \sim (P')$, but then $P = P'$ from \ref{prop:sim-implies-eq}.
 	
 	This allows us to define
 	\begin{equation*}
@@ -251,16 +202,96 @@ a different proof of this fact in what follows.
 	\begin{equation*}
 		(\sigma(D_1)) - (O) \sim D_1 \sim D_2 \sim (\sigma(D_2)) - (O)
 	\end{equation*}	
-	and hence $\sigma(D_1) = \sigma(D_2)$ by \ref{lem:sim-implies-eq}.
+	and hence $\sigma(D_1) = \sigma(D_2)$ by \ref{prop:sim-implies-eq}.
 	Conversely, if $\sigma(D_1) = \sigma(D_2)$, then clearly
 	\begin{equation*}
 		D_1 \sim (\sigma(D_1)) - (O) = (\sigma(D_2)) - (O) \sim D_2.
 	\end{equation*}
-	We deduce that $\sigma$ induces a bijection $\cl{\sigma}: \Cl^0(E) \to E$.
-	Furthermore, clearly $\overline{\sigma} = \kappa^{-1}$.
+	We deduce that $\sigma$ induces a bijection $\widehat{\sigma}: \Cl^0(E) \to E$.
+	Furthermore, clearly $\widehat{\sigma} = \kappa^{-1}$.
+\end{proof}
 
-	It remains to show that $\oplus$ agrees with the group law induced
-	on $E$  by $\kappa$. We have to show that for $P, Q \in E$,
+Using $\kappa$, we can define the composition law $+$ as the unique
+composition law, which makes $\kappa$ a group isomorphism.
+\begin{definition}
+	We define the composition law $+$ on $(E, O)$, by 
+	\begin{equation*}
+		P + Q = \kappa^{-1}(\kappa(P) + \kappa(Q))
+	\end{equation*}
+	for all $P, Q \in E$.
+\end{definition}
+
+\begin{remark}
+	Since $\kappa(O) = 0$, this makes $\kappa$ a group isomorphism.
+\end{remark}
+
+\begin{notation}
+	For $m \in \N\setminus\{0\}$ and $P \in E$ we define
+	\begin{equation*}
+		[m]P = \underbrace{P + \dots + P}_{m\textrm{ times}}.
+	\end{equation*}
+	We extend this definition to $m \in \Z$ with $[0]P = O$ and
+	$[m]P = [-m](-P)$ for $m < 0$.
+\end{notation}
+
+Thanks to how the composition law is defined on $E$, we get the following useful
+criteria that tells us when a divisor is principal.
+\begin{proposition}
+	\label{prop:div-principal}
+	Let $(E, O)$ be an elliptic curve and $D = \sum n_P \cdot (P) \in \Div(E)$.
+	Then $D$ is principal if and only if $\sum n_P = 0$ and $\sum [n_P]P = O$
+\end{proposition}
+
+\begin{proof}
+	Suppose $D$ is principal, so $D\sim 0$. 
+	Principal divisors have degree $0$,
+	hence $\sum n_P = 0$. It follows that
+	\begin{align*}
+		\kappa\left(\sum [n_P]P\right) &= \sum n_P\kappa(P) = \sum n_P
+		\cdot\cl{(P) - (O)}\\
+		&= \cl{\sum n_P\cdot(P)} = 0
+	\end{align*}
+	And hence $\sum [n_P]P = 0$ by injectivity of $\kappa$.
+
+	Now suppose $\sum n_P = 0$ and $\sum [n_P] P = O$,
+	then by the above calculation,
+	\begin{equation*}
+		\cl{D} = \cl{\sum n_P\cdot(P)} = \kappa\left(\sum [n_P] P\right) = 0
+	\end{equation*}
+	and so $D \sim 0$.
+\end{proof}
+
+
+We will now introduce another composition law defined for smooth cubic plane
+curves and show that it coincides with the above composition law.
+This will not only provide the link with the usual definition of composition
+on an elliptic curve, but also give another way to compute the sum
+of two points on an elliptic curve.
+
+Let $E$ be a smooth cubic plane curve.
+By Bézout's theorem, for any line $L \subset \proj^2$, $L$ intersects
+$E$ in exactly 3 points (taken with multiplicity).
+This allows us to define a composition law $\oplus$ on $E$ as
+follows.
+
+\begin{definition}
+	\label{def:group-law}
+	Let $P, Q \in E$ and $L$ the line connecting $P$ and $Q$ (or the tangent line
+	to $E$ at $P$ if $P = Q$). Let $R$ be the third point of intersection of $L$
+	with $E$. Let $L'$ be the line connecting $R$ and $O$. We define $P \oplus Q$
+	be the third point of intersection of $L'$ with $E$.
+\end{definition}
+
+\begin{proposition}
+	\label{prop:equivalence-composition}
+	Let $E$ be a smooth cubic plane curve, then for all $P, Q \in E$,
+	\begin{equation*}
+		P \oplus Q = P + Q.
+	\end{equation*}
+\end{proposition}
+
+\begin{proof}
+	We have to show that for $P, Q \in E$,
 	$\kappa(P \oplus Q) = \kappa(P) + \kappa(Q)$.
 
 	Let
@@ -301,46 +332,24 @@ a different proof of this fact in what follows.
 		\cl{(P \oplus Q) - (O)} - \cl{(P) - (O)} - \cl{(Q) - (O)}\\
 		&= \cl{(P \oplus Q) - (P) - (Q) + (O)} = 0.
 	\end{align*}
-	Since, $\kappa^{-1}(0) = O$, we get that $(E, \oplus)$ is an abelian
-	group with identity element $O$ and $\kappa$ is a group isomorphism.
-\end{proof}
-\begin{notation}
-	In the rest of this paper, we will write $+$ instead of $\oplus$ for 
-	the composition law on $E$.
-\end{notation}
-
-As a corollary to the above proposition,
-we get a useful criteria for when a divisor $D$ is principal.
-\begin{corollary}
-	Let $(E, O)$ be an elliptic curve and $D = \sum n_P \cdot (P) \in \Div(E)$.
-	Then $D$ is principal if and only if $\sum n_P = 0$ and $\sum [n_P]P = O$
-\end{corollary}
-
-\begin{proof}
-	Suppose $D$ is principal, so $D\sim 0$. 
-	Principal divisors have degree $0$,
-	hence $\sum n_P = 0$. It follows that
-	\begin{align*}
-		\kappa\left(\sum [n_P]P\right) &= \sum n_P\kappa(P) = \sum n_P
-		\cdot\cl{(P) - (O)}\\
-		&= \cl{\sum n_P\cdot(P)} = 0
-	\end{align*}
-	And hence $\sum [n_P]P = 0$ by injectivity of $\kappa$.
-
-	Now suppose $\sum n_P = 0$ and $\sum [n_P] P = O$,
-	then by the above calculation,
-	\begin{equation*}
-		\cl{D} = \cl{\sum n_P\cdot(P)} = \kappa\left(\sum [n_P] P\right) = 0
-	\end{equation*}
-	and so $D \sim 0$.
 \end{proof}
 
+\begin{remark}
+	As a byproduct of the equivalence of $+$ and $\oplus$, we get
+	essentially for free that $E$ with the geometric composition law $\oplus$
+	satisfies the group axioms (for example, from the definition of
+	$\oplus$ it is not clear at all why this composition law should be
+	associative).
+\end{remark}
 
-Now, let $E$ be an elliptic curve given by the reduced Weierstrass equation
+Thanks to the equivalence of $+$ and $\oplus$, we can calculate explicit
+formulas for the adition in $E$. As we have seen in
+\ref{prop:curve-correspondence}, we can suppose up to a curve isomorphism
+that $E$ is given by the reduced Weierstrass equation
 \begin{equation*}
 	E: F(x, y) = y^2 - x^3 - ax - b = 0
 \end{equation*}
-with origin $O = [0, 1,0]$,
+with origin $O = [0, 1, 0]$,
 we will calculate explicit formulas for the group law in what follows.
 
 Let $P = (x_P, y_P) \in E$, then we
@@ -428,6 +437,8 @@ This can be summarized in the following proposition:
 
 \subsection{Isogenies}
 
+In this section we define the notion of a ``map of elliptic curves", 
+which we call an isogeny.
 \begin{definition}
 	Let $E_1$ and $E_2$ be elliptic curves. An \emph{isogeny} between
 	$E_1$ and $E_2$ is a morphism
@@ -437,6 +448,99 @@ This can be summarized in the following proposition:
 	satisfying $\phi(O) = O$. $E_1$ and $E_2$ are \emph{isogenous} if
 	there exists a non-constant isogeny $\phi$ between them.
 \end{definition}
+Thanks to the group isomorphism between an elliptic curve $E$ and $\Cl^0(E)$,
+we can deduce that the notion of isogeny is compatible with the group structure
+on $E$.
+\begin{theorem}
+	Let $\phi: E_1 \to E_2$ be an isogeny, then $\phi$ is a group homomorphism.
+\end{theorem}
+\begin{proof}
+	If $\phi$ is constant, then $\phi(P) = O$ for all $P \in E_1$, hence
+	there is nothing to show. Otherwise $\phi$ induces
+	the map (ADD JUSTIFICATION).
+	\begin{align*}
+		\phi_*: \Cl^0(E_1) &\to \Cl^0(E_2)\\
+		\cl{\sum_{P \in E_1}n_P\cdot(P)} &\mapsto
+		\cl{\sum_{P \in E_1} n_P \cdot(\phi P)}.
+	\end{align*}
+	We also have the group isomorphisms
+	\begin{align*}
+		\kappa_i: E_i &\to \Cl^0(E_i)\\
+		P &\mapsto \cl{(P) - (O)}
+	\end{align*}
+	for $i \in \{1, 2\}$. Since $\phi(O) = O$, the following diagram commutes:
+	\begin{equation*}
+		\begin{tikzcd}
+			{E_1} & {\Cl^0(E_1)} \\
+			{E_2} & {\Cl^0(E_2)}
+			\arrow["\phi"', from=1-1, to=2-1]
+			\arrow["{\kappa_2}"', from=2-1, to=2-2]
+			\arrow["{\kappa_1}", from=1-1, to=1-2]
+			\arrow["{\phi_*}", from=1-2, to=2-2]
+		\end{tikzcd}
+	\end{equation*}
+	We get that $\phi = \kappa_2^{-1}\circ \phi_* \circ \kappa_1$ and hence
+	being a composition of group homomorphisms, it is
+	a group homomorphim.
+\end{proof}
+
+Thanks to this theorem, and the explicit formulas we found for addition
+in $E$, we can show that addition and negation define curve morphisms.
+
+\begin{theorem}
+	Let $(E,O)$ be an elliptic curve, then the maps
+	\begin{align*}
+		+ : E\times E &\to E\\
+		(P, Q) &\mapsto P + Q
+	\end{align*}
+	and
+	\begin{align*}
+		-: E &\to E\\
+		P &\mapsto -P
+	\end{align*}
+	are morphisms.
+\end{theorem}
+
+\begin{proof}
+	From \ref{prop:curve-correspondence}, we know that there exists an
+	isomorphism $\psi$ between $(E, O)$, and a curve $C$ given by an equation
+	of the reduced Weierstrass form
+	\begin{equation*}
+		C: y^2 = x^3 + ax + b
+	\end{equation*}
+	$\psi$ sends $O$ to $[0, 1, 0]$, hence $\psi$ is an isogeny.
+	In particular, $\psi$ preserves the group structure on $E$ and hence
+	the following diagrams commute.
+	\begin{equation*}
+		\begin{tikzcd}
+			{E\times E} & {E} \\
+			{C\times C} & {C}
+			\arrow["{\psi\times\psi}"', from=1-1, to=2-1]
+			\arrow["{+}"', from=2-1, to=2-2]
+			\arrow["{+}", from=1-1, to=1-2]
+			\arrow["{\psi}", from=1-2, to=2-2]
+		\end{tikzcd}
+		\qquad
+		\begin{tikzcd}
+			{E} & {E} \\
+			{C} & {C}
+			\arrow["\psi"', from=1-1, to=2-1]
+			\arrow["{-}"', from=2-1, to=2-2]
+			\arrow["{-}", from=1-1, to=1-2]
+			\arrow["{\psi}", from=1-2, to=2-2]
+		\end{tikzcd}	
+	\end{equation*}
+	It follows that $+$ and $-$ are morphisms iff the corresponding maps
+	for $C$ are.
+
+	Hence can suppose $E$ is given by
+	the reduced Weierstrass equation
+	\begin{equation*}
+		E: y^2 = x^3 + ax + b
+	\end{equation*}
+
+	...
+\end{proof}
 
 \begin{definition}
 	Let $E$ be an elliptic curve and $m \in \Z$, $m \neq 0$. The
