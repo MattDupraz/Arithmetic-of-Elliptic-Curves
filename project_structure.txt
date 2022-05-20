@@ -72,9 +72,9 @@ Chapter III (Elliptic curves)
  - [NP] Proposition 3.1 (Form of eq. defining E/K up to isom)
  - [] Corollary 3.1.1 (K(E) definition)
  - [OK] Lemma 3.3 ((P) ~ (Q) iff P = Q)
- - [] Justify number of intersections in div(f/Z) = ... ord_P is the number of
+ - [OK] Justify number of intersections in div(f/Z) = ... ord_P is the number of
  intersections.
- - [] Detail formula for inverse. And why P+Q = R^{-1}?
+ - [OK] Detail formula for inverse. And why P+Q = R^{-1}?
  - [] Calculate ramification of [2]
  - [OK] Proposition 3.4 (Equivalence of "geometric group law" to "algebraic group law")
  - [OK] Corollary 3.5 (Characterization of principal divisors)
