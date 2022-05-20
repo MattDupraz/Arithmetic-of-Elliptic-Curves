@@ -27,7 +27,7 @@ Chapter II (Algebraic curves)
  - [?] Proposition 1.4 (K(C) is a finite separable extension of K(t))
 
  Section II.2 (Maps between curves)
- - [NP] Proposition 2.1 (Rational maps are regular where C is smooth)
+ - [] Proposition 2.1 (Rational maps are regular where C is smooth)
  - [NP] Theorem 2.3 (Morphism of curves is either constant or surjective)
  - [?] Theorem 2.4 (?)
  - [OK] Definition of degree of a map, separable, inseparable
@@ -53,7 +53,8 @@ Chapter II (Algebraic curves)
  Section II.5 (Riemann-Roch)
  - [OK] Theorem 5.4 (Riemann-Roch, admitted)
  - [OK] Theorem 5.9 (Riemann-Hurwitz formula, admitted)
- - [] Exercise 2.7
+ - [] Exercise 2.7 (use preimage cardinality)
+ - Define g = l(K_C)
 
 Chapter III (Elliptic curves)
  Section III.1 (Weierstrass equation)
@@ -62,23 +63,26 @@ Chapter III (Elliptic curves)
 
  Section III.2 (Group law)
  - [OK] Composition law on E
+ - Free proof of associativity by equivalence to Cl^0(E)
  - [OK] Proposition 2.2 (properties of composition law)
  - Not sure about the rest - Review
 
  Section III.3 (Elliptic curves)
- - [OK] Definition of Elliptic curve
+ - [OK] Definition of Elliptic curve	
  - [NP] Proposition 3.1 (Form of eq. defining E/K up to isom)
  - [] Corollary 3.1.1 (K(E) definition)
  - [OK] Lemma 3.3 ((P) ~ (Q) iff P = Q)
- - [] Justify number of intersections
+ - [] Justify number of intersections in div(f/Z) = ... ord_P is the number of
+ intersections.
  - [] Detail formula for inverse. And why P+Q = R^{-1}?
+ - [] Calculate ramification of [2]
  - [OK] Proposition 3.4 (Equivalence of "geometric group law" to "algebraic group law")
  - [OK] Corollary 3.5 (Characterization of principal divisors)
  - [] Theorem 3.6 (Addition and inverse are morphisms)
  
  Section III.4 (Isogenies)
  - [OK] Definition of isogeny
- - [] Definition of isogeny [m]
+ - [] Definition of isogeny [m], Frobenius
  - [] Proposition 4.2 (some properties of [m], Hom(E_1, E_2), not sure where it's used)
  - [OK] Definition of m-torsion subgroup
  - [] Theorem 4.8 (Isogenies preserve group law)
@@ -87,28 +91,31 @@ Chapter III (Elliptic curves)
  - [] Corollary 4.11 (Existence of factor isogeny)
 
  Section III.5 (Invariant Differential)
+ - Remove, add important results to part with isogenies
  - [] Corollary 5.3 ([]*w = mw, admitted? needed for III.6.1 case 2)
  - [] Corollary 5.5 (1 - phi is separable, admitted? to show that #E(F_q) = deg(1 - phi)) 
 
  Section III.6 (Dual Isogeny)
- - [] Theorem 6.1 (Definition of dual isogeny)
- - [] Theorem 6.2 (Properties of dual isogeny)
- - [] Corollary 6.4 (Structure of E[m])
+ - [] Theorem 6.1 (Definition of dual isogeny) + prove later <- Ch. Isogenies
+ - [] Theorem 6.2 (Properties of dual isogeny) <- Ch. Isogenies
+ - [] Corollary 6.4 (Structure of E[m]) <- Ch. Tate module
  - [] Exercise 3.30
 
  Section III.7 (Tate Module)
  - [] Definition of Tate Module
  - [] Proposition 7.1 (Structure of Tate module)
  - [] Representation of Galois group on T_l(E)
- - [] 7.3.1 (Tate module as a homology group)
+ - [] HOmomorphism Hom(E_1, E_2) -> Hom(T_l(E_1), T_l(E_2)) [!]
+ - [] 7.3.1 (Tate module as a homology group) [Understand]
  
  Section III.8 (Weil pairing)
+ - Not necessary to go into details about proofs (skip)
  - [] Definition of Weil pairing
  - [] Proposition 8.1 (Properties of Weil pairing)
  - [] Corollary 8.1.1 (Surjectivity of Weil pairing)
  - [] Proposition 8.2 (Duality w.r.t. the Weil pairing)
  - [] Proposition 8.3 (Existence of Weil pairing with Tate modules)
- - [] Proposition 8.6 (deg and tr formulas)
+ - [] Proposition 8.6 (deg and tr formulas) <- IMPORTANT!
 
 Chapter V (Elliptic curves over F_q)
 - [] Proposition 2.3 (III.8.6, i.e. remind)
