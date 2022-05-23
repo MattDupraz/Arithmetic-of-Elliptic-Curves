@@ -613,6 +613,8 @@ earlier.
 	\end{equation*}
 \end{proof}
 Let $\F_q \subset K$ be the subfield of $K$ of order $q$.
+Suppose the coefficients of the polynomial defining $E$ lie in $\F_q$, 
+then $E^{(q)} = E$ and $\phi_q$ becomes an endomorphism. 
 We can look at the set of points of $E$ whose coordinates lie on $\F_q$,
 i.e.
 \begin{equation*}
@@ -824,11 +826,12 @@ $\phi: E_1[l^n] \to E_2[l^n]$ for all $n \in \N$ and hence a map
 
 \subsection{The Weil Pairing}
 
-Let $E$ be an elliptic curve. For this section we fix an integer $m \geq 2$,
-prime to $p = \chr(K)$ if $p > 0$.
+Let $E$ be an elliptic curve. 
 
 The goal of this section is to prove the following proposition.
 \begin{proposition}
+	\label{prop:weil-pairing}
+	Suppose $l \in \Z$ is a prime different from $p = \chr(K)$ if $p > 0$.
 	There exists a bilinear, alternating, non-degenerate pairing
 	\begin{equation*}
 		e: T_l(E) \times T_l(E) \to T_l(\mu)	
@@ -838,5 +841,74 @@ The goal of this section is to prove the following proposition.
 \end{proposition}
 The motivation behind constructing such a bilinear form is that it will provide
 a link between the trace and determinant of $\phi_l$ and other quantities
-related to $\phi$.
+related to $\phi$, in particular the degree of $\phi$ and $1 - \phi$.
+Recall that when $\phi$ is the Frobenius morphism, $1 - \phi$ is separable,
+so $\deg(1 - \phi) = \#\ker(1 - \phi) = \#E(\F_q)$.
 
+In what follows we fix an integer $m \geq 2$,
+prime to $p = \chr(K)$ if $p > 0$.
+The strategy is to first construct a pairing
+\begin{equation*}
+	e_m: E[m] \times E[m] \to \mu_m
+\end{equation*}
+and then construct the Weil pairing using the inverse limit.
+Let $T \in E[m]$, then using \ref{prop:div-principal}
+there is a function $f \in K(E)$ such that
+\begin{equation*}
+	\div(f) = m(T) - m(O).
+\end{equation*}
+A non-constant isogeny is surjective, hence there exists some $T' \in E$
+with $[m]T' = T$. ...[DO I ACTUALLY DO THIS?]
+
+\begin{proposition}
+	\label{prop:deg-tr-det}
+	Let $\psi \in \End(E)$. Then
+	\begin{equation*}
+		\det(\psi_l) = \deg(\psi)
+	\end{equation*}
+	and
+	\begin{equation*}
+		\tr(\psi_l) = 1 + \deg(\psi) - \deg(1 - \psi).
+	\end{equation*}
+	In particular, $\det(\psi_l)$ and $\tr(\psi_l)$ are in $\Z$
+	and are independent of $l$.
+\end{proposition}
+
+\begin{proof}
+	Fix a $\Z_l$-basis $v_1, v_2$ for $T_l(E)$. In this basis, $\psi_l$ is
+	written as 
+	\begin{equation*}
+		\psi_l = 
+		\begin{bmatrix}
+			a & b\\
+			c & d
+		\end{bmatrix}
+	\end{equation*}
+	with $a, b, c, d \in \Z_l$.
+	Let
+	\begin{equation*}
+		e: T_l(E) \times T_l(E) \to T_l(\mu)
+	\end{equation*}
+	be the Weil pairing (\ref{prop:weil-pairing}).
+
+	We have that using the properties of the pairing,
+	\begin{align*}
+		e(v_1, v_2)^{\deg\psi} &= e([\deg \psi] v_1, v_2)\\
+		&= e(\dual\psi_l\psi_l v_1, v_2)\\
+		&= e(\psi_l v_1, \psi_l v_2)\\
+		&= e(av_1 + cv_2, bv_1 + dv_2)\\
+		&= e(v_1, v_1)^{ab}e(v_1, v_2)^{ad}e(v_2, v_1)^{bc}e(v_2, v_2)^{cd}\\
+		&= e(v_1, v_2)^{ad - bc}\\
+		&= e(v_1, v_2)^{\det \psi_l}
+	\end{align*}
+	Since $e$ is non-degenerate, we can suppose $e(v_1, v_2) \neq 1$
+	and hence
+	\begin{equation*}
+		e(v_1, v_2)^{\deg\psi - \det\psi_l} = 1,
+	\end{equation*}
+	which implies $\deg\psi = \det \psi_l$, since $\Z_l$ is a domain.
+	For a $2\times 2$ matrix $A$, it follows from direct calculation that
+	\begin{equation*}
+		\tr(A) = 1 + \det(A) - \det(1-A)
+	\end{equation*}
+\end{proof}

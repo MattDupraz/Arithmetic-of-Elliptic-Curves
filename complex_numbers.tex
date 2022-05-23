@@ -2,7 +2,8 @@
 \label{sec:over-C}
 
 The goal of this section is to show an elliptic curve is
-isomorphic to a torus as a Riemann surface.
+isomorphic to a torus as a Riemann surface. This will allow us to
+verify that the point (d) of the Weil Conjectures is true for elliptic curves.
 
 First, let's discuss the Riemann surface structure that an elliptic curve has.
 
@@ -113,6 +114,19 @@ let $\Lambda \subseteq \C$ be an arbitrary lattice.
 	An elliptic function with no poles (or no zeros) is constant.
 \end{proposition}
 
+\begin{proof}
+	Suppose that $f(z)\in \C(\Lambda)$ is holomorphic (i.e. it has no poles).
+	Let $D$ be a fundamental
+	parallelogram for $\Lambda$. Since $f$ is periodic, we have that
+	\begin{equation*}
+		\sup_{z \in \C}|f(z)| = \sup_{z \in \cl{D}}|f(z)|.
+	\end{equation*}
+	Since $f$ is continous, it is bounded on the compact set $\cl{D}$.
+	It follows that it is bounded on all of $\C$.
+	By Liouville's theorem, $f$ is constant.
+	If $f$ has no zeros, we can look at $1/f$.
+\end{proof}
+
 \begin{notation}
 	For $f \in \C(\Lambda), z \in \C/\Lambda$, we write $f(z), \res_z(f)$ and $\ord_z(f)$ for
 	$f(\bar{z}), \res_{\bar{z}}(f)$ and $\ord_{\bar{z}}(f)$ respectively,
@@ -129,6 +143,10 @@ let $\Lambda \subseteq \C$ be an arbitrary lattice.
 		\item $\sum_{z \in \C/\Lambda} \ord_z(f) = 0$.
 	\end{enumerate}
 \end{proposition}
+
+\begin{proof}
+	We can choose a fundamental parallelogram for $\Lambda$
+\end{proof}
 
 Next let us introduce the Weierstrass $\wp$-function, which will serve
 as a connecting link between elliptic curves and elliptic functions.
