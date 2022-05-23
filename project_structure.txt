@@ -58,14 +58,14 @@ Chapter II (Algebraic curves)
 
 Chapter III (Elliptic curves)
  Section III.1 (Weierstrass equation)
- - [OK?] Show how we get the simplified equation
- - [REDO] Proposition 1.4 (Singularity of curve)
+ - [OK] Show how we get the simplified equation
+ - [OK] Proposition 1.4 (Singularity of curve)
 
  Section III.2 (Group law)
  - [OK] Composition law on E
- - Free proof of associativity by equivalence to Cl^0(E)
+ - [OK] Free proof of associativity by equivalence to Cl^0(E)
  - [OK] Proposition 2.2 (properties of composition law)
- - Not sure about the rest - Review
+ - [OK] Not sure about the rest - Review
 
  Section III.3 (Elliptic curves)
  - [OK] Definition of Elliptic curve	
@@ -78,26 +78,26 @@ Chapter III (Elliptic curves)
  - [] Calculate ramification of [2]
  - [OK] Proposition 3.4 (Equivalence of "geometric group law" to "algebraic group law")
  - [OK] Corollary 3.5 (Characterization of principal divisors)
- - [] Theorem 3.6 (Addition and inverse are morphisms)
+ - [NP] Theorem 3.6 (Addition and inverse are morphisms)
  
  Section III.4 (Isogenies)
  - [OK] Definition of isogeny
- - [] Definition of isogeny [m], Frobenius
+ - [OK] Definition of isogeny [m], Frobenius
  - [] Proposition 4.2 (some properties of [m], Hom(E_1, E_2), not sure where it's used)
  - [OK] Definition of m-torsion subgroup
- - [] Theorem 4.8 (Isogenies preserve group law)
- - [] Corollary 4.9 (ker phi is a finite group)
- - [] Theorem 4.10 (cardinality of ker, phi^{-1})
- - [] Corollary 4.11 (Existence of factor isogeny)
+ - [OK] Theorem 4.8 (Isogenies preserve group law)
+ - [?] Corollary 4.9 (ker phi is a finite group)
+ - [NP] Theorem 4.10 (cardinality of ker, phi^{-1})
+ - [NP] Corollary 4.11 (Existence of factor isogeny)
 
  Section III.5 (Invariant Differential)
  - Remove, add important results to part with isogenies
- - [] Corollary 5.3 ([]*w = mw, admitted? needed for III.6.1 case 2)
- - [] Corollary 5.5 (1 - phi is separable, admitted? to show that #E(F_q) = deg(1 - phi)) 
+ - [X] Corollary 5.3 ([]*w = mw, admitted? needed for III.6.1 case 2)
+ - [X] Corollary 5.5 (1 - phi is separable, admitted? to show that #E(F_q) = deg(1 - phi)) 
 
  Section III.6 (Dual Isogeny)
- - [] Theorem 6.1 (Definition of dual isogeny) + prove later <- Ch. Isogenies
- - [] Theorem 6.2 (Properties of dual isogeny) <- Ch. Isogenies
+ - [NP] Theorem 6.1 (Definition of dual isogeny) + prove later <- Ch. Isogenies
+ - [NP] Theorem 6.2 (Properties of dual isogeny) <- Ch. Isogenies
  - [] Corollary 6.4 (Structure of E[m]) <- Ch. Tate module
  - [] Exercise 3.30
 
@@ -129,10 +129,10 @@ Chapter VI (Elliptic curves over C)
 - [OK] homology groups of torus, betti numbers
 
 GENERAL NOTES
-- Underline importance of separability! (III.4.10/5.4-5/6.4)
+- [OK] Underline importance of separability! (III.4.10/5.4-5/6.4)
 
 QUESTION MARKS
 - How de we prove Exercise 2.7 lol
-- How does the group structure depend on the choice of O? If we choose a
+- [OK] How does the group structure depend on the choice of O? If we choose a
 different O then maybe the tangent at O does not intersect E at O with
 multiplicity 3 anymore...
