@@ -631,6 +631,7 @@ over finite fields. In fact, the following theorem gives us a relation that will
 allow us to find the cardinality of $\ker(1 - \phi_q)$.
 
 \begin{theorem}
+	\label{thm:preimage-card}
 	Let $\phi: E_1 \to E_2$ be a non-constant isogeny.
 	For every $Q\in E_2$,
 	\begin{equation*}
@@ -673,14 +674,26 @@ not show this result, but it will turn out to be very important as we will see
 later.
 
 \begin{proposition}
+	\label{prop:m-separable}
 	Let $E$ be an elliptic curve and $m \in \Z$, $m \neq 0$.
 	If $\chr(K) = 0$ or $m$ is prime to $\chr(K)$, then the
 	isogeny $[m]$ is separable.
 \end{proposition}
 
 \begin{proposition}
-	Let $E$ be an elliptic curve and suppose $\chr(K) = p \neq 0$.
-	Let $q = p^r$, then $1 - \phi_q$ is a separable isogeny.
+	\label{prop:frobenius-separable}
+	Suppose $\chr(K) = p \neq 0$ and
+	let $E$ be an elliptic curve defined over
+	$\F_q$, where $q$ is a power of $p$. 
+	Let $\phi_q: E \to E$ be the
+	$q$\ts{th} power Frobenius endomorphism.
+	Let $m, n \in \Z$.
+	Then the map
+	\begin{equation*}
+		m + n\phi: E\to E
+	\end{equation*}
+	is separable if and only if $p\nmid m$.
+	In partiular, $1 - \phi_q$ is a separable isogeny.
 \end{proposition}
 
 We will now move on to the topic of dual isogenies. Given an isogeny

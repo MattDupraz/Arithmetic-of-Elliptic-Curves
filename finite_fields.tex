@@ -1,8 +1,16 @@
 \section{Elliptic Curves over Finite Fields}
 
 For this section we fix a prime $p$ and $q$ a power of $p$.
+We suppose throughout this section that $\chr(K) = p$.
+
+In this section we will state the Weil conjectures and prove them in the
+case of elliptic curve. We will be studying the set of points of a projective
+variety that belongs to a finite subfield of $K$. If $K$ is of characteristic
+$p$, it contains a unique subfield of order $p^n$ for any $n \in \N$ (see
+course \emph{Rings and Fields}), we will denote this subfield by $\F_{p^n}$.
 
 \begin{definition}
+	Let $V/\F_q$ be a projective variety.
 	The zeta function of $V/\F_q$ is defined as the power series
 	\begin{equation*}
 		Z(V/\F_q; T) = \exp\left(\sum_{n=1}^\infty (\#V(\F_{q^n}))
@@ -46,31 +54,13 @@ For this section we fix a prime $p$ and $q$ a power of $p$.
 	\end{enumerate}
 \end{theorem}
 
-We will now verify Weil's conjecture for elliptic curves. For this we will 
-make use of the homomorphism $\End(E) \to \End(T_l(E)), \psi \mapsto \psi_l$,
-where $l$ is a prime different from $p$. If we fix a $\Z_l$-basis
-of $T_l(E)$, we can write $\psi_l$ as a $2\times 2$ matrix and so we can 
-compute $\det(\psi_l), \tr(\psi_l) \in \Z_l$.
-
-The following proposition tells us that these quantities are not only
-independent of the choice of basis, but also of the choice of $l$.
-
-\begin{proposition}
-	Let $\psi \in \End(E)$. Then
-	\begin{equation*}
-		\det(\psi_l) = \deg(\psi)\textrm{ and }
-		\tr(\psi_l) = 1 + deg(\psi) - \deg(1 - \psi).
-	\end{equation*}
-	In particular, $\det(\psi_l), \tr(\psi_l) \in \Z$
-\end{proposition}
-
 \begin{proposition}
 	\label{prop:frob-char-poly}
 	Let $E/\F_q$ be an elliptic curve, and
 	\begin{equation*}
 		\phi: E \to E, (x, y) \mapsto (x^q, y^q)
 	\end{equation*}
-	the $q$\ts{th} Frobenius endomorphism.
+	the $q$\ts{th}-power Frobenius endomorphism.
 	Let $\alpha, \beta \in \C$ be the roots of the characteristic polynomial
 	of $\phi_l$, that is
 	\begin{equation*}
@@ -85,19 +75,49 @@ independent of the choice of basis, but also of the choice of $l$.
 \end{proposition}
 
 \begin{proof}
-	Fix $v_1, v_2$ a $\Z_l$-basis for
-	$T_l(E)$, and write the matrix of $\psi_l$ for this basis as
+	We have by \ref{prop:frobenius-separable}
+	and \ref{thm:preimage-card}
+	that
 	\begin{equation*}
-		\psi_l = 
-		\begin{bmatrix}
-			a & b \\
-			c & d
-		\end{bmatrix}
-		.
+		\#E(\F_q) = \deg(1 - \phi)
 	\end{equation*}
-	We have the non-degenerate, bilinear, alternating pairing
+	and from \ref{prop:deg-tr-det}, we have that
 	\begin{equation*}
-		e: T_l(E) \times T_l(E) \to T_l(\mu)
+		\det(\phi_l) = \deg(\phi) = q;\\
+	\end{equation*}
+	For all $m/n \in \Q$, with $p \nmid m$,
+	we have using \ref{prop:frobenius-separable} that
+	\begin{equation*}
+		\det\left(\frac{m}{n} - \phi_l\right)
+		= \frac{\det(m - n\phi_l)}{n^2}
+		= \frac{\deg(m - n\phi_l)}{n^2} \geq 0
+	\end{equation*}
+	Hence the polynomial $\det(T - \phi_l)$ is non-negative for $T \in \R$
+	(by continuity). If $\alpha$, $\beta$ are the roots of $\det(T - \phi_l)$,
+	it follows that $\alpha$, $\beta$ are complex conjugates (they can be
+	equal). So $|\alpha| = |\beta|$ and since $\alpha\beta = \det(\phi_l) = q$,
+	it follows that $|\alpha| = |\beta| = \sqrt{q}$.
+
+	Now, for $n \geq 1$ the $(q^n)$\ts{th}-power Frobenius endomorphism
+	$\phi^n$ satisfies
+	\begin{equation*}
+		\#E(\F_{q^n}) = \deg(1 - \phi^n) = \det(1 - \phi_l^n)
+	\end{equation*}
+	We have that
+	\begin{equation*}
+		\det(T - \phi_l^n) = (T - \alpha^n)(T - \beta^n)
+	\end{equation*}
+	since the eigenvalues of $\phi_l^n$ are the $n$\ts{th} powers
+	of the eigenvalues of $\phi_l$. From 
+	\ref{prop:deg-tr-det}, we have that
+	\begin{equation*}
+		\tr(\phi_l^n) = 1 + \deg(\phi^n) - \deg(1 - \phi^n)
+		= 1 + q^n - \#E(\F_{q^n}).
+	\end{equation*}
+	and hence 
+	\begin{equation*}
+		\#E(\F_{q^n}) = 1 + q^n - \tr(\phi_l^m)
+		= 1 + q^n - \alpha^n - \beta^n.
 	\end{equation*}
 \end{proof}
 

@@ -145,7 +145,21 @@ let $\Lambda \subseteq \C$ be an arbitrary lattice.
 \end{proposition}
 
 \begin{proof}
-	We can choose a fundamental parallelogram for $\Lambda$
+	We can choose a fundamental parallelogram $D$ for $\Lambda$,
+	such that $f$ has no zeroes or poles on the boundary $\partial D$.
+	\begin{enumerate}[label=(\alph*)]
+		\item By the residue theorem,
+			\begin{equation*}
+				\sum_{z \in \C\Lambda} \res_z(f)
+				= \frac{1}{2\pi i}\int_{\partial D}f(z)\,dz.
+			\end{equation*}
+			By periodicity, the integrals along the opposite sides of $\partial D$
+			cancel out, so the integral along the boundary of $D$ is zero.
+		\item Since $f$ is periodic, so is $f'$ and hence also
+			$f/f'$. We have that $\res_z(f/f') = \ord_z(f)$ and hence 
+			this point follows from (a) applied to the elliptic function
+			$f/f'$.
+	\end{enumerate}
 \end{proof}
 
 Next let us introduce the Weierstrass $\wp$-function, which will serve
@@ -238,15 +252,56 @@ as a connecting link between elliptic curves and elliptic functions.
 			= \left| \frac{z(2\lambda - z)}{\lambda^2(z - \lambda)^2}\right|
 			\leq 10\frac{|z|}{|\lambda|^3}
 		\end{equation*}
-		Hence using (a) we see that for $z \in \C \setminus \Lambda$,
-		the series for $\wp(z)$ converges absolutely and uniformly on any 
+		Hence using (a) we see that
+		the series for $\wp$ converges absolutely and uniformly on any 
 		compact subset of $\C \setminus \Lambda$. It follows that
 		the series defines a holomorphic function on $\C \setminus \Lambda$,
 		furthermore, it is clear from the series expansion that $\wp$ has
 		a double pole with residue $0$ at each point of $\Lambda$.
-	\item TO BE ADDED
+	\item It follows from the definition of $\wp$ that
+		$\wp(z) = \wp(-z)$, since we can just replace $\lambda$ by 
+		$-\lambda$ in the sum. Since the series converges uniformly,
+		we can compute the derivative of $\wp$ by termwise differentiation.
+		We obtain
+		\begin{equation*}
+			\wp'(z) = -2\sum_{\lambda \in \Lambda} \frac{1}{z - \lambda}^3.
+		\end{equation*}
+		It is clear from this expansion that $\wp'$ is an elliptic function,
+		hence for all $\lambda \in \Lambda$,
+		\begin{equation*}
+			\frac{\partial}{\partial z}(\wp(z) - \wp(z + \lambda))
+			= \wp'(z) - \wp'(z + \lambda) = 0
+		\end{equation*}
+		and hence $\wp(z) - \wp(z + \lambda)$ is the constant function.
+		By setting $z = -\lambda/2$, and using the fact $\wp$ is even,
+		we get that
+		\begin{equation*}
+			\wp(z) - \wp(z + \lambda) = \wp(-\lambda/2) - \wp(\lambda/2) = 0
+		\end{equation*}
+		and hence $\wp$ is an elliptic function.
 	\end{enumerate}
 \end{proof}
+
+As in the case of elliptic curves, we can define divisors for elliptic
+functions.
+\begin{definition}
+	Let $\Lambda$ be a lattice, the \emph{divisor group}
+	$\Div(\C/\Lambda)$ to be the free abelian group on the set
+	$\C/\Lambda$. We write elements of $\Div(\C/\Lambda)$ as
+	$\sum_{z \in\C/\Lambda} n_z(z)$ with $n_z \in \Z$ and
+	$n_z = 0$ for all but finitely many $z$.
+
+	We define analogously to the case of elliptic curves,
+	\begin{align*}
+		\deg D &= \sum_{z \in \C/\Lambda} n_z\\
+		\Div^0(\C/\Lambda) &= \{D \in \Div(\C/\Lambda): \deg D = 0\}
+	\end{align*}
+	and for any $f \in \C(\Lambda)^\times$ we define the divisor
+	$\div(f) \in \Div^0(\C/\Lambda)$ by
+	\begin{equation*}
+		\div(f) = \sum_{z \in \C/\Lambda} \ord_z(f)\cdot(z)
+	\end{equation*}
+\end{definition}
 
 \begin{theorem}
 	\label{thm:wp-generates}
@@ -255,6 +310,18 @@ as a connecting link between elliptic curves and elliptic functions.
 		\C(\Lambda) = \C(\wp, \wp')
 	\end{equation*}
 \end{theorem}
+
+\begin{proof}
+	Let $f \in C(\Lambda)$. We can decompose $f$ as
+	\begin{equation*}
+		f(z) = \frac{1}{2}(f(z) + f (-z)) + \frac{1}{2}(f(z) - f(-z)),
+	\end{equation*}
+	hence we see that it suffices to prove the theorem for odd and even
+	functions. If $f$ is odd, then $\wp'f$ is even, so we can just consider
+	the case that $f$ is even.
+
+	If $f$ is even, we h
+\end{proof}
 
 \begin{definition}
 	The \emph{Weierstrass $\sigma$-function} (relative to $\Lambda$) is the
@@ -412,7 +479,7 @@ as a connecting link between elliptic curves and elliptic functions.
 	\begin{equation*}
 		\div (F) = (\phi(z_1 + z_2)) - (\phi(z_1)) - (\phi(z_2)) + (0)
 	\end{equation*}
-	By Proposition \ref{missing-reference}, it follows that
+	By Proposition \ref{prop:div-principal}, it follows that
 	\begin{equation*}
 		\phi(z_1 + z_2) = \phi(z_1) + \phi(z_2)
 	\end{equation*}
@@ -445,6 +512,7 @@ as in Figure \ref{fig:torus-delta}.
 	\caption[torus-delta]{$\Delta$-complex structure of a torus}
 	\label{fig:torus-delta}
 \end{figure}
+
 The associated chain complex for taking simplicial homology is 
 \begin{equation*}
 	\begin{tikzcd}[row sep=tiny]
