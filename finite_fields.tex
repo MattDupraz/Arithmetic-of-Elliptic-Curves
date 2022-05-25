@@ -4,10 +4,12 @@ For this section we fix a prime $p$ and $q$ a power of $p$.
 We suppose throughout this section that $\chr(K) = p$.
 
 In this section we will state the Weil conjectures and prove them in the
-case of elliptic curve. We will be studying the set of points of a projective
-variety that belongs to a finite subfield of $K$. If $K$ is of characteristic
-$p$, it contains a unique subfield of order $p^n$ for any $n \in \N$ (see
+case of elliptic curve.
+If $K$ is of characteristic $p$,
+it contains a unique subfield of order $p^n$ for any $n \in \N$ (see
 course \emph{Rings and Fields}), we will denote this subfield by $\F_{p^n}$.
+We will be studying the set of
+$\F_{q^n}$-rational points of a projective variety.
 
 \begin{definition}
 	Let $V/\F_q$ be a projective variety.
@@ -50,7 +52,8 @@ course \emph{Rings and Fields}), we will denote this subfield by $\F_{p^n}$.
 			non-singular projective variety $W/K$, where $K$ is a number
 			field embedded in the field of complex numbers, then the degree
 			of $P_i$ is the $i$\textsuperscript{th} Betti number of the space
-			of complex points of $W$.
+			of complex points of $W$. \comment{Add examples for how this
+			reduction works?}
 	\end{enumerate}
 \end{theorem}
 
@@ -162,5 +165,5 @@ course \emph{Rings and Fields}), we will denote this subfield by $\F_{p^n}$.
 Hence the Weil conjectures are verified for elliptic curves. Notice that
 using the notation from theorem \ref{thm:weil},
 $\deg P_0 = 1$, $\deg P_1 = 2$, $\deg P_2 = 1$, hence we would expect
-the Betti numbers of $E/\C$ to coincide with these values, and indeed, these
-are exactly the Betti numbers we calculated in Section \ref{sec:over-C}.
+the Betti numbers of $E/\C$ to coincide with these values, and indeed, as we
+will see in the following section, this is indeed the case.

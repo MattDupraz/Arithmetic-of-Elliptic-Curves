@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \usepackage{enumitem}
 \usepackage[english]{babel}
+\usepackage{xcolor}
 
 \graphicspath{{graphics/}}
 
@@ -19,7 +20,7 @@
 \newtheorem{proposition}[theorem]{Proposition}
 
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
+\newtheorem{definition}[theorem]{Definition}
 \newtheorem*{notation}{Notation}
 
 \theoremstyle{remark}
@@ -60,6 +61,8 @@
 \newcommand{\dual}{\Hat}
 \newcommand{\ddual}{\widehat}
 \newcommand{\GL}{\operatorname{GL}}
+
+\newcommand{\comment}[1]{\colorbox{yellow}{\textgreater\quad\textcolor{red}{#1}}}
 
 \begin{document}
 

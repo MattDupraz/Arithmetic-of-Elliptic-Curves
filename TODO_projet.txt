@@ -1,3 +1,0 @@
-- Riemann Roch - pourquoi les courbes de genre 1 sont les 
-equations de Weierstrass
-

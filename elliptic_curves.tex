@@ -1,6 +1,10 @@
 \section{Elliptic Curves}
 
+% ------------------------------- %
+% DEFINITION AND BASIC PROPERTIES %
+% ------------------------------- %
 \subsection{Definition and basic properties}
+\label{subs:definition-properties}
 
 We now have all the prerequisites to define what an elliptic curve is.
 \begin{definition}
@@ -31,6 +35,8 @@ To ease notation, we will
 use the dehomogenized equation to define the projective curve $C$,
 remembering that there is the point at infinity $[0, 1, 0]$.
 
+% ELLIPTIC CURVE ADMITS A WEIERSTRASS EQUATION
+
 The following proposition allows us to identify elliptic curves
 with smooth curves given by a Weierstrass equation.
 \begin{proposition}
@@ -58,6 +64,68 @@ with smooth curves given by a Weierstrass equation.
 			with $u, r, s, t \in K, u \neq 0$.
 	\end{enumerate}
 \end{proposition}
+
+\begin{proof}
+	Consider the vector spaces $\L(n\,(O))$ for $n \in \N$.
+	By the Riemann-Roch theorem, since elliptic curves have genus 1,
+	\begin{equation*}
+		l(n\,(O)) = \dim(n\,(O)) = \deg(n\,(O)) = n
+	\end{equation*}
+	for all $n \geq 1$. Hence we can choose $x, y \in K(E)$, such that
+	$\{1, x\}$ is a basis for $\L(2\,(O))$ and $\{1, x, y\}$
+	is a basis for $\L(3\,(O))$.
+	Since $x \in \L(2\,(O))\setminus\L((O))$, 
+	and $y \in \L(3\,(O))\setminus\L(2\,(O))$, we have that
+	$x$ and $y$ have poles at $O$ of exact order $2$ and $3$
+	respectively.
+	
+	Now, $\L(6\,(O))$ is of dimension $6$, but it contains the seven
+	functions $1, x, y, x^2, xy, y^2, x^3$ (which we see easily by
+	looking at the order of the pole at $O$). Hence there has to be some
+	linear relation
+	\begin{equation*}
+		A_1 + A_2x + A_3y + A_4x^2 + A_5xy + A_6y^2 + A_7x^3 = 0,
+	\end{equation*}
+	with the $A_i$ not all zero.
+	Since $1, x, y, x^2, xy$ all have a pole of different order at $O$,
+	we have necessarily that $A_6$ and $A_7$ are non-zero.
+	We replace $x$ by $-A_6A_7x$ and $y$ by $A_6A_7^2y$, then if we divide 
+	the equation by $A_6^3A_7^4$, we obtain an equation in the Weierstrass
+	form. This equation describes a curve in which lies the image of the map
+	\begin{align*}
+		\phi:E &\to \proj^2\\
+		P &\mapsto [x(P), y(P), 1]
+	\end{align*}
+	By definition, $\phi$ is a morphism, furthermore, it is not constant,
+	so it is surjective. Furthermore, $\phi(O) = [0, 1, 0]$, since
+	$y$ has a higher order pole than $x$ at $O$.
+
+	We will now show that the map $\phi: E\to C\subset \proj^2$ is of degree 1.
+	We have that (recall $K(\proj^2) = K(X/Z, Y/Z)$)
+	\begin{equation*}
+		\deg\phi = [K(E): \phi^*K(\proj^2)] = [K(E): K(x, y)]
+	\end{equation*}
+	Consider the map $[x, 1]: E \to \proj^1$. Since $x$ has a double pole
+	at $(O)$ and no other poles, we have that (using that
+	$Y/X$ is a uniformizer of $K[\proj^1]_{[1, 0]}$)
+	\begin{align*}
+		\deg[x, 1] &= \sum_{P \in [x, 1]^{-1}([1, 0])}
+		e_{[x, 1]}(P)\\
+		&= e_{[x, 1]}(O)
+		= \ord_O(1/x) = 2.
+	\end{align*}
+	Hence we get $[K(E): K(x)] = 2$.
+	
+	Similarly,
+	we deduce that $[y, 1]: E \to \proj^1$ 
+	has degree 3, and hence $[K(E): K(y)] = 3$.
+	It follows that $[K(E): K(x, y)] = 1$ since $\gcd(2, 3) = 1$.
+	Hence $K(E) = K(x, y)$ and so $\phi$ has degree 1.
+
+	\comment{Unfinished}
+\end{proof}
+
+% WEIERSTRASS EQUATION CAN BE SIMPLIFIED
 
 Now, let $E$ be an elliptic curve defined by the Weierstrass equation
 \begin{equation}
@@ -87,6 +155,8 @@ we can always suppose an elliptic curve $E$ is given by the equation
 \begin{equation*}
 	E: Y^2 = X^3 + AX + B.
 \end{equation*}
+
+% CONDITION FOR CURVE BEING SINGULAR
 
 From \ref{prop:curve-correspondence}, we know that a curve given by the an equation
 of the above form is an elliptic curve whenever it is smooth.
@@ -148,6 +218,9 @@ The following proposition answers the question of when that is the case.
 	It follows that $C$ is singular at $P$.
 \end{proof}
 
+% ---------
+% GROUP LAW
+% ---------
 \subsection{Group Law}
 
 In this section, we will endow elliptic curves with a group structure.
@@ -211,11 +284,12 @@ the two group laws are the same.
 	Furthermore, clearly $\widehat{\sigma} = \kappa^{-1}$.
 \end{proof}
 
+% DEFINITION OF GROUP LAW
+
 Using $\kappa$, we can define the composition law $+$ as the unique
 composition law, which makes $\kappa$ a group isomorphism.
-In particular, this gives $E$ the structure of an \emph{algebraic group}
+In particular, this gives $E$ the structure of an abelian group
 with identity element $O = \kappa^{-1}(0)$,
-that is an algebraic variety endowed with the structure of a group.
 \begin{definition}
 	We define the composition law $+$ on $(E, O)$, by 
 	\begin{equation*}
@@ -223,6 +297,7 @@ that is an algebraic variety endowed with the structure of a group.
 	\end{equation*}
 	for all $P, Q \in E$.
 \end{definition}
+\comment{Seems a bit awkward, rephrase?}
 
 \begin{notation}
 	For $m \in \N\setminus\{0\}$ and $P \in E$ we define
@@ -232,6 +307,8 @@ that is an algebraic variety endowed with the structure of a group.
 	We extend this definition to $m \in \Z$ with $[0]P = O$ and
 	$[m]P = [-m](-P)$ for $m < 0$.
 \end{notation}
+
+% CRITERIA PRINCIPAL DIVISORS
 
 Thanks to how the composition law is defined on $E$, we get the following useful
 criteria that tells us when a divisor is principal.
@@ -260,6 +337,7 @@ criteria that tells us when a divisor is principal.
 	and so $D \sim 0$.
 \end{proof}
 
+% GEOMETRIC COMPOSITION LAW
 
 We will now introduce another composition law defined for smooth cubic plane
 curves and show that it coincides with the above composition law.
@@ -280,6 +358,8 @@ follows.
 	with $E$. Let $L'$ be the line connecting $R$ and $O$. We define $P \oplus Q$
 	be the third point of intersection of $L'$ with $E$.
 \end{definition}
+
+% EQUIVALENCE OF COMPOSITION LAWS
 
 \begin{proposition}
 	\label{prop:equivalence-composition}
@@ -306,7 +386,7 @@ follows.
 	Since $g$ is homogeneous of degree 1, $f/g \in K(E)$ and so we get that
 	\begin{align*}
 		\div(f/g) &= \sum_{P' \in E}\ord_{P'}(f)\cdot(P')
-		- \ord_{P'}(Z)\cdot(P')\\
+		- \ord_{P'}(g)\cdot(P')\\
 		&= \sum_{P' \in E}I(P', E\cap L)\cdot(P') - I(P', E\cap T)\cdot(P')\\
 		&= (P) + (Q) + (R) - 2(O) - (S).
 	\end{align*}
@@ -316,14 +396,14 @@ follows.
 	\end{equation*}
 	be the line $L'$ through $R$ and $O$. Then by the definition of $\oplus$,
 	we have that the third point of intersection of $L'$ with $E$ is 
-	$P \oplus Q$. As above, $f'/T \in K(E)$ and we have
+	$P \oplus Q$. As above, $f'/g \in K(E)$ and we have
 	\begin{equation*}
-		\div(f'/Z) = (R) + (O) + (P \oplus Q) - 2(O) - (S)
+		\div(f'/g) = (R) + (O) + (P \oplus Q) - 2(O) - (S)
 		= (R) + (P + Q) - (O) - (S).
 	\end{equation*}
 	It follows that
 	\begin{equation*}
-		\div(f'/f) = \div(f'/T) - \div(f/T) = (P \oplus Q) - (P) - (Q) + (O)
+		\div(f'/f) = \div(f'/g) - \div(f/g) = (P \oplus Q) - (P) - (Q) + (O)
 	\end{equation*}
 	And hence
 	\begin{align*}
@@ -341,9 +421,11 @@ follows.
 	associative).
 \end{remark}
 
+% EXPLICIT FORMULAS FOR ADDITION
+
 Thanks to the equivalence of $+$ and $\oplus$, we can calculate explicit
 formulas for the adition in $E$. As we have seen in
-\ref{prop:curve-correspondence}, we can suppose up to a curve isomorphism
+Section \ref{subs:definition-properties}, we can suppose up to a curve isomorphism
 that $E$ is given by the reduced Weierstrass equation
 \begin{equation*}
 	E: F(x, y) = y^2 - x^3 - ax - b = 0
@@ -357,7 +439,7 @@ Let $P = (x_P, y_P) \in E$, then we
 Indeed, the line connecting $P$ and $(x_P, -y_P)$, is the line
 $X = x_PZ$, which has as third intersection point $O$.
 the tangent to $E$ at $O$ is given by $Z = 0$,
-which intersects $E$ with multiplicity 3,
+which intersects $E$ with multiplicity 3 at $O$,
 hence we obtain that $P+(x_P, -y_P) = O$.
 
 Now let $Q = (x_Q, y_Q) \in E$ different from $-P$. Then $P + Q \neq O$.
@@ -378,14 +460,17 @@ If $P = Q$, then $L$ is the tangent to $E$ at $P$, which is given by
 \begin{equation*}
 	L: (3x_P^2 + a)(x - x_P) - 2y_P(y - y_P) = 0
 \end{equation*}
-If $y_P = 0$, $L$ is the line $x = x_P$ and so the third point of intersection
+Suppose ad absurdum that $y_P = 0$,
+then $L$ is the line $x = x_P$ (the term $3x_P^2 + a$ is non-zero, since
+$E$ is not singular) and so the third point of intersection
 is $O$, whence $P + Q = O$, which contradicts our assumption, and so 
 $y_P \neq 0$.
 To obtain again an equation of the form $L = \lambda x - \nu$, we have to set
 \begin{equation*}
 	\lambda = \frac{3x_P^2 + a}{2y_P}
 	\quad\textrm{ and }\quad
-	\nu = \frac{-3x_P^3 - ax_P + 2y_P^2}{2y_P} = \frac{-x_P^3 + ax_P + 2b}{2y_P}.
+	\nu = \frac{-3x_P^3 - ax_P + 2y_P^2}{2y_P}
+	= \frac{-x_P^3 + ax_P + 2b}{2y_P}.
 \end{equation*}
 
 So let $\lambda$ and $\nu$ be as above corresponding to the case.
@@ -430,16 +515,20 @@ This can be summarized in the following proposition:
 				y_{[2]P} &= - \frac{3x^2 + a}{2y}x_{[2]P}
 				+ \frac{-x^3 + ax + 2b}{2y}
 			\end{align*}
+			\comment{Simplify?}
 	\end{enumerate}
 \end{proposition}
 
+% ---------
+% ISOGENIES
+% ---------
 \subsection{Isogenies}
 
 In this section we define the notion of a ``map of elliptic curves", 
 which we call an isogeny.
 \begin{definition}
 	Let $E_1$ and $E_2$ be elliptic curves. An \emph{isogeny} between
-	$E_1$ and $E_2$ is a morphism
+	$E_1$ and $E_2$ is a curve morphism
 	\begin{equation*}
 		\phi: E_1 \to E_2
 	\end{equation*}
@@ -448,14 +537,18 @@ which we call an isogeny.
 \end{definition}
 Thanks to the group isomorphism between an elliptic curve $E$ and $\Cl^0(E)$,
 we can deduce that the notion of isogeny is compatible with the group structure
-on $E$, i.e. an isogeny is a morphism of algebraic groups.
+on $E$, i.e. an isogeny is also a group morphism.
+
+% ISOGENY IS A GROUP HOMOMORPHISM
+
 \begin{theorem}
 	Let $\phi: E_1 \to E_2$ be an isogeny, then $\phi$ is a group homomorphism.
 \end{theorem}
 \begin{proof}
 	If $\phi$ is constant, then $\phi(P) = O$ for all $P \in E_1$, hence
 	there is nothing to show. Otherwise $\phi$ induces
-	the map (ADD JUSTIFICATION).
+	the map.
+	\comment{Add justification}
 	\begin{align*}
 		\phi_*: \Cl^0(E_1) &\to \Cl^0(E_2)\\
 		\cl{\sum_{P \in E_1}n_P\cdot(P)} &\mapsto
@@ -483,6 +576,8 @@ on $E$, i.e. an isogeny is a morphism of algebraic groups.
 \end{proof}
 In particular, this theorem justifies identifying a general elliptic
 curve with its counterpart defined by a reduced Weierstrass equation.
+
+% ADDITION AND INVERSE ARE CURVE MORPHISMS
 
 Thanks to this theorem, and the explicit formulas we found for addition
 in $E$, we can show that addition and negation define curve morphisms.
@@ -530,7 +625,7 @@ in $E$, we can show that addition and negation define curve morphisms.
 			\arrow["{\psi}", from=1-2, to=2-2]
 		\end{tikzcd}	
 	\end{equation*}
-	It follows that $+$ and $-$ are morphisms iff the corresponding maps
+	It follows that $+$ and $-$ are curve morphisms iff the corresponding maps
 	for $C$ are.
 
 	Hence can suppose $E$ is given by
@@ -538,9 +633,12 @@ in $E$, we can show that addition and negation define curve morphisms.
 	\begin{equation*}
 		E: y^2 = x^3 + ax + b
 	\end{equation*}
-
-	...
+	\comment{Unfinished}
 \end{proof}
+This proves that $E$ is an algebraic group, that is an algebraic variety
+with the structure of a group, such that $+$ and $-$ are regular.
+
+% [m] IS AN ISOGENY
 
 \begin{corollary}
 	Let $E$ be an elliptic curve, then for $m \in \Z$, the map $[m]$, which
@@ -572,6 +670,8 @@ in $E$, we can show that addition and negation define curve morphisms.
 The $[m]$ isogeny will play an important role in showing the
 Weil conjectures, as we will soon see.
 
+% m-TORSION SUBGROUP
+
 \begin{definition}
 	Let $E$ be an elliptic curve and $m \in \Z$, $m \neq 0$. The
 	$m$-\emph{torsion subgroup} of $E$, denoted $E[m]$, is the set of
@@ -585,6 +685,8 @@ Weil conjectures, as we will soon see.
 		E_\tors = \bigcup_{m=1}^\infty E[m]
 	\end{equation*}
 \end{definition}
+
+% FROBENIUS MORPHISM
 
 Another important example of isogeny is the Frobenius morphism, which we defined
 earlier.
@@ -611,12 +713,14 @@ earlier.
 	\begin{equation*}
 		E^{(q)}: y^2 = x^3 + a^qx + b^q
 	\end{equation*}
+	\comment{Unfinished}
 \end{proof}
+
 Let $\F_q \subset K$ be the subfield of $K$ of order $q$.
-Suppose the coefficients of the polynomial defining $E$ lie in $\F_q$, 
+If $E$ is defined over $\F_q$,
 then $E^{(q)} = E$ and $\phi_q$ becomes an endomorphism. 
-We can look at the set of points of $E$ whose coordinates lie on $\F_q$,
-i.e.
+We can look at the set of $\F_q$-rational points of $E$,
+i.e. the points whose coordinates lie in $\F_q$,
 \begin{equation*}
 	E(\F_q) = \{(x, y) \in E\mid x,y \in \F_q\} \cup \{O\}.
 \end{equation*}
@@ -626,9 +730,13 @@ and hence
 \begin{equation*}
 	E(\F_q) = \ker(1 - \phi_q).
 \end{equation*}
-This fact will play a central role in counting the set of points of $E$ defined
-over finite fields. In fact, the following theorem gives us a relation that will
+This fact will play a central role in counting
+the set of points of $E$ defined
+over finite fields. In fact, the following theorem gives us
+a relation that will
 allow us to find the cardinality of $\ker(1 - \phi_q)$.
+
+% CARDINALITY OF PREIMAGE
 
 \begin{theorem}
 	\label{thm:preimage-card}
@@ -646,6 +754,7 @@ allow us to find the cardinality of $\ker(1 - \phi_q)$.
 		\# \ker\phi = \deg \phi.
 	\end{equation*}
 \end{theorem}
+\comment{Prove}
 
 As we see, things work out very nicely when we work with separable isogenies.
 In fact we also get the following results about separable isogenies.
@@ -661,6 +770,9 @@ In fact we also get the following results about separable isogenies.
 	is an isomorphism. In particular, if $\phi$ is separable,
 	$K(E_1)/\phi^*K(E_2)$ is a Galois extension.
 \end{proposition}
+\comment{Prove}
+
+% FACTORING ISOGENIES
 
 \begin{proposition}
 	Let $\phi: E_1 \to E_2$ and $\psi: E_1 \to E_3$ be two non-constant
@@ -668,10 +780,13 @@ In fact we also get the following results about separable isogenies.
 	If $\ker\phi \subset \ker \psi$, then there exists an unique isogeny
 	$\lambda: E_2 \to E_3$ such that $\psi = \lambda \circ \phi$.
 \end{proposition}
+\comment{Prove}
 
 Luckily for us, $[m]$ and $1 - \phi_q$ are separable isogenies. We will
 not show this result, but it will turn out to be very important as we will see
 later.
+
+% [m] AND \phi ARE SEPARABLE
 
 \begin{proposition}
 	\label{prop:m-separable}
@@ -695,6 +810,10 @@ later.
 	is separable if and only if $p\nmid m$.
 	In partiular, $1 - \phi_q$ is a separable isogeny.
 \end{proposition}
+
+% DUAL ISOGENY
+% ------------
+\subsection{Dual Isogeny}
 
 We will now move on to the topic of dual isogenies. Given an isogeny
 \begin{equation*}
@@ -723,6 +842,8 @@ ommitted here.
 
 The dual isogeny has many properties that make it quite useful.
 The following theorem lists a few of those properties.
+
+% DUAL ISOGENY PROPERTIES
 
 \begin{theorem}
 	Let
@@ -760,8 +881,14 @@ The following theorem lists a few of those properties.
 			\end{equation*}
 	\end{enumerate}
 \end{theorem}
+\comment{Do I prove this?}
 
+% --------------- %
+% THE TATE MODULE %
+% --------------- %
 \subsection{The Tate Module}
+
+% STRUCTURE OF E[m]
 
 Thanks to the dual isogeny, we can deduce the structure of
 the $m$-torsion part of an elliptic curve.
@@ -774,11 +901,13 @@ the $m$-torsion part of an elliptic curve.
 		E[m] = (\Z/m\Z)\times (\Z/m\Z)
 	\end{equation*}
 \end{proposition}
+\comment{Prove}
 
 So let $l$ be a prime different from $p = \chr(K)$ if $p > 0$.
 For any isogeny
 $\phi: E_1 \to E_2$, we have that $l^n$-torsion points are sent to
-$l^n$-torsion points and hence $\phi$ induces a map
+$l^n$-torsion points (since it is a group morphism)
+and hence $\phi$ induces a map
 \begin{equation*}
 	\phi: E_1[l^n]\to E_2[l^n].
 \end{equation*}
@@ -787,7 +916,10 @@ $\phi$ to a matrix in $\GL_2(\Z/l^n\Z)$ and hence study $\phi$ by studying
 the corresponding matrix. This identification involves choosing bases
 for $E_i[l^n]$,
 but for example the trace and determinant don't depend on the chosen bases.
-However, we can do better.
+However, we would prefer to work with matrices over a field of characteristic
+0. The following construction will allow us to do just that.
+
+% TATE MODULE DEFINITION
 
 \begin{definition}
 	Let $E$ be an elliptic curve and $l \in \Z$ a prime.
@@ -805,6 +937,8 @@ Since each $E[l^n]$ is a $\Z/l^n\Z$-module, $T_l(E)$ admits naturally the
 structure of a $\Z_l$-module. We can also immediately deduce the structure of
 $T_l(E)$.
 
+% TATE MODULE STRUCTURE
+
 \begin{proposition}
 	Let $l$ a prime different from $p = \chr(K)$ if $p > 0$.
 	As a $\Z_l$-module, the Tate module is isomorphic to $\Z_l \times \Z_l$.
@@ -815,31 +949,41 @@ $\phi: E_1[l^n] \to E_2[l^n]$ for all $n \in \N$ and hence a map
 \begin{equation*}
 	\phi_l: T_l(E_1) \to T_l(E_2).
 \end{equation*}
- Given the structure of $T_l(E_i)$, after choosing bases for
- $T_l(E_i)$, we can see $\phi_l$ as an element in
- $\GL_2(\Z_l)$.
- As we will see, the trace and determinant of $\phi_l$ encode
- very useful quantities. 
+\comment{Justify this with universal property, or it's obvious?}
+Given the structure of $T_l(E_i)$, after choosing bases for
+$T_l(E_i)$, we can see $\phi_l$ as an element in
+$\GL_2(\Z_l)$.
+As we will see, the trace and determinant of $\phi_l$ encode
+very useful quantities. 
 
- We can apply the same construction to the multiplicative group $K^\times$.
- Let $\mu_{l^n}$ be the subgroup of $(l^n)$\ts{th} roots of unity of $K$
- (recall $K$ is algebraically closed). Then raising to the $l$\ts{th}
- power defines a natural map $\mu_{l^{n+1}} \to \mu_{l^n}$.
+We can apply the same construction to the multiplicative group $K^\times$.
+Let $\mu_{l^n}$ be the subgroup of $(l^n)$\ts{th} roots of unity of $K$
+(recall $K$ is algebraically closed). Then raising to the $l$\ts{th}
+power defines a natural map $\mu_{l^{n+1}} \to \mu_{l^n}$.
 
- \begin{definition}
- 	The ($l$-adic) \emph{Tate module of} $K$ is the group
+% p-th ROOTS TATE MODULE
+
+\begin{definition}
+	The ($l$-adic) \emph{Tate module of} $K$ is the group
 	\begin{equation*}
 		T_l(\mu) = \varprojlim_n \mu_{l^n},
 	\end{equation*}
 	where the inverse limit is taken with respect to the $l$\ts{th}
 	power maps.
- \end{definition}
+\end{definition}
 
- It is clear from the construction that $T_l(\mu) \cong \Z_l$ as a group.
+It is clear from the construction that $T_l(\mu) \cong \Z_l$ as a group
+(where multiplication in $T_l(\mu)$ corresponds to addition in
+$\Z_l$).
 
+% ---------------- %
+% THE WEIL PAIRING %
+% ---------------- %
 \subsection{The Weil Pairing}
 
 Let $E$ be an elliptic curve. 
+
+% EXISTENCE OF WEIL PAIRING
 
 The goal of this section is to prove the following proposition.
 \begin{proposition}
@@ -871,7 +1015,9 @@ there is a function $f \in K(E)$ such that
 	\div(f) = m(T) - m(O).
 \end{equation*}
 A non-constant isogeny is surjective, hence there exists some $T' \in E$
-with $[m]T' = T$. ...[DO I ACTUALLY DO THIS?]
+with $[m]T' = T$. \comment{Do I actually do this?}
+
+% DEG-TR-DET FORMULA
 
 \begin{proposition}
 	\label{prop:deg-tr-det}
@@ -914,12 +1060,15 @@ with $[m]T' = T$. ...[DO I ACTUALLY DO THIS?]
 		&= e(v_1, v_2)^{ad - bc}\\
 		&= e(v_1, v_2)^{\det \psi_l}
 	\end{align*}
+	\comment{Need to justify taking out a coefficient to the exponent}
 	Since $e$ is non-degenerate, we can suppose $e(v_1, v_2) \neq 1$
 	and hence
 	\begin{equation*}
 		e(v_1, v_2)^{\deg\psi - \det\psi_l} = 1,
 	\end{equation*}
-	which implies $\deg\psi = \det \psi_l$, since $\Z_l$ is a domain.
+	which implies $\deg\psi = \det \psi_l$, since $\Z_l$ is a domain
+	(notice via the identification $T_l(\mu)\cong \Z_l$,
+	exponentiation in $T_l(\mu)$ corresponds to multiplication in $\Z_l$).
 	For a $2\times 2$ matrix $A$, it follows from direct calculation that
 	\begin{equation*}
 		\tr(A) = 1 + \det(A) - \det(1-A)
