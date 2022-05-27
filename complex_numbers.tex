@@ -320,7 +320,47 @@ functions.
 	functions. If $f$ is odd, then $\wp'f$ is even, so we can just consider
 	the case that $f$ is even.
 
-	If $f$ is even, we h \comment{Unfinished}
+	If $f$ is even, we have that
+	\begin{equation*}
+		\ord_z f = \ord_{-z} f
+	\end{equation*}
+	for all $z\in \C$. Furthermore, if $2z \in \Lambda$, then
+	$\ord_z f$ is even. By differentiating $f(z) = f(-z)$ repeatedly,
+	we obtain
+	\begin{equation*}
+		f^{(k)}(z) = (-1)^kf^{(k)}(-z)
+	\end{equation*}
+	so if $2z \in \Lambda$, $f^{(k)}(z) = f^{(k)}(-z)$, which implies
+	$f^{(k)}(z) = 0$ for all odd $k$. Hence $\ord_z f$ must be even.
+
+	Let $D$ be a fundamental parallelogram for $\Lambda$ and let $H$ 
+	be ``half" of $D$ in the sense that it is a fundamental domain for $(\C/\Lambda)/\{\pm 1\}$ in $\C$,
+	i.e. $\C = (H + \Lambda) \cup (-H + \Lambda)$.
+	Then the divisor of $f$ has the form
+	\begin{equation*}
+		\sum_{z \in D} n_z(z) = \sum_{z \in H} n'_z((z) + (-z)).
+	\end{equation*}
+	for certain integers $n_z$ and
+	\begin{equation*}
+		n'_z =
+		\begin{cases}
+			n_z &\textrm{if } 2z \notin \Lambda;\\
+			\frac{1}{2}n_z &\textrm{if } 2z \in \Lambda.
+		\end{cases}
+	\end{equation*}
+	If $2z \in \Lambda$, then
+	$n_z = \ord_z f$ is even, so this is well defined.
+
+	Now consider the function
+	\begin{equation*}
+		g(z) = \prod_{w \in H\setminus 0}(\wp(z) - \wp(w))^{n_w}.
+	\end{equation*}
+	The divisor of $\wp(z) - \wp(w)$ is $(w) + (-w) - 2(0)$, so we see that
+	$f$ and $g$ have exactly the same zeros and poles except possibly at
+	$0$. But then by \ref{prop:residue} they also have the same order at $0$.
+	It follows that $f/g$ is a holomorphic elliptic function and so is constant
+	by \ref{prop:no-poles}.
+	We conclude that $f = cg \in \C(\wp, \wp')$.
 \end{proof}
 
 \begin{definition}
@@ -338,6 +378,57 @@ functions.
 	is clear from context.
 \end{notation}
 
+% Characterization of principal divisors.
+
+\begin{lemma}
+	\begin{enumerate}[label=(\alph*)]
+		\item The infinite product for $\sigma$ defines a holomorphic function
+			on all of $\C$. It has simple zeros at each $z \in \Lambda$
+			and no other zeros.
+		\item For all $z \in \C\setminus \Lambda$
+			\begin{equation*}
+				\frac{d^2}{d^2}\log\sigma(z) = -\wp(z)
+			\end{equation*}
+		\item For any $\omega \in \Lambda$, there are constants
+			$a, b \in \C$ such that for all $z\in \C$
+			\begin{equation*}
+				\sigma(z + \omega) = e^{az + b}\sigma(z)
+			\end{equation*}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}	
+	\begin{enumerate}[label=(\alph*)]
+		\item We have that for all $z \in \C\setminus \Lambda$ and
+			$\lambda \in \Lambda\setminus 0$
+			such that $|\frac{z}{\lambda}| < \frac{2}{3}$,
+			using the Taylor expansion of $\log(1 - x)$,
+			\begin{align*}
+				\left|\log\left(1 - \frac{z}{\lambda}\right) +
+				\frac{z}{\lambda} + \frac{1}{2}\left(
+				\frac{z}{\lambda}\right)^2\right|
+				&\leq \sum_{k = 3}^\infty
+				\frac{1}{k}\left|\frac{z}{\lambda}\right|^k\\
+				&\leq \frac{1}{3}\left|\frac{z}{\lambda}\right|^3
+				\sum_{k = 0}^\infty\left|\frac{z}{\lambda}\right|^k\\
+				\left(\textrm{since $|\frac{z}{\lambda}| \leq \frac{2}{3}$}
+				\right)\qquad
+				&= \frac{1}{3}\left|\frac{z}{\lambda}\right|^3
+				\left(1 - \left|\frac{z}{\lambda}\right|\right)^{-1}\\
+				&\leq \left|\frac{z}{\lambda}\right|^3
+			\end{align*}
+			We deduce that the series
+			\begin{equation*}
+				\sum_{\lambda \in \Lambda\setminus 0} 
+				\left|\log\left(1 - \frac{z}{\lambda}\right) +
+				\frac{z}{\lambda} + \frac{1}{2}\left(
+				\frac{z}{\lambda}\right)^2\right|
+			\end{equation*}
+			converges absolutely and uniformly on any compact subset of $\C$
+			and hence so does the product defining $\sigma$.
+	\end{enumerate}
+\end{proof}
+
 \begin{proposition}
 	\label{prop:complex-divisors}
 	Let $n_1, \dots, n_r \in \Z$ and $z_1, \dots, z_n \in \C$, such that
@@ -349,7 +440,9 @@ functions.
 		\div(f) = \sum n_i(z_i).
 	\end{equation*}
 \end{proposition}
-\comment{Prove}
+
+\begin{proof}
+\end{proof}
 
 \begin{proposition}
 	\label{prop:diffeq}

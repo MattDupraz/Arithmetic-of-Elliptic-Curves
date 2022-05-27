@@ -80,7 +80,27 @@ By a \emph{curve} we always mean a projective variety of dimension one.
 	We say that $\phi$ is \emph{unramified} at $P$ if $e_\phi(P) = 1$. $\phi$ is
 	\emph{unramified} if it is unramified at every point $C_1$.
 \end{definition}
-\comment{NEED: Ramification properties. + examples ?}
+
+\begin{proposition}
+	\label{prop:ramification-properties}
+	Let $\phi: C_1 \to C_2$ be a non-constant map of smooth curves.
+	\begin{enumerate}[label=(\alph*)]
+		\item For every $Q \in C_2$,
+			\begin{equation*}
+				\sum_{P \in \phi^{-1}(Q)}e_\phi(P) = \deg \phi
+			\end{equation*}
+		\item For all but finitely many $Q \in C_2$,
+			\begin{equation*}
+				\#\phi^{-1}(Q) = \deg_s(\phi)
+			\end{equation*}
+		\item Let $\psi: C_2 \to C_3$ be another non-constant map.
+			Then for all $P \in C_1$,
+			\begin{equation*}
+				e_{\psi\circ\phi}(P) = e_{\phi}(P)e_{psi}(\phi(P))
+			\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\comment{Proof? Examples ?}
 
 % FROBENIUS MORPHISM
 
@@ -156,14 +176,6 @@ By a \emph{curve} we always mean a projective variety of dimension one.
 	$D_1 \sim D_2$, if $D_1 - D_2$ is principal.
 \end{definition}
 
-\begin{definition}
-	The \emph{divisor class group} of a curve $C$,
-	denoted $\Cl(C)$, is the quotient $\Div(C)/\PDiv(C)$.
-	Principal divisors have degree $0$ and hence it makes sense to speak about
-	the degree of elements in $\Cl(C)$. The sugroup of elements of $\Cl(C)$ of
-	degree $0$ is denoted $\Cl^0(C)$.
-\end{definition}
-
 % DEFINITION MAP OF DIVISORS
 
 \begin{definition}
@@ -180,7 +192,61 @@ By a \emph{curve} we always mean a projective variety of dimension one.
 		(P) &\mapsto (\phi P).
 	\end{align*}
 \end{definition}
-\comment{List (w/o proof) properties of $\phi^*$, $\phi_*$}
+
+\begin{proposition}
+	\label{prop:divisor-map-properties}
+	Let $\phi: C_1 \to C_2$ be a non-constant map of smooth curves.
+	\begin{enumerate}[label=(\alph*), itemsep=0em]
+		\item $\deg(\phi^*D) = (\deg\phi)(\deg D)$ for all $D \in \Div(C_2)$.
+		\item $\phi^*(\div f) = \div(\phi^* f)$ for all $f \in K(C_2)^\times$.
+		\item $\deg(\phi_*D) = \deg(D)$ for all $D \in \Div(C_1)$.
+		\item $\phi_*(\div f) = \div(\phi_* f)$ for all $f\in K(C_1)^\times$
+		\item $\phi_*\circ \phi^*$ acts as multiplication by $\deg \phi$
+			on $\Div(C_2)$
+		\item If $\psi: C_2\to C_3$ is another such map,
+			then
+			\begin{equation*}
+				(\psi\circ\phi)^* = \phi^*\psi^*
+				\qquad\textrm{and}\qquad
+				(\psi\circ\phi)_* = \phi_*\psi_*
+			\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\comment{Proof? Define $\phi_*: K(C_1) \to K(C_2)$ }
+
+\begin{proposition}
+	Let $D \in \Div(C)$ be a principal divisor, then $\deg D = 0$.
+\end{proposition}
+
+\begin{proof}
+	Let $f \in K(C)^\times$ such that $D = \div f$. It follows from the
+	definition of $\div$ and \ref{prop:divisor-map-properties}(b) that
+	\begin{equation*}
+		\deg \div(f) = \deg([f, 1]^*((0) - (\infty)))
+		= \deg([f, 1]) - \deg([f, 1]) = 0
+	\end{equation*}
+	Hence $\deg D = 0$
+\end{proof}
+
+\begin{definition}
+	The \emph{divisor class group} of a curve $C$,
+	denoted $\Cl(C)$, is the quotient $\Div(C)/\PDiv(C)$.
+	Principal divisors have degree $0$ and hence it makes sense to speak about
+	the degree of elements in $\Cl(C)$. The sugroup of elements of $\Cl(C)$ of
+	degree $0$ is denoted $\Cl^0(C)$.
+\end{definition}
+
+\begin{remark}
+	By \ref{prop:divisor-map-properties}, for $\phi: C_1\to C_2$ a non-constant
+	map of smooth curves, $\phi_*$ and $\phi^*$ take degree 0 divisors to degree
+	0 divisors and principal divisors to principal divisors.
+	In particular, they induce the maps
+	\begin{equation*}
+		\phi^*: \Cl^0(C_2) \to \Cl^0(C_1)
+		\qquad\textrm{and}\qquad
+		\phi_*: \Cl^0(C_1) \to \Cl^0(C_2)
+	\end{equation*}
+\end{remark}
 
 \begin{definition}
 	A divisor $D = \sum n_P(P) \in \Div(C)$ is \emph{positive} (or
