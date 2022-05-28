@@ -381,27 +381,30 @@ functions.
 % Characterization of principal divisors.
 
 \begin{lemma}
+	\label{lem:sigma-properties}
 	\begin{enumerate}[label=(\alph*)]
 		\item The infinite product for $\sigma$ defines a holomorphic function
 			on all of $\C$. It has simple zeros at each $z \in \Lambda$
 			and no other zeros.
 		\item For all $z \in \C\setminus \Lambda$
 			\begin{equation*}
-				\frac{d^2}{d^2}\log\sigma(z) = -\wp(z)
+				\frac{d^2}{dz^2}\log\sigma(z) = -\wp(z)
 			\end{equation*}
-		\item For any $\omega \in \Lambda$, there are constants
+		\item For any $\lambda \in \Lambda$, there are constants
 			$a, b \in \C$ such that for all $z\in \C$
 			\begin{equation*}
-				\sigma(z + \omega) = e^{az + b}\sigma(z)
+				\sigma(z + \lambda) = e^{az + b}\sigma(z)
 			\end{equation*}
 	\end{enumerate}
 \end{lemma}
 
 \begin{proof}	
 	\begin{enumerate}[label=(\alph*)]
-		\item We have that for all $z \in \C\setminus \Lambda$ and
-			$\lambda \in \Lambda\setminus 0$
-			such that $|\frac{z}{\lambda}| < \frac{2}{3}$,
+		\item Let $K \subset \C$ be a compact set.
+			Let $M > 0$ be such that $K \subset B(0, M)$.
+			We have that for all $z \in K$ and
+			$\lambda \in \Lambda\setminus 0$ such that
+			$|\lambda| \geq \frac{3}{2}M$,
 			using the Taylor expansion of $\log(1 - x)$,
 			\begin{align*}
 				\left|\log\left(1 - \frac{z}{\lambda}\right) +
@@ -409,23 +412,82 @@ functions.
 				\frac{z}{\lambda}\right)^2\right|
 				&\leq \sum_{k = 3}^\infty
 				\frac{1}{k}\left|\frac{z}{\lambda}\right|^k\\
-				&\leq \frac{1}{3}\left|\frac{z}{\lambda}\right|^3
-				\sum_{k = 0}^\infty\left|\frac{z}{\lambda}\right|^k\\
-				\left(\textrm{since $|\frac{z}{\lambda}| \leq \frac{2}{3}$}
+				\left(\textrm{since $\left|\frac{z}{\lambda}\right|
+					\leq \frac{M}{|\lambda|}$}
 				\right)\qquad
-				&= \frac{1}{3}\left|\frac{z}{\lambda}\right|^3
-				\left(1 - \left|\frac{z}{\lambda}\right|\right)^{-1}\\
-				&\leq \left|\frac{z}{\lambda}\right|^3
+				&\leq \frac{1}{3}\left(\frac{M}{|\lambda|}\right)^3
+				\sum_{k = 0}^\infty\left(\frac{M}{|\lambda|}\right)^k\\
+				&= \frac{1}{3}\left(\frac{M}{|\lambda|}\right)^3
+				\left(1 - \frac{M}{|\lambda|}\right)^{-1}\\
+				\left(\textrm{since $\frac{M}{|\lambda|} \leq \frac{2}{3}$}
+				\right)\qquad
+				&\leq \left(\frac{M}{|\lambda|}\right)^3
 			\end{align*}
-			We deduce that the series
+			We deduce from \ref{prop:wp-properties}(a) that the series
 			\begin{equation*}
-				\sum_{\lambda \in \Lambda\setminus 0} 
+				\sum_{\substack{
+					\lambda \in \Lambda\setminus 0\\
+					|\lambda| > \frac{3}{2}M}}
 				\left|\log\left(1 - \frac{z}{\lambda}\right) +
 				\frac{z}{\lambda} + \frac{1}{2}\left(
 				\frac{z}{\lambda}\right)^2\right|
 			\end{equation*}
-			converges absolutely and uniformly on any compact subset of $\C$
-			and hence so does the product defining $\sigma$.
+			converges uniformly on $K$
+			and hence so does the product defining $\sigma$ 
+			(since there is only a finite number of $\lambda \in \Lambda$ with
+			$|\lambda| < \frac{3}{2}M$).
+
+			Hence the product defining $\sigma$ converges on all compact subsets
+			of $\C$ and so $\sigma$ defines a holomorphic function
+			on all of $\C$.
+			
+			Since the series
+			\begin{equation*}
+				\sum_{\lambda \in \Lambda\setminus 0}
+				\left(\log\left(1 - \frac{z}{\lambda}\right) +
+				\frac{z}{\lambda} + \frac{1}{2}\left(
+			\frac{z}{\lambda}\right)^2\right)
+			\end{equation*}
+			converges provided $z \notin \Lambda$, $\sigma(z) \neq 0$ for all
+			$z \in \Lambda$. Clearly, $\sigma(\lambda) = 0$ for all
+			$\lambda \in \Lambda$ and $\frac{\sigma(z)}{z - \lambda}$ is non-zero
+			for $z = \lambda$ by the same argument as above. Hence $\sigma$
+			has simple zeros at each $z \in \Lambda$ and no other zeros.
+
+		\item We have from (a) that we can differentiate
+			\begin{equation*}
+				\log \sigma(z) = \log z + 
+				\sum_{\lambda \in \Lambda\setminus 0}
+				\left(\log\left(1 - \frac{z}{\lambda}\right) +
+				\frac{z}{\lambda} + \frac{1}{2}\left(
+				\frac{z}{\lambda}\right)^2\right)
+			\end{equation*}
+			term by term.
+			We get
+			\begin{align*}
+				\frac{d}{dz} \log \sigma(z)
+				&= \frac{1}{z} +
+				\sum_{\lambda \in \Lambda \setminus 0}
+				\left(\frac{1}{z - \lambda}
+				+ \frac{1}{\lambda} + \frac{z}{\lambda^2}\right)\\
+				\frac{d^2}{dz^2} \log \sigma(z)
+				&= -\frac{1}{z^2} + \sum_{\lambda \in \Lambda\setminus 0}
+				\left(\frac{-1}{(z - \lambda)^2} + \frac{1}{\lambda^2}\right)
+				= -\wp(z)
+			\end{align*}
+
+		\item Let $\lambda \in \Lambda$. Since $\wp$ is elliptic,
+			for all $z \in \C$,
+			\begin{equation*}
+				\frac{d^2}{dz^2}\log\sigma(z + \lambda)
+				= -\wp(z + \lambda) = \wp(z)
+				= \frac{d^2}{dz^2}\log\sigma(z).
+			\end{equation*}
+			By integrating twice, we obtain
+			\begin{equation*}
+				\log \sigma(z + \lambda) = \log\sigma(z) + az + b
+			\end{equation*}
+			for some constants of integration $a, b \in \C$.
 	\end{enumerate}
 \end{proof}
 
@@ -442,6 +504,60 @@ functions.
 \end{proposition}
 
 \begin{proof}
+	Let $\lambda = \sum n_i z_i \in \Lambda$.
+	Replacing $\sum n_i(z_i)$ by $\sum n_i(z_i) + (0) - (\lambda)$, we may assume
+	that $\sum n_iz_i = 0$ (indeed these are two different writings
+	for the same divisor as $0 \equiv \lambda \mod \Lambda$).
+	Then from \ref{lem:sigma-properties}(a) we get that
+	\begin{equation*}
+		f(z) = \prod \sigma(z - z_i)^{n_i}
+	\end{equation*}
+	has the correct zeros and poles.
+	Furthermore, from \ref{lem:sigma-properties}(c),
+	we get that
+	\begin{align*}
+		f(z + \lambda) &= \prod \sigma(z + \lambda - z_i)^{n_i}\\
+		&= \prod \left(\sigma(z - z_i)e^{a(z - z_i) + b}\right)^{n_i}\\
+		&= e^{\sum n_i(az + b) - a\sum n_iz_i} f(z)\\
+		&= f(z)
+	\end{align*}
+	and hence $f \in \C(\Lambda)$.
+\end{proof}
+
+\begin{proposition}
+	\label{prop:laurent}
+	The Laurent series for $\wp(z)$ about $z = 0$ is given by
+	\begin{equation*}
+		\wp(z) = z^{-2} + \sum_{k = 1}^\infty (2k + 1)G_{2k + 2}z^{2k}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	For $|z| < |\lambda|$, we have that
+	\begin{align*}
+		\frac{1}{(z - \lambda)^2} - \frac{1}{\lambda^{2}}
+		&= \frac{1}{\lambda^2}\left(\left(\frac{1}{1 - \frac{z}{\lambda}}
+			\right)^2 - 1\right)\\
+		&= \frac{1}{\lambda^2}\left(\left(
+		\sum_{k = 0}^{\infty}\left(\frac{z}{\lambda}\right)^k\right)^2 -
+		1 \right)\\	
+		&= \frac{1}{\lambda^2}\left(
+		\sum_{k = 0}^\infty(k + 1)\left(\frac{z}{\lambda}\right)^k - 1\right)\\
+		&= \sum_{k = 1}^\infty (k + 1)\frac{z^k}{\lambda^{k+ 2}}
+	\end{align*}
+	where the third equality is obtained by grouping the terms
+	$\left(\frac{z}{\lambda}\right)^k$ together in the double sum 
+	(the series is absolutely convergent). Hence we have that
+	for all $|z| < \min\{|\lambda|: \lambda \in \Lambda\setminus 0\}$
+	\begin{align*}
+		\wp(z) &= z^{-2} + \sum_{\lambda\in \Lambda \setminus 0}
+		\left((z - \lambda)^{-2} - \lambda^{-2}\right)\\
+		&= z^{-2} + \sum_{\lambda\in \Lambda\setminus 0}
+		\sum_{k = 1}^\infty(k + 1)\frac{z^k}{\lambda^{k + 2}}\\
+		&= z^{-2} + \sum_{k = 1}^{\infty}(k + 1)z^k G_{k + 2}
+	\end{align*}
+	The result follows from the fact that $G_{k + 2} = 0$ for $k$ odd, since
+	the terms $1/\lambda^{k + 2}$ and $1/(-\lambda)^{k + 2}$ cancel each other
+	out.
 \end{proof}
 
 \begin{proposition}
@@ -451,7 +567,23 @@ functions.
 		\wp'(z)^2 = 4\wp(z)^3 - 60G_4\wp(z) - 140G_6
 	\end{equation*}
 \end{proposition}
-\comment{Prove}
+
+\begin{proof}
+	We write the first few terms in various Laurent expansions:
+	\begin{align*}
+		\wp(z) &= z^{-2} + 3G_4z^2 + 5G_6z^4 + \dots\\
+		\wp(z)^3 &= z^{-6} + 9G_4z^{-4} + 15G_6 + \dots\\
+		\wp'(z)^2 &= 4z^{-6} - 24G_4z^{-2} - 80G_6 + \dots
+	\end{align*}
+	Comparing these, we see that the function
+	\begin{equation*}
+		f(z) = \wp'(z)^2 - 4\wp(z)^3 + 60G_4\wp(z) + 140G_6
+	\end{equation*}
+	is holomorphic around $z = 0$, since the negative power terms cancel
+	each other out. But since $\wp$ is elliptic and holomorphic on $\C \setminus
+	\Lambda$, we get that $f$ is holomorphic elliptic, and so constant.
+	Since $f$ vanishes at $0$, we get $f\equiv 0$.
+\end{proof}
 
 \begin{remark}
 	We write

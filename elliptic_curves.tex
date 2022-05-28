@@ -35,6 +35,44 @@ To ease notation, we will
 use the dehomogenized equation to define the projective curve $C$,
 remembering that there is the point at infinity $[0, 1, 0]$.
 
+We will see that any elliptic curve can be, up to isomorphism, 
+characterized by a Weierstrass equation. Before proving this, we will need
+the following lemma about singular curves given by a 
+Weierstrass equation.
+\begin{lemma}
+	\label{lem:deg-1-singular}
+	If a curve $C$ given by a Weierstrass equation is singular,
+	then there exists a rational map $\phi:E \to \proj^1$ of degree 1.
+\end{lemma}
+
+\begin{proof}
+	Making a linear change of variables, we may assume that the singular point
+	is $(x, y) = (0, 0)$. By checking the partial derivatives, we have that
+	the Weierstrass equation is of the form
+	\begin{equation*}
+		C: y^2 + axy = x^3 + cx^2.
+	\end{equation*}
+	The rational map
+	\begin{equation*}
+		\phi: E \to \proj^1, (x, y) \mapsto [x, y]
+	\end{equation*}
+	Induces an isomorphism
+	\begin{equation*}
+		\phi: U \to V
+	\end{equation*}
+	Where $U = E\setminus\{[0, 0, 1], [0, 1, 0]\} \subset E$
+	and $V = \proj_1\setminus\{[1, 0], [0, 1]\} \subset \proj^1$
+	with inverse given by $[1, t]\mapsto(t^2 + at - c, t^3 + at^2 - ct)$
+	(indeed, if we set $t = \frac{y}{x}$, and note that if we divide the
+	equation for $C$ by $x^2$, we obtain $t^2 + a_1t = x+ a_2$, so
+	$\phi(x, y) = [1, t]$ is indeed mapped to $[x, tx] = [x, y]$)
+	Hence $\phi$ induces an isomorphism of function fields
+	$\phi^*: K(V) \to K(U)$ and hence
+	$\phi^*: K(\proj^1) \to K(E)$ is an isomorphism 
+	(using \ref{prop:function-fields}).
+	It follows that $\deg\phi = 1$.
+\end{proof}
+
 % ELLIPTIC CURVE ADMITS A WEIERSTRASS EQUATION
 
 The following proposition allows us to identify elliptic curves
@@ -54,7 +92,8 @@ with smooth curves given by a Weierstrass equation.
 				C: Y^2 + aXY + bY = X^3 + cX^2 + dX + e
 			\end{equation*}
 			with coefficients $a, b, c, d, e \in K$ and such that $\phi(O) =
-			[0,1, 0]$.
+			[0,1, 0]$. We call $x, y$ the Weierstrass coordinate functions
+			on $E$.
 		\item Any two equations for $E$ as in (a) are related by a linear change
 			of variables of the form
 			\begin{align*}
@@ -101,9 +140,9 @@ with smooth curves given by a Weierstrass equation.
 	$y$ has a higher order pole than $x$ at $O$.
 
 	We will now show that the map $\phi: E\to C\subset \proj^2$ is of degree 1.
-	We have that (recall $K(\proj^2) = K(X/Z, Y/Z)$)
+	We have that
 	\begin{equation*}
-		\deg\phi = [K(E): \phi^*K(\proj^2)] = [K(E): K(x, y)]
+		\deg\phi = [K(E): \phi^*K(C)] = [K(E): K(x, y)]
 	\end{equation*}
 	Consider the map $[x, 1]: E \to \proj^1$. Since $x$ has a double pole
 	at $(O)$ and no other poles, we have that (using that
@@ -122,7 +161,29 @@ with smooth curves given by a Weierstrass equation.
 	It follows that $[K(E): K(x, y)] = 1$ since $\gcd(2, 3) = 1$.
 	Hence $K(E) = K(x, y)$ and so $\phi$ has degree 1.
 
-	\comment{Unfinished}
+	Suppose ad absurdum that $C$ is singular, then \ref{lem:deg-1-singular}
+	yields a rational map $\psi: C \to \proj^1$ of degree 1. Hence
+	the composition $\psi\circ\phi: E \to \proj^1$ is a map of degree between
+	smooth curves and hence an isomorphism (\comment{reference}).
+	This contradicts the fact that $E$ has genus 1 and $\proj^1$ has genus 0.
+	(\comment{reference}). Hence $C$ is smooth, so again by
+	(\comment{reference}), we have that the degree 1 map $\phi: E \to \C$ is
+	an isomorphism, which proves part (a).
+
+	For part (b), suppose we have two pairs of Weierstrass coordinate functions
+	$(x, y)$ and $(x', y')$, then $x$ and $x'$ have poles of order 2 at $O$
+	and $y$ and $y'$ have poles of order 3 at $O$.
+	Hence $\{1, x\}$ and $\{1, x'\}$ are two bases for $\L(2\,(O))$
+	and $\{1, x, y\}$ and $\{1, x', y'\}$ are two bases for
+	$\L(3\,(O))$. We deduce that there are some constants
+	$u_1, u_2, r, s_2, t \in K$ with $u_1u_2 \neq 0$ such that
+	\begin{equation*}
+		x = u_1x' + r\qquad\textrm{and}\qquad y= u_2y' + s_2x' + t
+	\end{equation*}
+	But since both $(x, y)$ and $(x', y')$ satisfy Weierstrass equations in
+	which the $Y^2$ and $X^3$ terms have coefficient $1$, we deduce that
+	$u_1^3 = u_2^2$. So letting $u = u_3/u_1$ and $s = s_2/u^2$, puts the change
+	of variables into the desired form.
 \end{proof}
 
 % WEIERSTRASS EQUATION CAN BE SIMPLIFIED
@@ -493,6 +554,7 @@ Hence we obtain $P + Q = (x_R, -y_R)$.
 
 This can be summarized in the following proposition:
 \begin{proposition}
+	\label{prop:explicit-equations}
 	Let $E$ be an elliptic curve given by the Weierstrass equation
 	\begin{equation*}
 		E: y^2 = x^3 + ax + b.
@@ -632,7 +694,39 @@ in $E$, we can show that addition and negation define curve morphisms.
 	\begin{equation*}
 		E: y^2 = x^3 + ax + b
 	\end{equation*}
-	\comment{Unfinished}
+
+	From \ref{prop:explicit-equations} we see that the addition map
+	$+: E\times E\to E$ is regular at all points except possibly at points
+	of the form $(P, P), (P, -P), (P, O), (O, P)$, since for points not of this
+	form, we have that $(+) = [x_{P + Q}, y_{P + Q}, 1]$ and
+	$x_{P + Q}$ and $y_{P + Q}$ can be written as a polynomial fraction
+	with only a power of $(x_Q - x_P)$ in the denominator, which is well defined
+	for such points.
+
+	Now to deal with the other cases, let $Q_1, Q_2 \in E$ be any two points
+	and $\tau_1, \tau_2$ the two associated translation maps. Consider the
+	composition of maps
+	\begin{equation*}
+		\phi: E\times E \xrightarrow{\tau_1\times\tau_2} E \times E
+		\xrightarrow{+}E\xrightarrow{\tau_1^{-1}}E\xrightarrow{\tau_2^{-1}}E.
+	\end{equation*}
+	If we calculate the image of $(P_1, P_2) \in E$ under this map, we get
+	\begin{equation*}
+		\phi(P_1, P_2) = (P_1 + Q_1) + (P_2 + Q_2) - Q_1 - Q_2 = P_1 + Q_2,
+	\end{equation*}
+	since $E$ is an abelian group.
+	Hence the rational maps $\phi$ and $(+)$ agree
+	wherever they are both defined.
+
+	Since the $\tau_i$ are isomorphisms, we get that $\phi$ is regular at all
+	points except possibly at points of the form
+	\begin{equation*}
+		(P - Q_1, P - Q_2), (P-Q_1, -P - Q_2), (P - Q_1, -Q_2), (-Q_1, P-Q_2)
+	\end{equation*}
+	and consequently $(+)$ is regular at points not of this form.
+	By varying $Q_1$, $Q_2$, we deduce that $(+)$ is regular everywhere
+	and so a morphism.
+	\comment{Not sure about this proof...}
 \end{proof}
 This proves that $E$ is an algebraic group, that is an algebraic variety
 with the structure of a group, such that $+$ and $-$ are regular.
@@ -712,7 +806,16 @@ earlier.
 	\begin{equation*}
 		E^{(q)}: y^2 = x^3 + a^qx + b^q
 	\end{equation*}
-	\comment{Unfinished}
+	We get that since we're in characteristic $p$,
+	\begin{equation*}
+		\Delta(E^{(q)}) = 4\left(a^q\right)^3 + 27\left(b^q\right)^2
+		= \left(4a^3 + 27b^2\right)^q
+		= \Delta(E)^q
+	\end{equation*}
+	and so by \ref{prop:singular-determinant}, we deduce that
+	$E^{(q)}$ is smooth iff $E$ is.
+	Hebce $E^{(q)}$ is an elliptic curve and $\phi_q$ being a morphism
+	which sends $O$ to $O$ is an isogeny.
 \end{proof}
 
 Let $\F_q \subset K$ be the subfield of $K$ of order $q$.
@@ -753,34 +856,88 @@ allow us to find the cardinality of $\ker(1 - \phi_q)$.
 		\# \ker\phi = \deg \phi.
 	\end{equation*}
 \end{theorem}
-\comment{Prove}
+\begin{proof}
+	From \ref{prop:ramification-properties}(b), we have that 
+	\begin{equation*}
+		\#\phi^{-1}(Q) = \deg_s(\phi)
+	\end{equation*}
+	for all but finitely many $Q\in E_2$. Now, let $Q, Q' \in E_2$ and choose
+	$R \in E_1$ such that $\phi(R) = Q' - Q$. Then since $\phi$ is a group
+	homomorphism, we have that there is a one-to-one correspondence
+	\begin{align*}
+		\phi^{-1}(Q) &\to \phi^{-1}(Q')\\
+		P \mapsto P + R.
+	\end{align*}
+	It follows that 
+	\begin{equation*}
+		\#\phi^{-1}(Q) = \deg_s(\phi)
+	\end{equation*}
+	for all $Q \in E_2$.
+
+	Now, let $P, P' \in E_1$ with $\phi(P) = \phi(P') = Q$ and let $R = P' - P$.
+	We get that $\phi(R) = O$ and so $\phi\circ\tau_R = \phi$
+	It follows from \ref{prop:ramification-properties}(c) and the fact
+	that $\tau_R$ is an isomorphism, that
+	\begin{equation*}
+		e_\phi(P) = e_{\phi\circ\tau_R}(P) =
+		e_\phi(\tau_R(P)) = e_\phi(P').
+	\end{equation*}
+	We deduce that every point in $\phi^{-1}$ has the same ramification index.
+	Now, we have from \ref{prop:ramification-properties}(a) that
+	\begin{align*}
+		(\deg_s\phi)(\deg_i\phi) = \deg\phi
+		&= \sum_{P \in \phi^{-1}(Q)}e_\phi(P)\\
+		&= (\#\phi^{-1}(Q))e_\phi(P)\quad\textrm{for any }P \in \phi^{-1}(Q)\\
+		&= (\deg_s\phi)e_\phi(P).
+	\end{align*}
+	Cancelling the $\deg_s\phi$, gives us $\deg_i\phi = e_\phi(P)$
+	for all $P \in E_1$.
+\end{proof}
 
 As we see, things work out very nicely when we work with separable isogenies.
-In fact we also get the following results about separable isogenies.
-
-\begin{proposition}
-	Let $\phi: E_1 \to E_2$ be a non-constant isogeny.
-	For $T \in E_1$, let $\tau_T$ be the translation-by-$T$ map,
-	then the map
-	\begin{align*}
-		\ker \phi &\to \Aut_{\phi^*K(E_2)}(K(E_1))\\
-		T &\mapsto \tau_T^*
-	\end{align*}
-	is an isomorphism. In particular, if $\phi$ is separable,
-	$K(E_1)/\phi^*K(E_2)$ is a Galois extension.
-\end{proposition}
-\comment{Prove}
-
+%In fact we also get the following results about separable isogenies.
+%
+%\begin{proposition}
+%	\label{prop:separable-galois}
+%	Let $\phi: E_1 \to E_2$ be a non-constant isogeny.
+%	For $T \in E_1$, let $\tau_T$ be the translation-by-$T$ map,
+%	then the map
+%	\begin{align*}
+%		\ker \phi &\to \Aut_{\phi^*K(E_2)}(K(E_1))\\
+%		T &\mapsto \tau_T^*
+%	\end{align*}
+%	is an isomorphism. In particular, if $\phi$ is separable,
+%	$K(E_1)/\phi^*K(E_2)$ is a Galois extension.
+%\end{proposition}
+%\comment{Prove}
+%
 % FACTORING ISOGENIES
-
-\begin{proposition}
-	Let $\phi: E_1 \to E_2$ and $\psi: E_1 \to E_3$ be two non-constant
-	isogenies, assume that $\phi$ is separable.
-	If $\ker\phi \subset \ker \psi$, then there exists an unique isogeny
-	$\lambda: E_2 \to E_3$ such that $\psi = \lambda \circ \phi$.
-\end{proposition}
-\comment{Prove}
-
+%
+%\begin{proposition}
+%	Let $\phi: E_1 \to E_2$ and $\psi: E_1 \to E_3$ be two non-constant
+%	isogenies, assume that $\phi$ is separable.
+%	If $\ker\phi \subseteq \ker \psi$, then there exists an unique isogeny
+%	$\lambda: E_2 \to E_3$ such that $\psi = \lambda \circ \phi$.
+%\end{proposition}
+%
+%\begin{proof}
+%	Sicne $\phi$ is separable, by \ref{prop:separable-galois},
+%	$K(E_1)/\phi^*K(E_2)$ is a Galois extension.
+%	Since $\ker\phi \subseteq \ker\psi$, the identification in
+%	\ref{prop:separable-galois} implies that
+%	\begin{equation*}
+%		\Gal(K(E_1)/\phi^*K(E_2)) =\Aut_{\phi^*K(E_2)}(K(E_1)) \subseteq
+%		\Aut_{\psi^*K(E_3)}(K(E_1))
+%	\end{equation*}
+%	In particular, 
+%	\begin{align*}
+%		\phi^*K(E_2) &= K(E_1)^{\Gal(K(E_1)/\phi^*K(E_2))}\\
+%		&\supseteq K(E_1)^{\Aut_{\psi^*K(E_3)}(K(E_1))}\\
+%		&\supseteq \psi^*K(E_3).
+%	\end{align*}
+%	
+%\end{proof}
+%
 Luckily for us, $[m]$ and $1 - \phi_q$ are separable isogenies. We will
 not show this result, but it will turn out to be very important as we will see
 later.
@@ -845,6 +1002,7 @@ The following theorem lists a few of those properties.
 % DUAL ISOGENY PROPERTIES
 
 \begin{theorem}
+	\label{thm:dual-isogeny-properties}
 	Let
 	\begin{equation*}
 		\phi: E_1 \to E_2
@@ -900,7 +1058,55 @@ the $m$-torsion part of an elliptic curve.
 		E[m] = (\Z/m\Z)\times (\Z/m\Z)
 	\end{equation*}
 \end{proposition}
-\comment{Prove}
+
+\begin{proof}
+	From \ref{thm:dual-isogeny-properties} we have that $\deg[m] = m^2$ and
+	from \ref{prop:m-separable}, $[m]$ is separable, hence
+	using \ref{thm:preimage-card}, we deduce that
+	\begin{equation*}
+		\#E[m] = \#\ker[m] = \deg[m] = m^2.
+	\end{equation*}
+	Furthermore, for every integer $d$ dividing $m$, we have that
+	\begin{equation*}
+		\#E[d] = d^2.
+	\end{equation*}
+	From the classification theorem of finite abelian groups, $E[m]$ is
+	isomorphic to a product of cyclic groups.
+	\begin{equation*}
+		E[m] \cong \prod_{i} \Z/p_i^{k_i}\Z
+	\end{equation*}
+	For any prime $q \in \Z$ dividing $m$,
+	we have that the $q$-torsion subgroup of $E[m]$
+	is of cardinality $q^{\#\{i \in \N : p_i = q\}}$, since for any
+	$k \in \N$, the $q$-torsion subgroup of $\Z/q^k\Z$ is
+	$q^{k-1}\Z/q^k\Z$, which is of cardinality $q$.
+	But the $q$-torsion subgroup of $E[m]$ is exactly $E[q]$, which is
+	of cardinality $q^2$, hence we deduce
+	\begin{equation*}
+		\#\{i \in \N: p_i = q\} = 2.
+	\end{equation*}
+	It follows that up to reordering the terms,
+	\begin{equation*}
+		E[m] \cong \Z/q^{k_1}\Z \times \Z/q^{k_2}\Z \times 
+		\prod_{i > 2}\Z/p_i^{k_i}\Z
+	\end{equation*}
+	where neither $p_i$ is equal to $q$. Let $r$ be the multiplicity of
+	$q$ in the prime decomposition of $m$. We have that $k_1 + k_2 = r$,
+	suppose $k_1 \geq k_2$. Then we have from direct calculation that
+	the $q^r$-torsion subgroup of $E[m]$ is of cardinality
+	$q^{k_1}\min\{q^{k_2}, q^{r}\}$.
+	However the $q^r$-torsion subgroup of $E[m]$ is exactly $E[q^r]$, which
+	is of cardinality $q^{2r}$.
+	It follows that $k_2 \geq r$ and hence necessarily $k_1 = k_2 = r$.
+	
+	Now, let for any prime $q \mid m$, the multiplicity $r_q$ with which
+	it divides $m$. We get that
+	\begin{equation*}
+		E[m] \cong \prod_{q \mid m}\Z/q^{r_q}\Z\times \Z/q^{r_q}\Z
+		\cong \Z/m\Z\times \Z/m\Z
+	\end{equation*}
+	using the Chinese remainder theorem.
+\end{proof}
 
 So let $l$ be a prime different from $p = \chr(K)$ if $p > 0$.
 For any isogeny
