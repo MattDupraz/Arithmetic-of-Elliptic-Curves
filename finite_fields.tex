@@ -48,14 +48,17 @@ $\F_{q^n}$-rational points of a projective variety.
 			for some integer $\epsilon$ (called the Euler characteristic of $V$)
 		\item Riemann Hypothesis: $|\alpha_{ij}| = q^{i/2}$
 			for all $1 \leq i \leq 2n - 1$ and all $j$.
-		\item Betti Numbers: If $V/\F_q$ is a reduction mod $p$ of a
+		\item Betti Numbers: If $V/\F_q$ is a good reduction mod $p$ of a
 			non-singular projective variety $W/K$, where $K$ is a number
 			field embedded in the field of complex numbers, then the degree
 			of $P_i$ is the $i$\textsuperscript{th} Betti number of the space
-			of complex points of $W$. \comment{Add examples for how this
-			reduction works?}
+			of complex points of $W$. 
+			
+			\comment{Do I keep this even though I can't
+			define what a good reduction is for a general variety?}
 	\end{enumerate}
 \end{theorem}
+
 
 \begin{proposition}
 	\label{prop:frob-char-poly}
@@ -125,6 +128,7 @@ $\F_{q^n}$-rational points of a projective variety.
 \end{proof}
 
 \begin{theorem}
+	\label{thm:weil-elliptic}
 	Let $E/\F_q$ be an elliptic curve. Then there exists an $a \in \Z$ such that
 	\begin{equation*}
 		Z(T) = \frac{1 - aT + qT^2}{(1-T)(1-qT)}.
@@ -159,7 +163,6 @@ $\F_{q^n}$-rational points of a projective variety.
 		a = \alpha + \beta = \tr(\phi_l) &= 1 + \deg(\phi) - \deg(1 - \phi)\\
 		&= 1 + q - \#E(\F_q) \in \Z.
 	\end{align*}
-
 \end{proof}
 
 Hence the Weil conjectures are verified for elliptic curves. Notice that

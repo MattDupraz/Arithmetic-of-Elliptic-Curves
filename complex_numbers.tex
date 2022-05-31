@@ -1,11 +1,14 @@
 \section{Elliptic Curves over \texorpdfstring{$\C$}{C}}
 \label{sec:over-C}
 
-The goal of this section is to show an elliptic curve is
-isomorphic to a torus as a Riemann surface. This will allow us to
+The goal of this section is to show an elliptic curve defined over $\C$
+is isomorphic to a torus as a Riemann surface. This will allow us to
 verify that the point (d) of the Weil Conjectures is true for elliptic curves.
 
-First, let's discuss the Riemann surface structure that an elliptic curve has.
+Throughout this chapter, we suppose $K = \C$.
+
+First, let's discuss the Riemann surface structure that an elliptic curve 
+is given.
 
 \begin{definition}
 	The \emph{complex topology} on $\proj^n$ is the quotient topology induced
@@ -13,33 +16,33 @@ First, let's discuss the Riemann surface structure that an elliptic curve has.
 \end{definition}
 
 Throughout this section we will consider $\proj^n$ with the complex topology,
-and hence an elliptic curve $E(\C) \subset \proj^2$ will be equipped with
+and hence an elliptic curve $E \subset \proj^2$ will be equipped with
 the subspace topology.
 
 \begin{proposition}
 	\label{prop:riemann-surf-struct}
-	Let $E(\C) \subset \proj^2$ be an elliptic curve, then $E(\C)$ admits
+	Let $E \subset \proj^2$ be an elliptic curve, then $E$ admits
 	the structure of a Riemann surface.
 \end{proposition}
 
 \begin{proof}
-	Let $y^2 - x^3 - ax - b = f(x, y) = 0$ be the equation defining $E(\C)$.
-	So for all $P = (x_P, y_P) \in E(\C)$ with $y_P \neq 0$,
+	Let $y^2 - x^3 - ax - b = f(x, y) = 0$ be the equation defining $E$.
+	So for all $P = (x_P, y_P) \in E$ with $y_P \neq 0$,
 	$\frac{\partial f}{\partial y}(P) \neq 0$ and hence by the implicit function
 	theorem there exists an open set $V_P \subseteq \C$ containing $x_P$ and an
 	analytic function $g_P: V_P \to \C$, such that $g_P(x_P) = y_P$ and
 	$f(x, g_P(x)) = 0$ for all $x \in V_P$. 
-	Furthermore $U_P = (\id\times g_P)(V_P) \subset E(\C)$,
-	is an open subset of $E(\C)$. Indeed, $U_P = \pi_x^{-1}(V_P)$, where
-	$\pi_x: E(\C)\setminus\{O\} \to \C, (x, y) \mapsto x$.
+	Furthermore $U_P = (\id\times g_P)(V_P) \subset E$,
+	is an open subset of $E$. Indeed, $U_P = \pi_x^{-1}(V_P)$, where
+	$\pi_x: E\setminus\{O\} \to \C, (x, y) \mapsto x$.
 	Hence we define
 	$\phi_P = \pi_x\vert_{U_P}$ which is a homeomorphism to its
 	image $\phi_P(U_P) = V_P$ (the inverse to which is given by
 	$x \mapsto (x, g_P(x))$).
 
-	For all $P = (x_P, 0) \in E(\C)$ we define the chart $\phi_P: U_P \to \C$
+	For all $P = (x_P, 0) \in E$ we define the chart $\phi_P: U_P \to \C$
 	similarly, except we inverse the roles of $x$ and $y$ in the above reasoning.
-	Indeed, $\frac{\partial f}{\partial x}(P) \neq 0$, since $E(\C)$ is smooth,
+	Indeed, $\frac{\partial f}{\partial x}(P) \neq 0$, since $E$ is smooth,
 	hence we get the existence of $V_P \subset \C$ containing $y_P$ and
 	$h_P: V_P \mapsto \C$, such that $h_P(y_P) = x_P$ and
 	$f(h_P(y), y) = 0$ for all $y \in V_P$. We set
@@ -47,9 +50,9 @@ the subspace topology.
 	$\phi_P: U_P \to \C, (x, y) \mapsto y$.
 
 	Finally, we have yet to define a chart whose domain covers the point at
-	infinity $O = [0, 1, 0] \in E(\C)$. To do this, we can look at $E(\C)$
+	infinity $O = [0, 1, 0] \in E$. To do this, we can look at $E$
 	in $\{[X, Y, Z] \in \proj^2 \mid Y \neq 0\}$ instead.
-	We get that in this copy of $\A^2$, $E(\C)$ is given by
+	We get that in this copy of $\A^2$, $E$ is given by
 	the equation. 
 	\begin{equation*}
 		z - x^3 - axz^2 - bz^3 = \tilde f(x, z) = 0.
@@ -59,7 +62,7 @@ the subspace topology.
 	$\phi_O: U_O \to \C, [x, 1, z] \mapsto x$ with inverse
 	$\phi_0^{-1}: \phi_O(U_O) \to \C, x \mapsto [x, 1, \tilde g(x)]$.
 
-	Now let $P, Q \in E(\C) \setminus \{O\}$, with $y_P \neq 0$ and $y_Q = 0$.
+	Now let $P, Q \in E \setminus \{O\}$, with $y_P \neq 0$ and $y_Q = 0$.
 	We have that
 	\begin{align*}
 		\phi_P \circ \phi_Q^{-1} (y) &= \phi_P(h_Q(y), y) = h_Q(y)\\
@@ -73,9 +76,9 @@ the subspace topology.
 	\end{align*}
 	All of these transition maps are holomorphic and by transitivity so are
 	$\phi_O \circ \phi_Q^{-1}$ and $\phi_Q \circ \phi_O^{-1}$.
-	Hence the the atlas $\mathcal{A} = \{\phi_P \mid P \in E(\C)\}$ is
+	Hence the the atlas $\mathcal{A} = \{\phi_P \mid P \in E\}$ is
 	holomorphic
-	and so gives $E(\C)$ the structure of a Riemann surface.
+	and so gives $E$ the structure of a Riemann surface.
 \end{proof}
 
 Let's introduce the definition and some basic properties of elliptic functions.
@@ -671,7 +674,7 @@ functions.
 	Denote by $\xi: \C \mapsto \C/\Lambda$, the quotient map.
 	Then the charts of $\C/\Lambda$ are given by local sections of $\xi$.
 	Let $z \in \C$ and $U \subseteq \C$ containing $z$ an open set such that 
-	$\xi\vert_U$ is injective. Let $\psi$ be a chart of $E(\C)$
+	$\xi\vert_U$ is injective. Let $\psi$ be a chart of $E$
 	which we can suppose (up to shrinking $U$) to be defined on
 	$\phi(\xi(U))$.
 	Depending on the value of $P = \phi(\xi(z))$, $\psi$ will be of one of the
@@ -771,4 +774,10 @@ We deduce that the associated Betti numbers are
 \end{align*}
 and $b_n(\T^2) = 0$ for $n \geq 3$.
 
-\comment{Need conclusion}
+Now if $E$ is defined over a number field embedded
+in $\C$ and can be reduced modulo $p$ such that the curve
+$C/\F_q$ obtained is an elliptic curve, these Betti numbers coincide with
+the degrees of the polynomials that appear in the decomposition of
+$Z(C/\F_q)$, which was calculated in Theorem \ref{thm:weil-elliptic}.
+This shows that part (e) of the Weil Conjectures
+(\ref{thm:weil}).

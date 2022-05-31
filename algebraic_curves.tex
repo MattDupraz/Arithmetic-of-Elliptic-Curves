@@ -24,7 +24,7 @@ By a \emph{curve} we always mean a projective variety of dimension one.
 	where $\m_P$ is the maximal ideal of $\O_P(C)$.
 	We extend this definition to $K(C)$ using
 	\begin{align*}
-		\ord_P: K(C) &\to \N\cup\{\infty\}\\
+		\ord_P: K(C) &\to \Z\cup\{\infty\}\\
 		f/g &\mapsto \ord_P(f) - \ord_P(g).
 	\end{align*}
 	For $f \in K(C)$, we call $\ord_P(f)$ the order of $f$ at $P$.
@@ -37,6 +37,13 @@ By a \emph{curve} we always mean a projective variety of dimension one.
 \end{definition}
 
 \begin{proposition}
+	\label{prop:curves-poles}
+	Let $C$ be a smooth curve and $f \in K(C)$. Then if $f$ has no poles,
+	$f \in K$.
+\end{proposition}
+
+\begin{proposition}
+	\label{prop:smooth-morphism}
 	Let $C$ be a curve, $V \subseteq \proj^n$ a variety,
 	$P \in C$ a smooth point, and $\phi: C \to V$ a rational map.
 	Then $\phi$ is regular at $P$. In particular, if $C$ is smooth, 
@@ -48,6 +55,16 @@ By a \emph{curve} we always mean a projective variety of dimension one.
 	constant or surjective.
 \end{theorem}
 \comment{Add proofs?}
+
+Recall that a rational map $\phi: C_1 \to C_2$ induces a map fixing $K$
+\begin{align*}
+	\phi^*: K(C_2) &\to K(C_1)\\
+	f &\mapsto f\circ\phi
+\end{align*}
+By the above theorem, if $\phi$ is not constant, then it is surjective
+and hence $\phi^*$ is actually an injection.
+One can show that $K(C_1) / \phi^*K(C_2)$ is a finite extension. This leads
+us to the following definition.
 
 \begin{definition}
 	Let $\phi: C_1 \to C_2$ be a map of curves defined over $K$.
@@ -66,6 +83,73 @@ By a \emph{curve} we always mean a projective variety of dimension one.
 		\deg_i\phi = [K(C_1): S].
 	\end{equation*}
 \end{definition}
+
+The following proposition
+shows that for any injection of function fields $K(C_2) \to K(C_1)$
+which fixes $K$, we
+can find a (unique)
+map of curves $C_1 \to C_2$, such that its pullback is this
+injection. 
+
+\begin{proposition}
+	\label{prop:existence-inclusion}
+	Let $C_1, C_2$ be curves and
+	let $\iota: K(C_2) \to K(C_1)$ be an injection of function fields
+	fixing $K$. Then there exists a unique non-constant map $\phi: C_1 \to C_2$
+	such that $\phi^* = \iota$.
+\end{proposition}
+
+\begin{proof}
+	Assume $C_2 \subset \proj^n$ and $C_2 \not\subset \{[X_0, \dots, X_n] \in
+	\proj^n \mid X_0 = 0\}$ (we can relabel the $X_i$'s if necessary).
+	Let $g_i \in K(C_2)$ defined by 
+	\begin{equation*}
+		g_i(X_0, \dots, X_n) = X_i/X_0.
+	\end{equation*}
+	Then define $\phi: C_1 \to C_2$ by
+	\begin{equation*}
+		\phi = [1, \iota(g_1), \dots, \iota(g_n)].
+	\end{equation*}
+	We then have that
+	\begin{equation*}
+		\phi^*(g_i) = g_i[1, \iota(g_1), \dots, \iota(g_n)]	
+		= \iota(g_i)/1 = \iota(g_i)
+	\end{equation*}
+	Since the $K(C_2) = K(g_1, \dots, g_n)$, we deduce
+	$\phi^* = \iota$.
+
+	Suppose there is some other map $\psi = [f_0, \dots, f_n]: C_1 \to C_2$
+	such that $\psi^* = \iota$. Then for each $i$,
+	\begin{equation*}
+		f_i/f_0 = \psi^*(g_i) = \iota(g_i),
+	\end{equation*}
+	which shows
+	\begin{equation*}
+		\psi = [1, f_1/f_0, \dots, f_n/f_0] = [1, \iota(g_1), \dots, \iota(g_n)]
+		= \phi.
+	\end{equation*}
+\end{proof}
+
+We also get the following useful corollary.
+\begin{corollary}
+	\label{cor:deg-1-isom}
+	Let $C_1$ and $C_2$ be smooth curves, and let $\phi: C_1 \to C_2$
+	be a map of degree 1. Then $\phi$ is an isomorphism.
+\end{corollary}
+
+\begin{proof}
+	By definition we have that if $\deg \phi = 1$, then $\phi^*K(C_2) = K(C_1)$,
+	hence $\phi^*$ is an isomorhism of function fields.
+	In particular, from \ref{prop:existence-inclusion} applied to
+	$(\phi^*)^{-1}: K(C_1) \to K(C_2)$, we get the existence
+	of $\psi: C_2 \to C_1$, such that $\psi^* = (\phi^*)^{-1}$.
+	Since $C_2$ is smooth, $\psi$ is a morphism by \ref{prop:smooth-morphism}.
+	Since $(\phi \circ \psi)^* = \psi^* \circ \phi^* = \id_{C_2}^*$
+	and $(\psi\circ \phi)^* = \phi^* \circ \psi^* = \id_{C_1}^*$,
+	it follows by the unicity part of \ref{prop:existence-inclusion}
+	that $\phi\circ\psi = \id_{C_2}$ and $\psi\circ\phi = \id_{C_1}$, and
+	hence $\phi$ is an isomorphism.
+\end{proof}
 
 % RAMIFICATION INDEX
 
@@ -96,7 +180,7 @@ By a \emph{curve} we always mean a projective variety of dimension one.
 		\item Let $\psi: C_2 \to C_3$ be another non-constant map.
 			Then for all $P \in C_1$,
 			\begin{equation*}
-				e_{\psi\circ\phi}(P) = e_{\phi}(P)e_{psi}(\phi(P))
+				e_{\psi\circ\phi}(P) = e_{\phi}(P)e_{\psi}(\phi(P))
 			\end{equation*}
 	\end{enumerate}
 \end{proposition}
@@ -268,6 +352,20 @@ By a \emph{curve} we always mean a projective variety of dimension one.
 	\end{equation*}
 \end{definition}
 
+\begin{proposition}
+	\label{prop:L-prop}
+	If $\deg D < 0$, then $\L(D) = \{0\}$ and $l(D) = 0$.
+\end{proposition}
+
+\begin{proof}
+	Suppose ad absurdum there is some $f \in \L(D) \setminus \{0\}$.
+	Then $\div f \geq -D$ and so in particular
+	\begin{equation*}
+		0 = \deg \div f \geq \deg(-D) = -\deg D > 0,
+	\end{equation*}
+	but this is absurd.
+\end{proof}
+
 \subsection{Differentials}
 
 In this section we introduce the notion of differential forms on a curve.
@@ -328,6 +426,10 @@ The following proposition will allow us to define the order of a differential.
 	$\ord_P(\omega)$.
 \end{definition}
 
+Notice that if $t \in K(C)$ is a uniformizer at $P \in C$, then
+$\ord_P(dt) = \ord_P(dt/dt) = \ord_P(1) = 0$ by definition.
+
+
 \begin{proposition}
 	For all but finitely many $P \in \C$, 
 	\begin{equation*}
@@ -355,6 +457,36 @@ We can now define the notion of divisor of a differential.
 	\end{equation*}
 \end{definition}
 
+The case of $\proj^1$ is an important example.
+\begin{example}
+	\label{ex:proj-holomorphic}
+	Let $t:\proj^1 \to K, [X, Y]\mapsto X/Y$ be the coordinate function on
+	$\proj^1$. Then $t - \alpha$ is an uniformizer at $[\alpha, 1]$.
+	It follows that
+	\begin{equation*}
+		\ord_{[\alpha, 1]}(dt) = \ord_{[\alpha, 1]}(d(t - \alpha)) = 0.
+	\end{equation*}
+	At $\infty = [1, 0]\in \proj^1$, we have that $1/t$ is a uniformizer.
+	Furthermore,
+	\begin{equation*}
+		0 = d(1) = d(t/t) = 1/t\cdot dt + td(1/t)
+	\end{equation*}
+	and hence $dt = -t^2d(1/t)$. It follows that 
+	\begin{equation*}
+		\ord_{\infty}(dt) = \ord_{\infty}(-t^2d(1/t)) = 
+		\ord_{\infty}(-t^2) = -2
+	\end{equation*}
+	Hence we obtain $\div(dt) = -2(\infty)$ and hence $dt$ is not holomorphic.
+	But for any non-zero $\omega \in \Omega_{\proj^1}$, 
+	we have that there exists some $g \in K(\proj^1)$ such that 
+	$\omega = gdt$, but then
+	\begin{equation*}
+		\deg\div \omega = \deg(\div(g) + \div(dt)) = -2
+	\end{equation*}
+	so $\omega$ is not holomorphic either.
+	Hence there are no non-zero holomorphic differentials on $\proj^1$.
+\end{example}
+
 Now, if $\omega_1$ and $\omega_2 \in \Omega_C$ are non-zero differentials, then
 there exists $f\in K(C)^\times$ such that $\omega_1 = f\omega_2$.
 This implies that
@@ -378,7 +510,20 @@ We can finally define what the genus of a curve is.
 	the \emph{genus} of $C$ is defined to be $\dim_K \L(K_C) = l(K_C)$.
 \end{definition}
 
-The genus is an important invariant of algebraic curves.
+For example, the projective line $\proj^1$, which has genus 0.
+\begin{example}
+	\label{ex:proj-genus}
+	The projective line $\proj^1$ has genus 0.
+	Let $K_C = \div(\omega)$ be a canonical divisor of $\proj^1$.
+	By \ref{ex:proj-holomorphic}, $\deg(K_C) < 0$. In particular, 
+	since $\deg \div f = 0$ for all $f \in K(C)^\times$,
+	$\div f \not\geq -K_C$,
+	so $f \notin \L(K_C)$. It follows that $\L(K_C) = \{0\}$ and
+	hence $l(K_C) = 0$.
+\end{example}
+
+The genus is an important invariant \comment{Do I have to show it is an
+invariant?} of algebraic curves.
 For example, we have the Riemann-Roch theorem, which will
 turn out to be very useful in the chapters that follow.
 The proof being outside of the scope of this paper, it will not be provided.
@@ -402,7 +547,17 @@ The proof being outside of the scope of this paper, it will not be provided.
 			\end{equation*}	
 	\end{enumerate}
 \end{corollary}
-\comment{Prove}
+
+\begin{proof}
+	\begin{enumerate}[itemsep=0em, label=(\alph*)]
+		\item From definition, $l(K_C) = g$, so for $D = K_C$ and using 
+			$l(0) = 1$, since $\L(0) = 0$ by \ref{prop:curves-poles}, we get the
+			result using $\ref{thm:riemann-roch}$.
+		\item From (a), we have that $\deg(K_C - D) < 0$. From
+			\ref{prop:L-prop}, we have that $l(K_C - D) = 0$ and so
+			from \ref{thm:riemann-roch}, the result follows.
+	\end{enumerate}
+\end{proof}
 
 The theorem turns out to be very useful, for example we get the following 
 powerful result.
