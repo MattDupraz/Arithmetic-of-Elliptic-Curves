@@ -1122,8 +1122,45 @@ $\phi$ to a matrix in $\GL_2(\Z/l^n\Z)$ and hence study $\phi$ by studying
 the corresponding matrix. This identification involves choosing bases
 for $E_i[l^n]$,
 but for example the trace and determinant don't depend on the chosen bases.
-However, we would prefer to work with matrices over a field of characteristic
-0. The following construction will allow us to do just that.
+However, we would prefer to work with matrices over a ring of characteristic
+0. The way we can achieve this is to use $l$-adic numbers. Let's start by
+reminding the definition of $l$-adic numbers.
+
+First let us define what an inverse limit of a sequence of rings is
+\begin{definition}
+	Let $(A_n)_{n \in \N}$ be rings and for each $n\in \N$,
+	$f_n: A_n \to A_{n-1}$ a morphism. The inverse (or projective)
+	limit of $(A_n)_{n\in\N}$
+	with respect to the maps $f_n$ is the ring
+	\begin{equation*}
+		\varprojlim_n A_n = 
+		\left\{(a_n)_{n \in \N} \in \prod_{n\in\N}A_n \mid
+		\forall n \in \N, f_n(a_n) = a_{n-1} \right\},
+	\end{equation*}
+	taken as a subring of $\prod_{n\in \N}$.
+
+	We define the inverse limit of a sequence of groups the same way
+	(replace ``ring" by ``group" in the definition).
+\end{definition}
+
+\begin{definition}
+	Let $l$ be a prime. The ring of $l$-adic integers, denoted $\Z_l$,
+	is the inverse limit
+	\begin{equation*}
+		\Z_l = \varprojlim_n \Z/l^n\Z,
+	\end{equation*}
+	taken with respect to the morphisms
+	\begin{align*}
+		\Z/l^{n+1}\Z &\to \Z/l^n\Z, \\
+		k &\mapsto k \mod l^n.
+	\end{align*}
+	For each $n \in \N$ we define the projection map 
+	$\pi_n: \Z_l \to \Z/l^n\Z, a \mapsto a_n$.
+\end{definition}
+
+We will hence use the construction of an inverse limit with the $E[l^n]$
+with the goal to get a representation of $\Hom(E_1, E_2)$ over
+$\GL_2(\Z_l)$.
 
 % TATE MODULE DEFINITION
 
@@ -1140,8 +1177,15 @@ However, we would prefer to work with matrices over a field of characteristic
 \end{definition}
 
 Since each $E[l^n]$ is a $\Z/l^n\Z$-module, $T_l(E)$ admits naturally the
-structure of a $\Z_l$-module. We can also immediately deduce the structure of
-$T_l(E)$.
+structure of a $\Z_l$-module. For $g \in T_l(E)$ and $r \in \Z_l$, the 
+multiplication is given by
+\begin{equation*}
+	r \cdot g = ([r_n]g_n)_{n \in \N}
+\end{equation*}
+which is well defined, since $[l]([r_n]g_n) = [r_n]([l]g_n) = [r_{n-1}]g_{n-1}$
+(as $r_n \equiv r_{n-1} \mod l^{n-1}$).
+
+We can also immediately deduce the structure of $T_l(E)$.
 
 % TATE MODULE STRUCTURE
 
@@ -1150,13 +1194,16 @@ $T_l(E)$.
 	As a $\Z_l$-module, the Tate module is isomorphic to $\Z_l \times \Z_l$.
 \end{proposition}
 
-As above, we get that an isogeny $\phi: E_1 \to E_2$ induces a map
-$\phi: E_1[l^n] \to E_2[l^n]$ for all $n \in \N$ and hence a map
-\begin{equation*}
-	\phi_l: T_l(E_1) \to T_l(E_2).
-\end{equation*}
-\comment{Justify this with universal property, or it's obvious?}
-Given the structure of $T_l(E_i)$, after choosing bases for
+As above, we get that an isogeny $\phi: E_1 \to E_2$ induces a homomorphism
+$\phi: E_1[l^n] \to E_2[l^n]$ for all $n \in \N$ and we have that
+$\phi\circ[l] = [l]\circ\phi$ since $\phi$ is a group homomorphism.
+It follows that $\phi$ induces the map
+\begin{align*}
+	\phi_l: T_l(E_1) &\to T_l(E_2)\\
+	(a_n)_{n \in \N} &\mapsto (\phi(a_n))_{n \in \N}
+\end{align*}
+
+Since $T_l(E_i) \cong \Z_l\times \Z_l$, after choosing bases for
 $T_l(E_i)$, we can see $\phi_l$ as an element in
 $\GL_2(\Z_l)$.
 As we will see, the trace and determinant of $\phi_l$ encode
@@ -1178,9 +1225,16 @@ power defines a natural map $\mu_{l^{n+1}} \to \mu_{l^n}$.
 	power maps.
 \end{definition}
 
-It is clear from the construction that $T_l(\mu) \cong \Z_l$ as a group
-(where multiplication in $T_l(\mu)$ corresponds to addition in
+Since $\mu_{l^n} \cong \Z/l^n\Z$ and the projection maps agree,
+we see that $T_l(\mu) \cong \Z_l$
+as a group (where multiplication in $T_l(\mu)$ corresponds to addition in
 $\Z_l$).
+
+We have that $T_l(\mu)$ admits the structure of a $\Z_l$ module
+via exponentiation (since
+each $\mu_{l^n}$ is a $\Z/l^n\Z$-module via exponentiation).
+Hence $T_l(\mu)$ is isomorphic to $\Z_l$ as a $\Z_l$ module,
+in particular, it is torsion-free.
 
 % ---------------- %
 % THE WEIL PAIRING %
@@ -1221,7 +1275,9 @@ there is a function $f \in K(E)$ such that
 	\div(f) = m(T) - m(O).
 \end{equation*}
 A non-constant isogeny is surjective, hence there exists some $T' \in E$
-with $[m]T' = T$. \comment{Do I actually do this?}
+with $[m]T' = T$. 
+
+\comment{Do I actually do this?}
 
 % DEG-TR-DET FORMULA
 
@@ -1272,9 +1328,8 @@ with $[m]T' = T$. \comment{Do I actually do this?}
 	\begin{equation*}
 		e(v_1, v_2)^{\deg\psi - \det\psi_l} = 1,
 	\end{equation*}
-	which implies $\deg\psi = \det \psi_l$, since $\Z_l$ is a domain
-	(notice via the identification $T_l(\mu)\cong \Z_l$,
-	exponentiation in $T_l(\mu)$ corresponds to multiplication in $\Z_l$).
+	which implies $\deg\psi = \det \psi_l$, since $T_l(\mu)$ is torsion-free
+	as a $\Z_l$ module.
 	For a $2\times 2$ matrix $A$, it follows from direct calculation that
 	\begin{equation*}
 		\tr(A) = 1 + \det(A) - \det(1-A)
