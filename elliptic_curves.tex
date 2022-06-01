@@ -1277,6 +1277,46 @@ there is a function $f \in K(E)$ such that
 A non-constant isogeny is surjective, hence there exists some $T' \in E$
 with $[m]T' = T$. 
 
+Since $[m]$ is a separable isogeny, $e_{[m]}(P) = 1$ for all $P \in E$.
+\begin{align*}
+	[m]^*(T) - [m]^*(O) &= \sum_{P \in [m]^{-1}(T)}e_{[m]}(P) - \sum_{P \in
+	[m]^{-1}(0)}e_{[m]}(P)\\
+	&= \sum_{P \in E[m]}(T' + P) - (P)
+\end{align*}
+and since $\sum_{P \in E[m]} T' + P - P = [m^2]T' = O$, it follows that there
+exists some $g \in K(E)$ such that
+\begin{equation*}
+	\div(g) = [m]^*(T) - [m]^*(O)
+\end{equation*}
+
+We have that
+\begin{align*}
+	\div(f\circ [m]) &= \div([m]^*f) = [m]^*\div(f) \\
+	&= m\left([m]^*(T) - [m]^*(O)\right) = m\div(g) = \div(g^m)
+\end{align*}
+Hence $f\circ[m]$ and $g^m$ are equal up to a constant factor. Multiplying $f$
+by an element of $K^\times$, we may assume that
+\begin{equation*}
+	f\circ [m] = g^m
+\end{equation*}
+
+Now, let $S \in E[m]$ (possibly $S = T$), then for any point $X \in E$,
+\begin{equation*}
+	g(X + S)^m = f([m]X + [m]S) = f([m]X) = g(X)^m.
+\end{equation*}
+Hence we can define a pairing
+\begin{align*}
+	e_m: E[m] \times E[m] &\to \mu_m\\
+	(S, T) &\mapsto g(X + S)/g(X)
+\end{align*}
+for any $X \in E$ such that $g(X + S)$ and $g(X)$ are both defined and
+non-zero. Notice that if $\tau_S$ is translation by $S$, that 
+$g\circ \tau_S$ and $g$ have the same divisor, as $S \in E[m]$. It follows that 
+$g\circ \tau_S/g$ is the constant function and so the pairing does not depend on
+the choice of $X$. Furthermore, $g$ is defined up to multiplication by a
+constant in $K^\times$, but the value of the pairing does not depend on this
+choice either and hence it is well-defined.
+
 \comment{Do I actually do this?}
 
 % DEG-TR-DET FORMULA
