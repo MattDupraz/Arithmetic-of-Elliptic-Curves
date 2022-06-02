@@ -300,15 +300,41 @@ similar theorem for compact Riemann surfaces.
 \begin{proof}
 	We have that $f$ induces a rational map
 	\begin{align*}
-		\bar{f}: C&\to \proj^1\\
-		P &\mapsto [f, 1]
+		[f, 1]: C&\to \proj^1\\
+		P &\mapsto [f(P), 1]
 	\end{align*}
-	By \ref{prop:smooth-morphism}, $\bar{f}$ is a morphism and
-	so by \ref{thm:const-surj}, we have that $\bar{f}$ is either constant
-	or surjective. If $\bar{f}$ is constant, $f$ is constant and so $f \in K$.
-	Else $\bar{f}$ is surjective, so there is some $P \in C$ such that
-	$\bar{f}(P) = [1, 0]$, but then $P$ is a pole of $f$.
+	By \ref{prop:smooth-morphism}, $[f, 1]$ is a morphism and
+	so by \ref{thm:const-surj}, we have that $[f, 1]$ is either constant
+	or surjective. If $[f, 1]$ is constant, $f$ is constant and so $f \in K$.
+	Else $[f, 1]$ is surjective, so there is some $P \in C$ such that
+	$[f, 1](P) = [1, 0]$, but then $P$ is a pole of $f$.
 \end{proof}
+
+\begin{proposition}
+	\label{prop:zero-finiteness}
+	Let $C$ be a smooth curve and $f \in K(C)^\times$.
+	Then there are only finitely 
+	many points of $C$ at which $f$ has a pole or a zero.
+\end{proposition}
+
+\begin{proof}
+	We have that $[f, 1]: C \to \proj^1$ is a morphism, hence continuous.
+	It follows that $f^{-1}(0) = [f, 1]^{-1}([0, 1])$ is a closed subset
+	of $C$. Since $f \neq 0$, we have that $f^{-1}(0) \neq C$.
+	Let $U_i = \{X_i \neq 0\} \subset \proj^n$ for any $i$.
+	$f^{-1}(0)\cap U_i \subset \A^n$ being closed,
+	it can be written as a finite union of irreducible
+	algebraic sets in $C\cap U_i \subset \A^n$.
+	$C\cap U_i$ being of dimension $1$, the only irreducible algebraic
+	sets strictly included in $C \cap U_i$ are singletons,
+	hence $f^{-1}(0)\cap U_i$ is a finite set.
+	Furthermore, $\proj^n$ can be covered by $U_i$ for $i \in \{0, \dots, n\}$.
+	This shows $f$ has a finite amount of zeros.
+
+	$f$ having a finite number of poles follows from the
+	fact that $1/f$ has a finite number of zeros.
+\end{proof}
+
 
 Recall that a rational map $\phi: C_1 \to C_2$ induces a map fixing $K$
 \begin{align*}
@@ -427,6 +453,8 @@ The ramification index measures the extent to which this happens.
 	\emph{unramified} if it is unramified at every point $C_1$.
 \end{definition}
 
+The following proposition will make sense of the intuition we gave above.
+
 \begin{proposition}
 	\label{prop:ramification-properties}
 	Let $\phi: C_1 \to C_2$ be a non-constant map of smooth curves.
@@ -446,9 +474,22 @@ The ramification index measures the extent to which this happens.
 			\end{equation*}
 	\end{enumerate}
 \end{proposition}
-\comment{Proof? Examples ?}
+\comment{Add proof?}
+
+In particular, if $\phi$ is separable, then for all but finitely many
+$Q \in C_2$, we get that $\#\phi^{-1}(Q) = \deg(\phi)$. Intuitively this means
+that the sheets of the cover $\phi$ simply intersect at a finite amount 
+of points. If $\phi$ is not separable, then we might imagine some sheets
+merging together. This already hints at the fact that separability is
+a very important property of maps between smooth curves, as it will allow us
+to count points in the maps' preimages.
 
 % FROBENIUS MORPHISM
+
+Next, we will define the so-called Frobenius morphism.
+This morphism is going to play a central role in the proof of the Weil
+conjectures for elliptic curves, as it will allow us to count
+the number of points of the curve that lie over some finite field.
 
 \begin{definition}
 	Suppose $\chr(K) = p \neq 0$ and let $q = p^r$.
@@ -476,7 +517,17 @@ The ramification index measures the extent to which this happens.
 	and $\phi$ becomes and endomorphism.
 \end{definition}
 
+In the case where $C$ is defined over $\F_q$, the Frobenius map $\phi_q$
+gives us a way to find $C(\F_q)$. Indeed, the $q$\ts{th} power map
+on $\cl{\F_q}$ fixes exactly $\F_q$ (see course on Rings and Fields),
+hence we see that the set of fixed points of $\phi_q$ is exactly $C(\F_q)$
+This will play an important role in computing $\#C(\F_q)$.
+
 \subsection{Divisors}
+
+We will now define so-called divisors. These give us a practical way
+to talk about zeroes and poles of functions and will be very useful when
+defining a group structure on elliptic curves.
 
 \begin{definition}
 	The \emph{divisor group of a curve} $C$, denoted $\Div(C)$ is the free
@@ -498,12 +549,17 @@ The ramification index measures the extent to which this happens.
 	\end{equation*}
 \end{definition}
 
+We can associate to each function $f \in K(C)^\times$ a divisor, which carries
+the information about the order of zeros and poles of $f$.
+
 \begin{definition}
 	Let $C$ be a smooth curve and $f \in K(C)\setminus\{0\}$. We
 	associate to $f$ the divisor $\div(f)$ given by
 	\begin{equation*}
 		\div(f) = \sum_{P \in C}\ord_P(f)\cdot(P)
 	\end{equation*}
+	Proposition \ref{prop:zero-finiteness} guarantees that this is well
+	defined.
 \end{definition}
 
 \begin{remark}
@@ -514,6 +570,9 @@ The ramification index measures the extent to which this happens.
 	is a homomorphism of abelian groups.
 \end{remark}
 
+In fact, as we will soon see, not all divisors correspond to functions
+in this way. The divisors that do form a subgroup.
+
 \begin{definition}
 	A divisor $D \in \Div(C)$ is \emph{principal} if it has the form
 	$D = \div(f)$ for some $f \in K(C)$. The subgroup of principal divisors
@@ -523,6 +582,15 @@ The ramification index measures the extent to which this happens.
 \end{definition}
 
 % DEFINITION MAP OF DIVISORS
+
+In a way analogous to how a map between smooth curves $\phi: C_1 \to C_2$
+induces maps on function fields
+\begin{equation*}
+	\phi_*: K(C_1) \to K(C_2)
+	\qquad\textrm{and}\qquad
+	\phi^*: K(C_2) \to K(C_1),
+\end{equation*}
+we can define maps between divisor groups.
 
 \begin{definition}
 	Let $\phi: C_1 \to C_2$ be a non-constant between smooth curves.
@@ -538,6 +606,8 @@ The ramification index measures the extent to which this happens.
 		(P) &\mapsto (\phi P).
 	\end{align*}
 \end{definition}
+
+These maps have many useful properties, as the following proposition shows.
 
 \begin{proposition}
 	\label{prop:divisor-map-properties}
@@ -560,6 +630,9 @@ The ramification index measures the extent to which this happens.
 \end{proposition}
 \comment{Proof? Define $\phi_*: K(C_1) \to K(C_2)$ }
 
+Thanks to these properties, we can show that principal divisors have degree
+0, making $\PDiv(C)$ a subgroup of $\Div^0(C)$.
+
 \begin{proposition}
 	Let $D \in \Div(C)$ be a principal divisor, then $\deg D = 0$.
 \end{proposition}
@@ -573,6 +646,10 @@ The ramification index measures the extent to which this happens.
 	\end{equation*}
 	Hence $\deg D = 0$
 \end{proof}
+
+We now define the notion of divisor class group. Essentially, we identify
+linearly equivalent divisors. This will come in handy as it will allow us
+to define a group law on elliptic curves.
 
 \begin{definition}
 	The \emph{divisor class group} of a curve $C$,
@@ -594,6 +671,10 @@ The ramification index measures the extent to which this happens.
 	\end{equation*}
 \end{remark}
 
+Divisor allow us to express certain conditions on the zeroes and poles
+of a function. To do this we define a partial order on $\Div(C)$, which will
+allow us to compare divisors.
+
 \begin{definition}
 	A divisor $D = \sum n_P(P) \in \Div(C)$ is \emph{positive} (or
 	\emph{effective}), denoted by
@@ -601,6 +682,13 @@ The ramification index measures the extent to which this happens.
 	For two divisors $D_1, D_2 \in \Div(C)$, we write $D_1 \geq D_2$
 	to indicate that $D_1 - D_2$ is positive.
 \end{definition}
+
+We may for example demand that a function $f$
+has poles of order less than $n_P$ at $P \in E$.
+We can encode this information in a divisor $D = \sum n_P(P)$,
+which allows us to express this condition neatly as
+$\div(f) \geq -D$. In fact, we have a notation for the set
+of functions that satisfy such a condition.
 
 \begin{definition}
 	Let $D \in \Div(C)$. We associate to $D$ the set of functions
@@ -650,6 +738,9 @@ and properties without providing proofs.
 	for all $x, y \in K(C)$ and $a \in K$.
 \end{definition}
 
+A non-constant map of curves $\phi:C_1 \to C_2$ (again) induces a map
+on the spaces of differential forms.
+
 \begin{definition}
 	Let $\phi: C_1 \to C_2$ be a non-constant map of curves. Then $\phi$ induces
 	maps between the spaces of meromorphic forms of $C_1$ and $C_2$.
@@ -660,6 +751,9 @@ and properties without providing proofs.
 	\end{align*}
 \end{definition}
 
+Since a curve is one-dimensional, we might expect its space of differential
+forms to also be one-dimensional. And indeed, that is the case.
+
 \begin{proposition}
 	\label{prop:forms-dimension}
 	Let $C$ be a curve, then $\Omega_C$ is a 1-dimensional $K(C)$-vector space.
@@ -667,12 +761,17 @@ and properties without providing proofs.
 	then $dt$ generates $\Omega_C$.
 \end{proposition}
 
+This gives us a correspondence between differential forms and functions
+on $C$.
+
 \begin{notation}
 	Let $\omega \in \Omega_C$. Then by \ref{prop:forms-dimension} there exists
 	$g \in K(C)$ such that $\omega = g\,dt$. We denote $g$ by $\omega/dt$.
 \end{notation}
 
-The following proposition will allow us to define the order of a differential.
+Using this identification, we may define the order of a differntial.
+A priori this may depend on the choice of uniformizer, but the following
+proposition says that's not the case.
 \begin{proposition}
 	Let $P \in C$ and $t \in K(C)$ a uniformizer at $P$. For $\omega \in
 	\Omega_C$,
@@ -691,7 +790,6 @@ The following proposition will allow us to define the order of a differential.
 Notice that if $t \in K(C)$ is a uniformizer at $P \in C$, then
 $\ord_P(dt) = \ord_P(dt/dt) = \ord_P(1) = 0$ by definition.
 
-
 \begin{proposition}
 	For all but finitely many $P \in \C$, 
 	\begin{equation*}
@@ -699,7 +797,12 @@ $\ord_P(dt) = \ord_P(dt/dt) = \ord_P(1) = 0$ by definition.
 	\end{equation*}
 \end{proposition}
 
-We can now define the notion of divisor of a differential.
+\begin{proof}
+	Follows directly from \ref{prop:zero-finiteness}.
+\end{proof}
+
+This proposition guarantees that the divisor of a differential is
+well defined.
 \begin{definition}
 	Let $\omega \in \Omega_C$. The divisor associated to $\omega$ is
 	\begin{equation*}
@@ -707,8 +810,10 @@ We can now define the notion of divisor of a differential.
 	\end{equation*}
 \end{definition}
 
+
 \begin{definition}
-	A differential $\omega \in \Omega_C$ is \emph{regular} (or \emph{holomorphic})
+	A differential $\omega \in \Omega_C$ is \emph{regular} 
+	(or \emph{holomorphic})
 	if for all $P \in C$,
 	\begin{equation*}
 		\ord_P(\omega) \geq 0.
