@@ -53,12 +53,40 @@ $\F_{q^n}$-rational points of a projective variety.
 			field embedded in the field of complex numbers, then the degree
 			of $P_i$ is the $i$\textsuperscript{th} Betti number of the space
 			of complex points of $W$. 
-			
-			\comment{Do I keep this even though I can't
-			define what a good reduction is for a general variety?}
 	\end{enumerate}
 \end{theorem}
 
+We won't define what a ``good reduction" means in general, but we can
+look at the case of elliptic curves given by a Weierstrass equation.
+
+If $K$ be a number field (seen as a subfield of its algebraic closure $\cl{K}$)
+and $\O_K$ its ring of integers. When $E$ is an elliptic curve given by a
+Weierstrass equation defined over $\O_K$, i.e. $E$ is of the form
+\begin{equation*}
+	E: y^2 = x^3 + ax + b
+\end{equation*}
+with $a, b \in \O_K$. Then for $p \in \Z$ a prime, the reduction modulo $p$
+of $E$ is the curve
+\begin{equation*}
+	C: y^2 = x^3 + \bar{a}x + \bar{b},
+\end{equation*}
+defined over the residue field $k_p = \O_K/p\O_K \cong \F_q$ for $q$
+some power of $p$.
+We say that $C$ is a \emph{good} reduction of $E$ modulo $p$
+if it is also smooth. That is the case if and only if its discriminant
+\begin{equation*}
+	\Delta(C) = 4\bar{a}^3 + 27\bar{b}^2
+\end{equation*}
+is non-zero. But notice that the discriminant of $C$ is just the residue
+of $\Delta(E) = 4a^3 + 27b^2$ in $k_p$.
+Hence the reduction of $E$ mod $p$ is ``good" if $\Delta(E) \not\in pO_K$.
+We will show that (d) of \ref{thm:weil} holds for elliptic curves given
+by Weierstrass equations in Section
+\ref{sec:over-C}.
+
+In the rest of this section, we will prove the Weil conjectures for the case
+of elliptic curves. For that we will make use of the relation found in
+\ref{prop:deg-tr-det}.
 
 \begin{proposition}
 	\label{prop:frob-char-poly}
@@ -167,6 +195,9 @@ $\F_{q^n}$-rational points of a projective variety.
 
 Hence the Weil conjectures are verified for elliptic curves. Notice that
 using the notation from theorem \ref{thm:weil},
-$\deg P_0 = 1$, $\deg P_1 = 2$, $\deg P_2 = 1$, hence we would expect
-the Betti numbers of $E/\C$ to coincide with these values, and indeed, as we
+$\deg P_0 = 1$, $\deg P_1 = 2$, $\deg P_2 = 1$, hence if $E/\F_q$ is a good
+reduction of $C/K$, where $K$ is a number field embedded in
+the field of complex numbers, we would expect
+the Betti numbers of the space of complex points of $C$ 
+to coincide with these values, and indeed, as we
 will see in the following section, this is indeed the case.

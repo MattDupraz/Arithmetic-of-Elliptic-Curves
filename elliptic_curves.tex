@@ -1317,7 +1317,86 @@ the choice of $X$. Furthermore, $g$ is defined up to multiplication by a
 constant in $K^\times$, but the value of the pairing does not depend on this
 choice either and hence it is well-defined.
 
-\comment{Do I actually do this?}
+Before passing this construction to the projective limit, we will show
+that it satisfies some basic properties.
+
+\begin{proposition}
+	\label{prop:pairing-properties}
+	The Weil $e_m$-pairing is:
+	\begin{enumerate}[itemsep=0em, label=(\alph*)]
+		\item Bilinear:
+			\begin{align*}
+				e_m(S_1 + S_2, T) &= e_m(S_1, T)e_m(S_2, T)\\
+				e_m(S, T_1 + T_2) &= e_m(S, T_1)e_m(S, T_2)
+			\end{align*}
+			so in particular for all $k \in \Z/m\Z$,
+			\begin{equation*}
+				e_m([k]S, T) = e_m(S, T)^k = e_m(S, [k]T)
+			\end{equation*}
+		\item Alternating:
+			\begin{equation*}
+				e_m(T, T) = 1,
+			\end{equation*}
+			so in particular,
+			\begin{equation*}
+				e_m(S, T) = e_m(T, S)^{-1}
+			\end{equation*}
+		\item Non-degenerate:
+			If $e_m(S, T) = 1$ for all $S \in E[m]$, then $T = O$.
+		\item Compatible:
+			If $S \in E[nm]$ and $T \in E[m]$, then
+			\begin{equation*}
+				e_{nm}(S, T) = e_m([n]S, T)
+			\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+	Let $S \in E_1[m]$, $T \in E_2[m]$, and $\phi: E_1 \to E_2$
+	an isogeny. Then
+	\begin{equation*}
+		e_m(S, \dual\phi(T)) = e_m(\phi(S), T)
+	\end{equation*}
+\end{proposition}
+
+Now to prove proposition \ref{prop:weil-pairing}, it suffices to pass the 
+construction of $e_{l^n}$ to the inverse limit.
+To show that the $e_{l^n}: E[l^n]\times E[l^n] \to \mu_{l^n}$ induce a map 
+$e: T_l(E) \times T_l(E) \to T_l(\mu)$, we have to show that the
+$e_{l^n}$-pairings are compatible with taking the inverse limit.
+The inverse limits for $T_l(E)$ and $\T_l(\mu)$ are formed using the maps
+\begin{equation*}
+	E[l^{n+1}]\xrightarrow{[l]}E[l^n]
+	\qquad\textrm{and}\qquad
+	\mu_{l^{n+1}}\xrightarrow{(\cdot)^l}\mu_{l^n}
+\end{equation*}
+i.e.
+we require that
+\begin{equation*}
+	e_{l^{n+1}}(S, T)^l = e_{l^n}([l]S, [l]T).	
+\end{equation*}
+We have by properties (a) and (d) of \ref{prop:pairing-properties} that
+\begin{equation*}
+	e_{l^{n+1}}(S, T)^l = e_{l^{n+1}}(S, [l]T) = e_{l^n}([l]S, [l]T).
+\end{equation*}
+
+Hence the $e_{l^n}$ induce a map $e:T_l(E)\times T_l(E) \to T_l(\mu)$,
+which inherits all the properties of \ref{prop:pairing-properties},
+so this shows \ref{prop:weil-pairing}.
+
+\begin{remark}
+	The bilinearity property extended to $e:T_l(E)\times T_l(E) \to T_l(\mu)$
+	implies that for all $a \in \Z_l$
+	\begin{equation*}
+		e([a]S, T) = e(S, T)^a.
+	\end{equation*}
+	Indeed, we have that denoting $a_n \in \Z/l^n\Z$ the projection of $a$,
+	\begin{equation*}
+		e_n([a_n]S, T) = e_n(S, T)^{a_n}.
+	\end{equation*}
+	by bilinearity and hence the above fact follows from the construction
+	of the inverse limit.
+\end{remark}
 
 % DEG-TR-DET FORMULA
 
@@ -1362,14 +1441,13 @@ choice either and hence it is well-defined.
 		&= e(v_1, v_2)^{ad - bc}\\
 		&= e(v_1, v_2)^{\det \psi_l}
 	\end{align*}
-	\comment{Need to justify taking out a coefficient to the exponent}
 	Since $e$ is non-degenerate, we can suppose $e(v_1, v_2) \neq 1$
 	and hence
 	\begin{equation*}
 		e(v_1, v_2)^{\deg\psi - \det\psi_l} = 1,
 	\end{equation*}
 	which implies $\deg\psi = \det \psi_l$, since $T_l(\mu)$ is torsion-free
-	as a $\Z_l$ module.
+	as a $\Z_l$-module.
 	For a $2\times 2$ matrix $A$, it follows from direct calculation that
 	\begin{equation*}
 		\tr(A) = 1 + \det(A) - \det(1-A)
