@@ -1,8 +1,32 @@
 \section*{Introduction}
 
+In this paper, we will follow closely the structure of
+Silverman's \emph{Arithmetic of Elliptic
+Curves} \cite{silverman} with the goal to state the Weil conjectures,
+and prove them for the case of elliptic curves, which are projective curves
+of genus 1.
+The Weil conjectures give some properties of the zeta function,
+which is a generating
+function derived from counting points on algebraic varieties over finite
+fields.
+In particular, one of the conjectures gives a link between
+the rank of homology groups of algebraic varieties defined over the complex 
+numbers and the form of the zeta function of a related algebraic variety
+defined over a finite field. To make this link for the case of
+elliptic curves, in Section \ref{sec:finite-fields}, we will for one calculate
+the zeta function for elliptic curves defined over finite fields, and then
+in Section \ref{sec:over-C}, we will study the topological structure of
+elliptic curves defined
+over complex numbers.
+
+We will start by defining all the necessary notions to be able to understand
+the Weil conjectures and define important constructions that will be used
+in the proof of the Weil conjectures. 
 Throughout this paper we assume known the content of the course \emph{Algebraic
 Curves} given by Dimitri Wyss.
+
 Whenever we talk about algebraic varieties defined over a field $K$, we
-will assume $K$ is algebraically closed, unless stated otherwise.
+will assume $K$ is an algebraically closed field, unless stated otherwise.
 Furthermore, throughout this paper, we will assume that
-$\chr(K) \not\in \{2, 3\}$
+$\chr(K) \not\in \{2, 3\}$, as these cases lead to subtleties that go outside
+the scope of this paper.
