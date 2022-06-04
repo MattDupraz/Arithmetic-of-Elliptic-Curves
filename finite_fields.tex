@@ -6,6 +6,7 @@ We suppose throughout this section that $\chr(K) = p$.
 
 In this section we will state the Weil conjectures and prove them in the
 case of elliptic curve.
+
 If $K$ is of characteristic $p$,
 it contains a unique subfield of order $p^n$ for any $n \in \N$ (see
 course \emph{Rings and Fields}), we will denote this subfield by $\F_{p^n}$.
@@ -86,8 +87,10 @@ by Weierstrass equations in Section
 \ref{sec:over-C}.
 
 In the rest of this section, we will prove the Weil conjectures for the case
-of elliptic curves. For that we will make use of the relation found in
+of elliptic curves. For that, we will make use of the relation found in
 \ref{prop:deg-tr-det}.
+In the following proposition we get a formula for $\#E(\F_{q^n})$, which
+we will be able to use for proving the Weil conjectures.
 
 \begin{proposition}
 	\label{prop:frob-char-poly}
@@ -156,6 +159,9 @@ of elliptic curves. For that we will make use of the relation found in
 	\end{equation*}
 \end{proof}
 
+At last, we can state and prove the Weil conjectures for the case
+of elliptic curves.
+
 \begin{theorem}
 	\label{thm:weil-elliptic}
 	Let $E/\F_q$ be an elliptic curve. Then there exists an $a \in \Z$ such that
@@ -196,9 +202,9 @@ of elliptic curves. For that we will make use of the relation found in
 
 Hence the Weil conjectures are verified for elliptic curves. Notice that
 using the notation from theorem \ref{thm:weil},
-$\deg P_0 = 1$, $\deg P_1 = 2$, $\deg P_2 = 1$, hence if $E/\F_q$ is a good
-reduction of $C/K$, where $K$ is a number field embedded in
+$\deg P_0 = 1$, $\deg P_1 = 2$, $\deg P_2 = 1$, hence if $C/\F_q$ is a good
+reduction of $E/K$, where $K$ is a number field embedded in
 the field of complex numbers, we would expect
-the Betti numbers of the space of complex points of $C$ 
+the Betti numbers of the space of complex points of $E$ 
 to coincide with these values, and indeed, as we
 will see in the following section, this is indeed the case.

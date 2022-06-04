@@ -227,8 +227,7 @@ stated otherwise.
 \begin{proof}
 	The case of plane curves was proven in the course \emph{Algebraic curves}
 	(Corollary 4.4).
-
-	\comment{Unsure if I should prove this or link a result}
+	For a full proof see \cite[I.5.1]{hartshorne} and \cite[9.2]{atiyah}.
 \end{proof}
 
 Since $\O_P(C)$ is a DVR we can use its valuation to define the
@@ -289,7 +288,9 @@ similar theorem for compact Riemann surfaces.
 	Let $\phi: C_1 \to C_2$ be a morphism of curves. Then $\phi$ is either
 	constant or surjective.
 \end{theorem}
-\comment{Add proof?}
+\begin{proof}
+	Admitted. See \cite[II.6.8]{hartshorne}.
+\end{proof}
 
 \begin{corollary}
 	\label{prop:curves-poles}
@@ -877,7 +878,6 @@ We can finally define what the genus of a curve is.
 	the \emph{genus} of $C$ is defined to be $\dim_K \L(K_C) = l(K_C)$.
 \end{definition}
 
-For example, the projective line $\proj^1$, which has genus 0.
 \begin{example}
 	\label{ex:proj-genus}
 	The projective line $\proj^1$ has genus 0.
@@ -892,8 +892,13 @@ For example, the projective line $\proj^1$, which has genus 0.
 The genus is an important invariant \comment{Do I have to show it is an
 invariant?} of algebraic curves.
 For example, we have the Riemann-Roch theorem, which will
-turn out to be very useful in the chapters that follow.
-The proof being outside of the scope of this paper, it will not be provided.
+allow us to calculate $l(D)$ for any divisor $D$ if we know the genus of
+the curve.
+This will be very useful, as it will allow us to show that elliptic curves,
+which are by definition smooth curves of genus 1, are
+isomorphic to plane curves given by a specific cubic equation.
+The proof of the theorem
+being outside of the scope of this paper, it will not be provided.
 \begin{theorem}[Riemann-Roch]
 	\label{thm:riemann-roch}
 	Let $C$ be a smooth curve of genus $g$ and $K_C$ a canonical divisor on $C$.
@@ -902,6 +907,10 @@ The proof being outside of the scope of this paper, it will not be provided.
 		l(D) - l(K_C - D) = \deg D - g + 1.
 	\end{equation*}
 \end{theorem}
+
+We get also the following corollary, part (b) being especially useful
+because it will allow us to avoid working
+with canonical divisors.
 
 \begin{corollary}
 	\label{cor:riemann-roch}
@@ -926,8 +935,10 @@ The proof being outside of the scope of this paper, it will not be provided.
 	\end{enumerate}
 \end{proof}
 
-The theorem turns out to be very useful, for example we get the following 
-powerful result.
+For example, we get that for curves of genus 1, if $\deg(D) > 0$,
+then $l(D) = \deg(D)$, from which we can deduce many useful properties, such
+as the following.
+
 \begin{proposition}
 	\label{prop:sim-implies-eq}
 	Let $C$ be a curve of genus 1, and let $P, Q \in C$. Then
@@ -953,7 +964,7 @@ powerful result.
 \end{proof}
 
 Thanks to the Riemann-Roch theorem, we can also link the genera of 
-curves with a non-constant separable map between them.
+curves that admit some non-constant separable map between them.
 The following theorem makes this concrete.
 \begin{theorem}[Riemann-Hurwitz]
 	Let $C_1, C_2$ be smooth curves of genus $g_1, g_2$ respectively.
@@ -969,6 +980,10 @@ The following theorem makes this concrete.
 	\end{enumerate}
 \end{theorem}
 \comment{Prove?}
+
+For our purposes, the inequality in the Riemann-Hurwitz formula
+will always be an equality, as we can always suppose $\chr(K)$ to be
+zero, or large enough.
 
 Using the Riemann-Hurwitz formula, we get a very simple formula describing
 the genus of a plane curve.

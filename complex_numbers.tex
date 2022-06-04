@@ -1,11 +1,15 @@
-\section{Elliptic Curves over \texorpdfstring{$\C$}{C}}
+\section{Elliptic Curves as Complex Tori}
 \label{sec:over-C}
 
 The goal of this section is to show an elliptic curve defined over $\C$
-is isomorphic to a torus as a Riemann surface. This will allow us to
+is isomorphic to a torus as a Riemann surface (and actually even 
+as a complex lie group). In particular,
+this will allow us to
 verify that the point (d) of the Weil Conjectures is true for elliptic curves.
 
-Throughout this chapter, we suppose $K = \C$.
+Throughout this section, we suppose $K = \C$.
+
+\subsection{Riemann Surface Structure}
 
 First, let's discuss the Riemann surface structure that an elliptic curve 
 is given.
@@ -81,6 +85,8 @@ the subspace topology.
 	and so gives $E$ the structure of a Riemann surface.
 \end{proof}
 
+\subsection{Elliptic Functions}
+
 Let's introduce the definition and some basic properties of elliptic functions.
 For the rest of this section,
 let $\Lambda \subseteq \C$ be an arbitrary lattice.
@@ -112,6 +118,10 @@ let $\Lambda \subseteq \C$ be an arbitrary lattice.
 	where $a \in \C$ and $\lambda_1, \lambda_2$ is a basis for $\Lambda$.
 \end{definition}
 
+Liouville's theorem tells us that a bounded entire function is constant.
+If an elliptic function is bounded on a fundamental parallelogram, then
+it is bounded everywhere by periodicity, so we get the following proposition.
+
 \begin{proposition}
 	\label{prop:no-poles}
 	An elliptic function with no poles (or no zeros) is constant.
@@ -137,6 +147,9 @@ let $\Lambda \subseteq \C$ be an arbitrary lattice.
 	$\bar{z} \in \C$ of the coset $z$. This is well defined by the
 	$\Lambda$-periodicity of $f$.
 \end{notation}
+
+From periodicity of an elliptic function, we can deduce the following result
+from the residue theorem.
 
 \begin{proposition}
 	\label{prop:residue}
@@ -197,6 +210,10 @@ as a connecting link between elliptic curves and elliptic functions.
 	$\wp(z)$ and $G_k$ for $\wp(z; \Lambda), G_k(\Lambda)$
 	respectively.
 \end{notation}
+
+Of course, we have to show that the Eisenstein series converge
+and the Weierstrass
+$\wp$-function are well defined and elliptic.
 
 % Theorem VI.3.1
 \begin{proposition}
@@ -306,6 +323,11 @@ functions.
 	\end{equation*}
 \end{definition}
 
+Divisors give us an useful way to compare elliptic functions, as if
+the divisors of two elliptic functions are equal, the functions have
+to be equal up to multiplication by a constant.
+In fact, we can use them to show the following powerful result.
+
 \begin{theorem}
 	\label{thm:wp-generates}
 	We have that
@@ -366,6 +388,10 @@ functions.
 	We conclude that $f = cg \in \C(\wp, \wp')$.
 \end{proof}
 
+We would like to get a result similar to \ref{prop:div-principal} for
+divisors of elliptic functions. In fact, such a result holds, and to show
+it, we will make use of the Weierstrass $\sigma$-function.
+
 \begin{definition}
 	The \emph{Weierstrass $\sigma$-function} (relative to $\Lambda$) is the
 	function defined by
@@ -382,6 +408,12 @@ functions.
 \end{notation}
 
 % Characterization of principal divisors.
+
+The most useful property of the $\sigma$-function is that it holomorphic
+and has simple zeroes on the lattice points. This will allow us to take
+an appropriate product of $\sigma$ translated to match the zeroes and poles
+of any given elliptic function. Furthermore, if certain criteria are met,
+this product will define an elliptic function.
 
 \begin{lemma}
 	\label{lem:sigma-properties}
@@ -494,6 +526,9 @@ functions.
 	\end{enumerate}
 \end{proof}
 
+We will now see how we can use the $\sigma$-function to prove the desired
+property.
+
 \begin{proposition}
 	\label{prop:complex-divisors}
 	Let $n_1, \dots, n_r \in \Z$ and $z_1, \dots, z_n \in \C$, such that
@@ -508,7 +543,8 @@ functions.
 
 \begin{proof}
 	Let $\lambda = \sum n_i z_i \in \Lambda$.
-	Replacing $\sum n_i(z_i)$ by $\sum n_i(z_i) + (0) - (\lambda)$, we may assume
+	Replacing $\sum n_i(z_i)$ by $\sum n_i(z_i) + (0) - (\lambda)$,
+	we may assume
 	that $\sum n_iz_i = 0$ (indeed these are two different writings
 	for the same divisor as $0 \equiv \lambda \mod \Lambda$).
 	Then from \ref{lem:sigma-properties}(a) we get that
@@ -526,6 +562,23 @@ functions.
 	\end{align*}
 	and hence $f \in \C(\Lambda)$.
 \end{proof}
+
+\subsection{Constructing the Isomorphism}
+
+The Weierstrass $\wp$-function satisfies a differential equation, which we
+will be able exploit to exhibit an isomorphism between an elliptic curve
+and a torus.
+
+\begin{proposition}
+	\label{prop:diffeq}
+	For all $z \in \C \setminus \Lambda$, we have that
+	\begin{equation*}
+		\wp'(z)^2 = 4\wp(z)^3 - 60G_4\wp(z) - 140G_6
+	\end{equation*}
+\end{proposition}
+
+In order to show that $\wp$ satisfies this differential equation,
+we will first calculate the Laurent series of $\wp$.
 
 \begin{proposition}
 	\label{prop:laurent}
@@ -563,15 +616,11 @@ functions.
 	out.
 \end{proof}
 
-\begin{proposition}
-	\label{prop:diffeq}
-	For all $z \in \C \setminus \Lambda$, we have that
-	\begin{equation*}
-		\wp'(z)^2 = 4\wp(z)^3 - 60G_4\wp(z) - 140G_6
-	\end{equation*}
-\end{proposition}
+We can now use the Laurent series to show that $\wp$ satisfy \ref{prop:diffeq}.
+Since an elliptic function with no poles is constant, it suffices to look
+at the first few terms of the Laurent series.
 
-\begin{proof}
+\begin{proof}[Proof of \ref{prop:diffeq}]
 	We write the first few terms in various Laurent expansions:
 	\begin{align*}
 		\wp(z) &= z^{-2} + 3G_4z^2 + 5G_6z^4 + \dots\\
@@ -600,6 +649,11 @@ functions.
 		\wp'(z)^2 = 4\wp(z)^3 - g_2\wp(z) - g_3
 	\end{equation*}
 \end{remark}
+
+The differential equation in \ref{prop:diffeq} being the equation for
+an elliptic curve, we can finally exhibit an isomorphism between
+$\C/\Lambda$, which is the torus and the elliptic curve given by the
+corresponding equation.
 
 % Proposition VI.3.6
 \begin{theorem}
@@ -728,6 +782,8 @@ The following theorem (which we will not prove) gives the converse to \ref{thm:l
 	$\Lambda \subseteq \C$ unique up to homothety, such that
 	$a = g_2(\Lambda)$ and $b = g_3(\Lambda)$
 \end{theorem}
+
+\subsection{Homology Groups of Elliptic Curves}
 
 Since any elliptic curve is isomorphic to a curve given by an equation as in
 \ref{thm:curve-lattice}, we deduce that all curves are homeomorphic

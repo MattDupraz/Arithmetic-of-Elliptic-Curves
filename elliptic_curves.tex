@@ -69,7 +69,7 @@ Weierstrass equation.
 	Hence $\phi$ induces an isomorphism of function fields
 	$\phi^*: K(V) \to K(U)$ and hence
 	$\phi^*: K(\proj^1) \to K(E)$ is an isomorphism 
-	(using \ref{prop:function-fields}).
+	(since $K(V) = K(\proj^1)$ and $K(U) = K(E)$).
 	It follows that $\deg\phi = 1$.
 \end{proof}
 
@@ -359,7 +359,6 @@ with identity element $O = \kappa^{-1}(0)$,
 	\end{equation*}
 	for all $P, Q \in E$.
 \end{definition}
-\comment{Seems a bit awkward, rephrase?}
 
 \begin{notation}
 	For $m \in \N\setminus\{0\}$ and $P \in E$ we define
@@ -372,7 +371,7 @@ with identity element $O = \kappa^{-1}(0)$,
 
 % CRITERIA PRINCIPAL DIVISORS
 
-Thanks to how the composition law is defined on $E$, we get the following useful
+Thanks to how the composition law is defined on $E$, we get the following
 criteria that tells us when a divisor is principal.
 \begin{proposition}
 	\label{prop:div-principal}
@@ -402,7 +401,7 @@ criteria that tells us when a divisor is principal.
 % GEOMETRIC COMPOSITION LAW
 
 We will now introduce another composition law defined for smooth cubic plane
-curves and show that it coincides with the above composition law.
+curves and show that it coincides with the group law induced from $\Cl^0(E)$.
 This will not only provide the link with the usual definition of composition
 on an elliptic curve, but also give another way to compute the sum
 of two points on an elliptic curve.
@@ -486,7 +485,7 @@ follows.
 % EXPLICIT FORMULAS FOR ADDITION
 
 Thanks to the equivalence of $+$ and $\oplus$, we can calculate explicit
-formulas for the adition in $E$. As we have seen in
+formulas for addition on $E$. As we have seen in
 Section \ref{subs:definition-properties}, we can suppose up to a curve isomorphism
 that $E$ is given by the reduced Weierstrass equation
 \begin{equation*}
@@ -500,7 +499,7 @@ Let $P = (x_P, y_P) \in E$, then we
 \end{equation*}
 Indeed, the line connecting $P$ and $(x_P, -y_P)$, is the line
 $X = x_PZ$, which has as third intersection point $O$.
-the tangent to $E$ at $O$ is given by $Z = 0$,
+The tangent to $E$ at $O$ is given by $Z = 0$,
 which intersects $E$ with multiplicity 3 at $O$,
 hence we obtain that $P+(x_P, -y_P) = O$.
 
@@ -574,11 +573,10 @@ This can be summarized in the following proposition:
 			\begin{align*}
 				x_{[2]P} &= \left( \frac{3x^2 + a}{2y} \right)^2
 				- 2x\\
-				&= \frac{x^4 - 2ax^2 - 8bx + a^2}{4(x^3 + ax + b)}\\
+				%&= \frac{x^4 - 2ax^2 - 8bx + a^2}{4(x^3 + ax + b)}\\
 				y_{[2]P} &= - \frac{3x^2 + a}{2y}x_{[2]P}
 				+ \frac{-x^3 + ax + 2b}{2y}
 			\end{align*}
-			\comment{Simplify?}
 	\end{enumerate}
 \end{proposition}
 
@@ -660,7 +658,7 @@ in $E$, we can show that addition and negation define curve morphisms.
 
 \begin{proof}
 	From \ref{prop:curve-correspondence}, we know that there exists an
-	isomorphism $\psi$ between $(E, O)$, and a curve $C$ given by an equation
+	isomorphism $\psi$ between $(E, O)$ and a curve $C$ given by an equation
 	of the reduced Weierstrass form
 	\begin{equation*}
 		C: y^2 = x^3 + ax + b
@@ -699,10 +697,10 @@ in $E$, we can show that addition and negation define curve morphisms.
 	From \ref{prop:explicit-equations} we see that the addition map
 	$+: E\times E\to E$ is regular at all points except possibly at points
 	of the form $(P, P), (P, -P), (P, O), (O, P)$, since for points not of this
-	form, we have that $(+) = [x_{P + Q}, y_{P + Q}, 1]$ and
+	form, we have that $P + Q = (x_{P + Q}, y_{P + Q})$, and
 	$x_{P + Q}$ and $y_{P + Q}$ can be written as a polynomial fraction
-	with only a power of $(x_Q - x_P)$ in the denominator, which is well defined
-	for such points.
+	with only a power of $(x_Q - x_P)$ in the denominator,
+	which is well defined for such points.
 
 	Now to deal with the other cases, let $Q_1, Q_2 \in E$ be any two points
 	and $\tau_1, \tau_2$ the two associated translation maps. Consider the
@@ -716,21 +714,27 @@ in $E$, we can show that addition and negation define curve morphisms.
 		\phi(P_1, P_2) = (P_1 + Q_1) + (P_2 + Q_2) - Q_1 - Q_2 = P_1 + Q_2,
 	\end{equation*}
 	since $E$ is an abelian group.
-	Hence the rational maps $\phi$ and $(+)$ agree
-	wherever they are both defined.
+	Hence the rational maps $\phi$ and $+$ are the same (they agree
+	on an open subset of $E\times E$).
 
-	Since the $\tau_i$ are isomorphisms, we get that $\phi$ is regular at all
+	We have that the $\tau_i$ are rational maps 
+	(defined by $\tau_i(P) = (x_{P + Q_i}, y_{P + Q_i})$) between smooth curves
+	and so they are morphisms. They're invertible, so they are isomorphisms.
+	It follows that $\phi$ is regular at all
 	points except possibly at points of the form
 	\begin{equation*}
 		(P - Q_1, P - Q_2), (P-Q_1, -P - Q_2), (P - Q_1, -Q_2), (-Q_1, P-Q_2)
 	\end{equation*}
-	and consequently $(+)$ is regular at points not of this form.
-	By varying $Q_1$, $Q_2$, we deduce that $(+)$ is regular everywhere
+	and consequently $+$ is regular at points not of this form.
+	By varying $Q_1$, $Q_2$, we deduce that $+$ is regular everywhere
 	and so a morphism.
-	\comment{Not sure about this proof...}
+
+	The map $-$ is a rational map between smooth curves (defined by
+	$-(x_P, y_P) = (x_p, -y_P)$), hence a morphism.
 \end{proof}
 This proves that $E$ is an algebraic group, that is an algebraic variety
-with the structure of a group, such that $+$ and $-$ are regular.
+with the structure of a group, such that $+$ and $-$ are regular (this
+makes $E$ an \emph{algebraic group}).
 
 % [m] IS AN ISOGENY
 
@@ -762,7 +766,8 @@ with the structure of a group, such that $+$ and $-$ are regular.
 \end{proof}
 
 The $[m]$ isogeny will play an important role in showing the
-Weil conjectures, as we will soon see.
+Weil conjectures. The reason is that its kernel is the $m$-torsion
+subgroup of $E$.
 
 % m-TORSION SUBGROUP
 
@@ -780,10 +785,13 @@ Weil conjectures, as we will soon see.
 	\end{equation*}
 \end{definition}
 
+The $m$-torsion subgroups have a really nice structure, which we will be
+able to exploit and extract some valuable information from.
+
 % FROBENIUS MORPHISM
 
-Another important example of isogeny is the Frobenius morphism, which we defined
-earlier.
+Another important example of isogeny is the Frobenius morphism,
+which we defined earlier.
 \begin{proposition}
 	Let $E$ be an elliptic curve given by a Weierstrass equation
 	and suppose $\chr(K) = p \neq 0$. Let
@@ -815,8 +823,8 @@ earlier.
 	\end{equation*}
 	and so by \ref{prop:singular-determinant}, we deduce that
 	$E^{(q)}$ is smooth iff $E$ is.
-	Hebce $E^{(q)}$ is an elliptic curve and $\phi_q$ being a morphism
-	which sends $O$ to $O$ is an isogeny.
+	Hence $E^{(q)}$ is an elliptic curve and $\phi_q$, being a morphism
+	which sends $O$ to $O$, is an isogeny.
 \end{proof}
 
 Let $\F_q \subset K$ be the subfield of $K$ of order $q$.
@@ -827,17 +835,18 @@ i.e. the points whose coordinates lie in $\F_q$,
 \begin{equation*}
 	E(\F_q) = \{(x, y) \in E\mid x,y \in \F_q\} \cup \{O\}.
 \end{equation*}
-Since the set of fixed points of the $q$\ts{th} power map in $K$ is
-$\F_q$, we have that $E(\F_q)$ is exactly the set of fixed points of $\phi_q$,
-and hence
+As we have noted earlier, $E(\F_q)$ is exactly the set of fixed
+points of $\phi_q$, which we can rewrite thanks to the group structure
+of $E$ as
 \begin{equation*}
 	E(\F_q) = \ker(1 - \phi_q).
 \end{equation*}
-This fact will play a central role in counting
-the set of points of $E$ defined
-over finite fields. In fact, the following theorem gives us
-a relation that will
-allow us to find the cardinality of $\ker(1 - \phi_q)$.
+Since $\ker(1 - \phi_q) = (1 - \phi_q)^{-1}(O)$ we can now try make use of
+\ref{prop:ramification-properties} to calculate the cardinality of this set.
+The issue is that \ref{prop:ramification-properties} gives us the cardinality
+of the preimage of a non-constant morphism at almost all points, but not
+all of them.
+Thankfully, we can rectify this thanks to the group structure of $E$.
 
 % CARDINALITY OF PREIMAGE
 
@@ -968,11 +977,15 @@ later.
 	In partiular, $1 - \phi_q$ is a separable isogeny.
 \end{proposition}
 
-% DUAL ISOGENY
-% ------------
-\subsection{Dual Isogeny}
+In particular, in the light of the above discussion, we get that
+\begin{equation*}
+	\#E(\F_q) = \#\ker(1 - \phi_q) = \deg(1 - \phi_q)
+\end{equation*}
 
-We will now move on to the topic of dual isogenies. Given an isogeny
+\subsection{The Dual Isogeny}
+
+We will now briefly introduce the notion of dual isogenies. 
+Given an isogeny
 \begin{equation*}
 	\phi: E_1 \to E_2,
 \end{equation*}
@@ -980,7 +993,7 @@ we have that $\phi$ induces a map
 \begin{equation*}
 	\phi^*: \Cl^0(E_2) \to \Cl^0(E_1).
 \end{equation*}
-We can use $\phi^*$ to construct the map $\dual\phi: E_2 \to E_1$
+We can use $\phi^*$ to construct a map $\dual\phi: E_2 \to E_1$
 as the composition
 \begin{equation*}
 	\begin{tikzcd}
@@ -997,7 +1010,7 @@ ommitted here.
 	The isogeny $\dual\phi$ is called the \emph{dual isogeny}.
 \end{definition}
 
-The dual isogeny has many properties that make it quite useful.
+The dual isogeny has many properties that make it behave quite nicely.
 The following theorem lists a few of those properties.
 
 % DUAL ISOGENY PROPERTIES
@@ -1009,7 +1022,7 @@ The following theorem lists a few of those properties.
 		\phi: E_1 \to E_2
 	\end{equation*}
 	be an isogeny of degree $d$. Then 
-	\begin{enumerate}[label=(\alph*)]
+	\begin{enumerate}[label=(\alph*), itemsep=0em]
 		\item We have that
 			\begin{align*}
 				\dual\phi \circ \phi &= [d] \qquad \textrm { on } E_1;\\
@@ -1019,49 +1032,84 @@ The following theorem lists a few of those properties.
 			\begin{equation*}
 				\ddual{\lambda\circ\phi} = \dual\phi \circ \dual\lambda.
 			\end{equation*}
-		\item Let $\psi: E_1 \to E_3$ be another isogeny, then
-			\begin{equation*}
-				\ddual{\phi + \psi} = \dual\phi + \dual\psi.
-			\end{equation*}
-		\item For all $m \in \Z$,
-			\begin{equation*}
-				\ddual{[m]} = [m]
-				\qquad\text{and}\qquad
-				\deg [m] = m^2.
-			\end{equation*}
+		\item For all $m \in \Z$, $[m] = \ddual{[m]}$
 		\item 
-			\begin{equation*}
-				\deg \dual \phi = \deg \phi.
-			\end{equation*}
-		\item
 			\begin{equation*}
 				\dual{\dual{\phi}} = \phi
 			\end{equation*}
 	\end{enumerate}
 \end{theorem}
-\comment{Do I prove this?}
 
-% --------------- %
-% THE TATE MODULE %
-% --------------- %
-\subsection{The Tate Module}
+\begin{proof}
+	\begin{enumerate}[label=(\alph*), itemsep=0em]
+		\item We have that $\phi = \kappa_2^{-1}\circ\phi_*\circ\kappa_1$
+			and hence by \ref{prop:divisor-map-properties}(e)
+			\begin{align*}
+				\phi\circ\dual\phi &=(\kappa_2^{-1}\circ\phi_*\circ
+				\kappa_1)\circ(\kappa_1^{-1}\circ\phi^*\circ\kappa_2)\\
+				&=\kappa_2^{-1}\circ \phi_*\circ\phi^*\circ \kappa_2 = [d]
+			\end{align*}
+			Now, we have that
+			\begin{equation*}
+				(\dual\phi\circ\phi)\circ\dual\phi = 
+				\dual\phi\circ[d] = [d]\circ\dual\phi
+			\end{equation*}
+			and hence $\dual\phi\circ\phi = [d]$, since $\dual\phi$ is
+			non-constant and hence surjective.
+		\item We deduce from \ref{prop:divisor-map-properties}(f)
+			\begin{align*}
+				\ddual{\lambda\circ\phi} &= 
+				\kappa_1^{-1}\circ(\lambda\circ\phi)^*\circ\kappa_3\\
+				&= \kappa_1^{-1}\circ\phi^*\circ\lambda^*\circ\kappa_3\\
+				&= \dual\phi\circ\dual\lambda
+			\end{align*}
+		\item Admitted. See \cite[III.6.2(d)]{silverman}.
+		\item We have that
+			\begin{equation*}
+				\phi\circ\dual\phi = [d] = \ddual{[d]}
+				= \ddual{\phi\circ\dual\phi} = 
+				\dual{\dual\phi} \circ\dual\phi
+			\end{equation*}
+			and hence $\phi = \dual{\dual\phi}$, since $\dual\phi$
+			is non-constant and hence surjective.
+		\end{enumerate}	
+\end{proof}
 
-% STRUCTURE OF E[m]
+We get thanks to this theorem the following corollary, which will allow us
+to deduce the cardinality of $E[m]$.
 
-Thanks to the dual isogeny, we can deduce the structure of
-the $m$-torsion part of an elliptic curve.
+\begin{corollary}
+	For any $m \in \Z$, we have that $\deg[m] = m^2$.
+\end{corollary}
+
+\begin{proof}
+	We have that
+	\begin{equation*}
+		[m]\circ\ddual{[m]} = [m]\circ[m] = [m^2]
+	\end{equation*}
+	and hence $\deg[m] = m^2$ by \ref{thm:dual-isogeny-properties}.
+\end{proof}
+
+In the case when $[m]$ is separable, it follows that
+\begin{equation*}
+	\#E[m] = \#\ker[m] = \deg[m] = m^2.
+\end{equation*}
+Being an abelian group, we
+are close to determining the structure of $E[m]$ up to isomorphism.
+In fact $E[m]$ is a product of two cyclic groups of order $m$.
+
 \begin{proposition}
 	\label{prop:E-m-structure}
 	Let $E$ be an elliptic curve and $m \in \Z$, $m \neq 0$.
 	Suppose that $m$
 	is prime to $p$ if $p > 0$. Then
 	\begin{equation*}
-		E[m] = (\Z/m\Z)\times (\Z/m\Z)
+		E[m] \cong (\Z/m\Z)\times (\Z/m\Z)
 	\end{equation*}
 \end{proposition}
 
 \begin{proof}
-	From \ref{thm:dual-isogeny-properties} we have that $\deg[m] = m^2$ and
+	We have that $\deg[m] = m^2$ and
 	from \ref{prop:m-separable}, $[m]$ is separable, hence
 	using \ref{thm:preimage-card}, we deduce that
 	\begin{equation*}
@@ -1109,7 +1157,17 @@ the $m$-torsion part of an elliptic curve.
 	using the Chinese remainder theorem.
 \end{proof}
 
-So let $l$ be a prime different from $p = \chr(K)$ if $p > 0$.
+% --------------- %
+% THE TATE MODULE %
+% --------------- %
+\subsection{The Tate Module}
+
+% STRUCTURE OF E[m]
+
+In this section we will construct the \emph{Tate Module},
+which will allow us to exploit the structure of $E[m]$.
+
+Let $l$ be a prime that is different from $p = \chr(K)$ if $p > 0$.
 For any isogeny
 $\phi: E_1 \to E_2$, we have that $l^n$-torsion points are sent to
 $l^n$-torsion points (since it is a group morphism)
@@ -1143,6 +1201,8 @@ First let us define what an inverse limit of a sequence of rings is
 	(replace ``ring" by ``group" in the definition).
 \end{definition}
 
+We can now define what $l$-adic integers are.
+
 \begin{definition}
 	Let $l$ be a prime. The ring of $l$-adic integers, denoted $\Z_l$,
 	is the inverse limit
@@ -1158,7 +1218,7 @@ First let us define what an inverse limit of a sequence of rings is
 	$\pi_n: \Z_l \to \Z/l^n\Z, a \mapsto a_n$.
 \end{definition}
 
-We will hence use the construction of an inverse limit with the $E[l^n]$
+We will use the construction of inverse limit with the $E[l^n]$
 with the goal to get a representation of $\Hom(E_1, E_2)$ over
 $\GL_2(\Z_l)$.
 
@@ -1209,7 +1269,8 @@ $\GL_2(\Z_l)$.
 As we will see, the trace and determinant of $\phi_l$ encode
 very useful quantities. 
 
-We can apply the same construction to the multiplicative group $K^\times$.
+We can also apply the construction of inverse limits
+to the multiplicative group $K^\times$.
 Let $\mu_{l^n}$ be the subgroup of $(l^n)$\ts{th} roots of unity of $K$
 (recall $K$ is algebraically closed). Then raising to the $l$\ts{th}
 power defines a natural map $\mu_{l^{n+1}} \to \mu_{l^n}$.
@@ -1225,7 +1286,9 @@ power defines a natural map $\mu_{l^{n+1}} \to \mu_{l^n}$.
 	power maps.
 \end{definition}
 
-Since $\mu_{l^n} \cong \Z/l^n\Z$ and the projection maps agree,
+Since $\mu_{l^n} \cong \Z/l^n\Z$ and the projection maps agree
+(i.e. exponentiation by $l$ in $\mu_{l^n}$ corresponds to multiplication
+by $l$ in $\Z/l^n\Z$),
 we see that $T_l(\mu) \cong \Z_l$
 as a group (where multiplication in $T_l(\mu)$ corresponds to addition in
 $\Z_l$).
@@ -1245,7 +1308,8 @@ Let $E$ be an elliptic curve.
 
 % EXISTENCE OF WEIL PAIRING
 
-The goal of this section is to prove the following proposition.
+The goal of this section is to construct the Weil pairing, i.e. construct
+a bilinear form with the properties described in the following proposition.
 \begin{proposition}
 	\label{prop:weil-pairing}
 	Suppose $l \in \Z$ is a prime different from $p = \chr(K)$ if $p > 0$.
@@ -1317,8 +1381,9 @@ the choice of $X$. Furthermore, $g$ is defined up to multiplication by a
 constant in $K^\times$, but the value of the pairing does not depend on this
 choice either and hence it is well-defined.
 
-Before passing this construction to the projective limit, we will show
-that it satisfies some basic properties.
+The Weil $e_m$-pairnig satistfies the properties we were looking for,
+in particular, it is also compatible with taking the inverse limit.
+The following proposition makes this precise.
 
 \begin{proposition}
 	\label{prop:pairing-properties}
@@ -1351,6 +1416,10 @@ that it satisfies some basic properties.
 	\end{enumerate}
 \end{proposition}
 
+\begin{proof}
+	Admitted. See \cite[III.8.1]{silverman}.
+\end{proof}
+
 \begin{proposition}
 	Let $S \in E_1[m]$, $T \in E_2[m]$, and $\phi: E_1 \to E_2$
 	an isogeny. Then
@@ -1358,6 +1427,9 @@ that it satisfies some basic properties.
 		e_m(S, \dual\phi(T)) = e_m(\phi(S), T)
 	\end{equation*}
 \end{proposition}
+\begin{proof}
+	Admitted. See \cite[III.8.2]{silverman}.
+\end{proof}
 
 Now to prove proposition \ref{prop:weil-pairing}, it suffices to pass the 
 construction of $e_{l^n}$ to the inverse limit.
@@ -1399,6 +1471,10 @@ so this shows \ref{prop:weil-pairing}.
 \end{remark}
 
 % DEG-TR-DET FORMULA
+
+The following proposition finally makes concrete the
+utility of the Weil pairing. It will serve as the main tool for showing
+the Weil conjectures for elliptic curves.
 
 \begin{proposition}
 	\label{prop:deg-tr-det}
