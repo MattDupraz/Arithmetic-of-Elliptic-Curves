@@ -62,31 +62,49 @@ We won't define what a ``good reduction" means in general, but we can
 look at the case of elliptic curves given by a Weierstrass equation.
 
 If $K$ be a number field (seen as a subfield of its algebraic closure $\cl{K}$)
-and $\O_K$ its ring of integers. When $E$ is an elliptic curve given by a
-Weierstrass equation defined over $\O_K$, i.e. $E$ is of the form
+and $\O$ its ring of integers. Suppose $E$ is an elliptic curve given by a
+Weierstrass equation defined over $K$, i.e. $E$ is of the form
 \begin{equation*}
 	E: y^2 = x^3 + ax + b
 \end{equation*}
-with $a, b \in \O_K$. Then for $p \in \Z$ a prime, the reduction modulo $p$
-of $E$ is the curve
+with $a, b \in K$. We have that $K = \Frac(\O)$ and so we can write
+$a = a_1/a_2$ and $b = b_1/b_2$ for some $a_1, b_1 \in \O$, and
+$a_2, b_2 \in \O\setminus\{0\}$.
+We can decompose the ideal $(a_2b_2)$ into a product of prime ideals.
+\begin{equation*}
+	(a_2b_2) = \mf{p}_1\dots\mf{p}_s
+\end{equation*}
+Then choosing a prime ideal
+$\mf{p}$ of $\O$ different from $\mf{p}_i$ for any $i$,
+we get that $a_2, b_2 \notin \mf{p}$.
+Hence we can see $E$ as being defined over $\O_\mf{p}$.
+The maximal ideal $\mf{P}$ of $\O_\mf{p}$ is just the image of $\mf{p}$
+under the localization. We deduce
+\begin{equation*}
+	\O_\mf{p}/\mf{P} \cong (\O/\mf{p})_\mf{p} = \O/\mf{p} \cong \F_q,
+\end{equation*}
+where $q$ is a power of $p$, where $(p) = \mf{p}\cap\Z$.
+
+This gives us a new curve $C$ obtained by reducing $E$ modulo $\mf{P}$.
+
 \begin{equation*}
 	C: y^2 = x^3 + \bar{a}x + \bar{b},
 \end{equation*}
-defined over the residue field $k_p = \O_K/p\O_K \cong \F_q$ for $q$
-some power of $p$.
+defined over the residue field isomorphic to $\F_q$.
 We say that $C$ is a \emph{good} reduction of $E$ modulo $p$
 if it is also smooth. That is the case if and only if its discriminant
 \begin{equation*}
 	\Delta(C) = 4\bar{a}^3 + 27\bar{b}^2
 \end{equation*}
 is non-zero. But notice that the discriminant of $C$ is just the residue
-of $\Delta(E) = 4a^3 + 27b^2$ in $k_p$.
-Hence the reduction of $E$ mod $p$ is ``good" if $\Delta(E) \not\in pO_K$.
+of $\Delta(E) = 4a^3 + 27b^2$ modulo $\mf{P}$.
+Hence the reduction of $E$ mod $p$ is ``good" if $\Delta(E) \not\in \mf{P}$.
 We will show that (d) of \ref{thm:weil} holds for elliptic curves given
 by Weierstrass equations in Section
 \ref{sec:over-C}.
 
-In the rest of this section, we will prove the Weil conjectures for the case
+In the rest of this section, we will prove the Weil conjectures (save part (d))
+for the case
 of elliptic curves. For that, we will make use of the relation found in
 \ref{prop:deg-tr-det}.
 In the following proposition we get a formula for $\#E(\F_{q^n})$, which
