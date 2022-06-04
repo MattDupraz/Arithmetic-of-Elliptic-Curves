@@ -344,8 +344,26 @@ Recall that a rational map $\phi: C_1 \to C_2$ induces a map fixing $K$
 \end{align*}
 By the above theorem, if $\phi$ is not constant, then it is surjective
 and hence $\phi^*$ is an injection.
-One can show that $K(C_1) / \phi^*K(C_2)$ is a finite extension. This leads
-us to the following definition.
+One can show that $K(C_1) / \phi^*K(C_2)$ is a finite extension 
+(see \cite[II.6.8]{hartshorne}).
+It follows we can consider the norm on this extension. We can see $K(C_1)$ as a
+$\phi^*K(C_2)$-vector space in which case elements of $K(C_1)$ act on
+$K(C_1)$ via multiplication, which is a $\phi^*K(C_2)$-linear
+transformation. The norm $N_{K(C_1)/\phi^*K(C_2)}(f)$ of an element
+$f \in K(C_1)$ is then defined to be
+the determinant of this $\phi^*K(C_2)$-linear transformation.
+By definition, $N_{K(C_1)/\phi^*K(C_2)}(f) \in \phi^*K(C_2)$, and so by
+injectivity of $\phi^*$, we can take the inverse
+\begin{equation*}
+	\phi_*(f) := (\phi^*)^{-1}\circ N_{K(C_1)/\phi^* K(C_2)}(f).
+\end{equation*}
+This defines a map of function fields 
+\begin{equation*}
+	\phi_*: K(C_1) \to K(C_2).
+\end{equation*}
+
+We can also consider the degree the extension $K(C_1)/\phi^*K(C_2)$,
+which will define the degree of a map of curves.
 
 \begin{definition}
 	Let $\phi: C_1 \to C_2$ be a map of curves defined over $K$.
@@ -475,13 +493,15 @@ The following proposition will make sense of the intuition we gave above.
 			\end{equation*}
 	\end{enumerate}
 \end{proposition}
-\comment{Add proof?}
+
+\begin{proof}
+	Admitted. See \cite[II.2.6]{silverman}.
+\end{proof}
 
 In particular, if $\phi$ is separable, then for all but finitely many
 $Q \in C_2$, we get that $\#\phi^{-1}(Q) = \deg(\phi)$. Intuitively this means
-that the sheets of the cover $\phi$ simply intersect at a finite amount 
-of points. If $\phi$ is not separable, then we might imagine some sheets
-merging together. This already hints at the fact that separability is
+that the sheets of the cover $\phi$ intersect at a finite amount 
+of points. This already hints at the fact that separability is
 a very important property of maps between smooth curves, as it will allow us
 to count points in the maps' preimages.
 
@@ -623,13 +643,63 @@ These maps have many useful properties, as the following proposition shows.
 		\item If $\psi: C_2\to C_3$ is another such map,
 			then
 			\begin{equation*}
-				(\psi\circ\phi)^* = \phi^*\psi^*
+				(\psi\circ\phi)^* = \phi^*\circ\psi^*
 				\qquad\textrm{and}\qquad
-				(\psi\circ\phi)_* = \phi_*\psi_*
+				(\psi\circ\phi)_* = \phi_*\circ\psi_*
 			\end{equation*}
 	\end{enumerate}
 \end{proposition}
-\comment{Proof? Define $\phi_*: K(C_1) \to K(C_2)$ }
+\begin{proof}
+	\begin{enumerate}[label=(\alph*), itemsep=0em]
+		\item We have that if $D = \sum n_Q(Q)$,
+			\begin{equation*}
+				\phi^*D = \sum_{Q \in C_2}n_Q\sum_{P \in \phi^{-1}(Q)}
+				e_\phi(P)\cdot(P).
+			\end{equation*}
+			From \ref{prop:ramification-properties}(a) it follows that
+			\begin{equation*}
+				\deg(\phi^*D) = \sum_{Q \in C_2}n_Q\deg(\phi) = \deg(D)\deg(\phi).
+			\end{equation*}
+		\item Let $P\in C_1$, and let $t_{\phi(P)}$ be an uniformizer 
+			at $\phi(P)$. Then let $k = \ord_{\phi(P)}(f)$, we have that
+			$f = t_{\phi(P)}^k g$ for some $g$ of order $0$ at $\phi(P)$.
+			It follows that
+			\begin{align*}
+				\ord_P(\phi^*f) &= \ord_P((\phi^*t_{\phi(P)})^k(\phi^*g))\\
+				&= \ord_P(\phi^*t_{\phi(P)})\cdot k + \ord_P(\phi^*g)\\
+				&= e_\phi(P)\ord_{\phi(P)}(f),
+			\end{align*}
+			since $\phi^*g$ is regular at $P$, since $\phi$ is a morphism.
+			Then we get
+			\begin{align*}
+				\div(\phi^*f) &= \sum_{P \in C_1} \ord_P(\phi^*f)\cdot(P)\\
+				&= \sum_{P \in C_1} e_\phi(P)\ord_{\phi(P)}(f)\cdot(P)\\
+				&= \sum_{Q \in C_2} \sum_{P \in \phi^{-1}(Q)}
+				e_\phi(P)\ord_{Q}(f)\cdot(P)\\
+				&= \phi^*(\div f).
+			\end{align*}
+		\item Clear from the definition of $\phi_*$.
+		\item Admitted. See \cite[II.3.6(d)]{silverman}.
+		\item For all $Q \in C_2$, using \ref{prop:ramification-properties}(a),
+			\begin{align*}
+				\phi_*\circ\phi^*((Q)) &= \phi_*\left(
+				\sum_{P \in \phi^{-1}(Q)}e_\phi(P)\cdot(P)\right)\\
+				&= \sum_{P \in \phi^{-1}(Q)}e_\phi(P)\cdot(Q)\\
+				&= \deg(\phi)\cdot(Q).
+			\end{align*}
+		\item Let $R \in C_3$, then using \ref{prop:ramification-properties}(c),
+			\begin{align*}
+				(\psi\circ\phi)^*(R) &= \sum_{P \in (\psi\circ\phi)^{-1}}
+				e_{\psi\circ\phi}(P)\cdot(P)\\
+				&= \sum_{P \in (\psi\circ\phi)^{-1}}
+				e_{\phi}(P)e_\psi(\phi(P))\cdot(P)\\
+				&= \sum_{Q \in \psi^{-1}(R)}\sum_{P \in \phi^{-1}(Q)}
+				e_{\phi}(P)e_\psi(Q)\cdot(P)\\
+				&= \phi^*\circ\psi^*(R).
+			\end{align*}
+			The second equality follows clearly from definition.
+	\end{enumerate}
+\end{proof}
 
 Thanks to these properties, we can show that principal divisors have degree
 0, making $\PDiv(C)$ a subgroup of $\Div^0(C)$.
@@ -761,6 +831,9 @@ forms to also be one-dimensional. And indeed, that is the case.
 	Furthermore, if $t \in K(C)$ is a uniformizer at $P$,
 	then $dt$ generates $\Omega_C$.
 \end{proposition}
+\begin{proof}
+	See \cite[II.1.4, II.4.2]{silverman}
+\end{proof}
 
 This gives us a correspondence between differential forms and functions
 on $C$.
@@ -782,6 +855,9 @@ proposition says that's not the case.
 	\end{equation*}
 	is independent of the choice of uniformizer $t$.
 \end{proposition}
+\begin{proof}
+	See \cite[II.4.3(c)]{silverman}
+\end{proof}
 
 \begin{definition}
 	We call $\ord_P(\omega/dt)$ the order of $\omega$ at $P$ and denote it by
@@ -897,8 +973,6 @@ the curve.
 This will be very useful, as it will allow us to show that elliptic curves,
 which are by definition smooth curves of genus 1, are
 isomorphic to plane curves given by a specific cubic equation.
-The proof of the theorem
-being outside of the scope of this paper, it will not be provided.
 \begin{theorem}[Riemann-Roch]
 	\label{thm:riemann-roch}
 	Let $C$ be a smooth curve of genus $g$ and $K_C$ a canonical divisor on $C$.
@@ -907,6 +981,9 @@ being outside of the scope of this paper, it will not be provided.
 		l(D) - l(K_C - D) = \deg D - g + 1.
 	\end{equation*}
 \end{theorem}
+\begin{proof}
+	Admitted. See \cite[IV.1.3]{hartshorne}
+\end{proof}
 
 We get also the following corollary, part (b) being especially useful
 because it will allow us to avoid working
