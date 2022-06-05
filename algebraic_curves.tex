@@ -1044,6 +1044,7 @@ Thanks to the Riemann-Roch theorem, we can also link the genera of
 curves that admit some non-constant separable map between them.
 The following theorem makes this concrete.
 \begin{theorem}[Riemann-Hurwitz]
+	\label{thm:riemann-hurwitz}
 	Let $C_1, C_2$ be smooth curves of genus $g_1, g_2$ respectively.
 	Let $\phi: C_1 \to C_2$ be a non-constant separable map, then
 	\begin{equation*}
@@ -1068,6 +1069,7 @@ the genus of a plane curve.
 	\label{cor:genus-formula}
 	Let $F \in K[X, Y, Z]$ be homogeneous of degree $d \geq 1$, and suppose that
 	the curve $C$ in $\proj^2$ given by the equation $F = 0$ is non-singular.
+	Furthermore, suppose $\chr(K) = 0$ or $\chr(K) > d$.
 	Then
 	\begin{equation*}
 		\genus(C) = \frac{(d-1)(d-2)}{2}.
@@ -1075,7 +1077,113 @@ the genus of a plane curve.
 \end{corollary}
 
 \begin{proof}
-	\comment{Need proof}
-\end{proof}
+	Using a change of variables if necessary, we can write
+	\begin{equation*}
+		F(X, Y, 1) = Y^d + a_{d-1}(X)Y^{d-1} + \dots + a_0(X).
+	\end{equation*}
+	It follows that $O = [0, 1, 0] \notin C$. Furthermore, we can suppose
+	up to using another change of variables that
+	$C$ intersects $\{Z = 0\} \cong \proj^1$
+	in exactly $d$ points (which is the case
+	by Bézout's theorem as long as each intersection of $C$ with $\{Z = 0\}$
+	is transverse).
+
+	Define $\phi: C \to \proj^1$ the morphism given 
+	by the projection on the $x$-coordinate, i.e.
+	\begin{equation*}
+		\phi([X, Y, Z]) = [X/Z, 1]
+	\end{equation*}
+	For points at infinity, we can use $[X/Z, 1] = [1, Z/X]$, since we supposed
+	$[0, 1, 0] \notin C$ and hence we get that all points at infinity are sent
+	to $[1, 0]$.
+
+	Let $x: C \to K, [X, Y, Z] \mapsto X/Z$ and $y: C \to K, [X, Y, Z] \mapsto
+	Y/Z$ be the coordinate functions on $C$ and $t:\proj^1\to K, [X, Y] \mapsto
+	X/Y$ the coordinate function on $\proj^1$.
+	Then $\phi^*(t) = x$ and hence
+	\begin{equation*}
+		\deg(\phi) = [K(C) : \phi^*K(\proj^1)] = [K(x, y): K(x)]
+	\end{equation*}
+	We have that $y$ satisfies the polynomial $G(u) := F(x, u, 1)$ and hence is algebraic
+	over $K(x)$ of degree at most $d$.
+
+	By definition of $\phi$, for all but finitely many $Q \in \proj^1$, 
+	\begin{equation*}
+		\#\phi^{-1}(Q) = d,
+	\end{equation*}
+	but this implies by \ref{prop:ramification-properties} that
+	$d = \deg_s(\phi) \leq \deg(\phi) \leq d$ and hence $\phi$ is separable of
+	degree $d$.
+
+	We can now apply the Riemann-Hurwitz formula \ref{thm:riemann-hurwitz}, which
+	thanks to the assumption $\chr(K) = 0$ or $\chr(K) > d$ is an equality
+	(by \ref{prop:ramification-properties}, $e_\phi(P) \leq d$ for all $p$).
+	Let $g = \genus(C)$, we have that $\genus(\proj^1) = 0$ by
+	\ref{ex:proj-genus}.
+	Hence the formula is written
+	\begin{equation*}
+		g = 1 - d + \frac{1}{2}\sum_{P \in C}(e_\phi(P) - 1)
+	\end{equation*}
+	Intuitively, $\phi$ is ramified at $P$ iff the tangent of $C$ at $P$ is 
+	vertical (which is when $\frac{\d F}{\d Y}(P) = 0$).
+	So we may be interested in looking 
+	at the intersections $F \cap \frac{\d F}{\d Y}$.
+	In fact, the result follows from Bézout's theorem if we show that
+	for all $P \in C$,
+	\begin{equation*}
+		e_\phi(P) - 1 = I\left(P, F\cap\frac{\d F}{\d Y}\right),
+	\end{equation*}
+	since $\deg(F) = d$ and $\deg\left(\frac{\d F}{\d Y}\right) = d-1$,
+	which implies
+	\begin{equation*}
+		\sum_{P \in C}(e_\phi(P) - 1) 
+		= \sum_{P \in C} I\left(P, F \cap \frac{\d F}{\d Y}\right)
+		= d(d-1).
+	\end{equation*}
+	Then the result follows directly.
+
+	So let's show this claim. Let $P = [x_P, y_P, 0] \in C$ a point at infinity,
+	then by assumption $\phi$ is unramified at $P$. Furthermore, $O \notin C$, so
+	$x_P \neq 0$. We can write the tangent of $C$ at $P$ under the form
+	\begin{equation*}
+		a(y_PX - x_PY) + bZ = 0
+	\end{equation*}
+	for some $a, b \in K$ (since $P$ has to satisfy the
+	equation). By assumption, $C$ intersects $\{Z = 0\}$ transversally at $P$
+	and hence $a \neq 0$, but this implies $\frac{\d F}{\d Y}(P) \neq 0$,
+	so $I\left(P, F\cap \frac{\d F}{\d Y}\right) = 0 = e_{\phi}(P) - 1$.
+
+	Now, let $P = (x_P, y_P) = [x_P, y_P, 1] \in C$ a point in $\{Z \neq 0\}$.
+	Up to a translation, we can suppose $P = (0, 0)$.
+	Then we have that $I\left(P, F\cap \frac{\d F}{\d Y}\right) =
+	\ord_P^F\left(\frac{\d F}{\d Y}(x, y, 1)\right)$ and
+	$e_\phi(P) = \ord_P^F(\phi^*t) = \ord_P^F(x)$.
+
+	We can write
+	\begin{align*}
+		F(X, Y, 1) &= \left(\frac{\d F}{\d X}(0, 0) + Q(X, Y)\right)X\\
+		&\qquad+ a_1(0)Y + \dots + a_{d-1}(0)Y^{d-1} + Y^d,
+	\end{align*}
+	where $Q(0, 0) = 0$,
+	so in $\O_P(C)$, we have that
+	\begin{equation*}
+		\left(\frac{\d F}{\d X}(0, 0) + Q(x, y)\right)x = 
+		- a_1(0)y - \dots - a_{d-1}(0)y^{d-1} - y^d,
+	\end{equation*}
+	where $\frac{\d F}{\d X}(0, 0) + Q(x, y)$ is invertible, since non-zero at
+	$(0, 0)$.
+	It follows that $\ord_P^F(x) = \min\{k \mid a_k(0) \neq 0\} =: m$.
+
+	Furthermore, we have that
+	\begin{equation*}
+		\frac{\d F}{\d Y}(x, y, 1) = x\frac{\d Q}{\d Y}(x, y)
+		+ a_1(0) + \dots + a_{d-1}(0)(d-1)y^{d-2} + dy^{d-1}.
+	\end{equation*}
+	Since $x\frac{\d Q}{\d Y}(x, y)$ is of order at least $m$ and
+	the rest of the right hand side is of order
+	$\min\{k \| a_k(0) \neq 0\} - 1 = m - 1$, we deduce
+	$\ord_P^F\left(\frac{\d F}{\d Y}(x, y, 1)\right) = m - 1$, which shows our
+	claim and completes the proof.
+ \end{proof} 
 
 
