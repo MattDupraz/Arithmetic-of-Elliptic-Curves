@@ -420,6 +420,12 @@ follows.
 	be the third point of intersection of $L'$ with $E$.
 \end{definition}
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{addition}
+	\caption{Visualization of geometric composition law}
+\end{figure}
+
 % EQUIVALENCE OF COMPOSITION LAWS
 
 \begin{proposition}
@@ -714,8 +720,7 @@ in $E$, we can show that addition and negation define curve morphisms.
 		\phi(P_1, P_2) = (P_1 + Q_1) + (P_2 + Q_2) - Q_1 - Q_2 = P_1 + Q_2,
 	\end{equation*}
 	since $E$ is an abelian group.
-	Hence the rational maps $\phi$ and $+$ are the same (they agree
-	on an open subset of $E\times E$).
+	Hence the maps $\phi$ and $+$ are the same.
 
 	We have that the $\tau_i$ are rational maps 
 	(defined by $\tau_i(P) = (x_{P + Q_i}, y_{P + Q_i})$) between smooth curves
@@ -1010,7 +1015,7 @@ as the composition
 	\end{tikzcd}.
 \end{equation*}
 It can be shown that $\dual\phi$ is an isogeny, however the proof will be
-ommitted here.
+ommitted here (see \cite[III.6.1]{silverman}).
 
 \begin{definition}
 	The isogeny $\dual\phi$ is called the \emph{dual isogeny}.
@@ -1146,13 +1151,13 @@ In fact $E[m]$ is a product of two cyclic groups of order $m$.
 		\prod_{i > 2}\Z/p_i^{k_i}\Z
 	\end{equation*}
 	where neither $p_i$ is equal to $q$. Let $r$ be the multiplicity of
-	$q$ in the prime decomposition of $m$. We have that $k_1 + k_2 = r$,
-	suppose $k_1 \geq k_2$. Then we have from direct calculation that
+	$q$ in the prime decomposition of $m$. We have that $k_1 + k_2 = 2r$.
+	Then we have from direct calculation that
 	the $q^r$-torsion subgroup of $E[m]$ is of cardinality
-	$q^{k_1}\min\{q^{k_2}, q^{r}\}$.
+	$\min\{q^{k_1}, q^r\}\min\{q^{k_2}, q^{r}\}$.
 	However the $q^r$-torsion subgroup of $E[m]$ is exactly $E[q^r]$, which
 	is of cardinality $q^{2r}$.
-	It follows that $k_2 \geq r$ and hence necessarily $k_1 = k_2 = r$.
+	It follows that $k_1, k_2 \geq r$ and hence necessarily $k_1 = k_2 = r$.
 	
 	Now, let for any prime $q \mid m$, the multiplicity $r_q$ with which
 	it divides $m$. We get that
@@ -1201,7 +1206,7 @@ First let us define what an inverse limit of a sequence of rings is
 		\left\{(a_n)_{n \in \N} \in \prod_{n\in\N}A_n \mid
 		\forall n \in \N, f_n(a_n) = a_{n-1} \right\},
 	\end{equation*}
-	taken as a subring of $\prod_{n\in \N}$.
+	taken as a subring of $\prod_{n\in \N}A_n$.
 
 	We define the inverse limit of a sequence of groups the same way
 	(replace ``ring" by ``group" in the definition).
@@ -1220,8 +1225,6 @@ We can now define what $l$-adic integers are.
 		\Z/l^{n+1}\Z &\to \Z/l^n\Z, \\
 		k &\mapsto k \mod l^n.
 	\end{align*}
-	For each $n \in \N$ we define the projection map 
-	$\pi_n: \Z_l \to \Z/l^n\Z, a \mapsto a_n$.
 \end{definition}
 
 We will use the construction of inverse limit with the $E[l^n]$
@@ -1259,6 +1262,13 @@ We can also immediately deduce the structure of $T_l(E)$.
 	Let $l$ a prime different from $p = \chr(K)$ if $p > 0$.
 	As a $\Z_l$-module, the Tate module is isomorphic to $\Z_l \times \Z_l$.
 \end{proposition}
+\begin{proof}
+	\begin{equation*}
+		T_l(E) = \varprojlim_n E[l^n]
+		\cong \varprojlim_n\left( \Z/l^n\Z\times\Z/l^n\Z\right)
+		= \Z_l \times \Z_l.
+	\end{equation*}
+\end{proof}
 
 As above, we get that an isogeny $\phi: E_1 \to E_2$ induces a homomorphism
 $\phi: E_1[l^n] \to E_2[l^n]$ for all $n \in \N$ and we have that
@@ -1292,10 +1302,25 @@ power defines a natural map $\mu_{l^{n+1}} \to \mu_{l^n}$.
 	power maps.
 \end{definition}
 
-Since $\mu_{l^n} \cong \Z/l^n\Z$ and the projection maps agree
-(i.e. exponentiation by $l$ in $\mu_{l^n}$ corresponds to multiplication
-by $l$ in $\Z/l^n\Z$),
-we see that $T_l(\mu) \cong \Z_l$
+We have that $\mu_{l^n} \cong \Z/l^n\Z$. Furthermore, if $\xi_n$ is an $l^n$-th
+primitive root of unity, this isomorphism is given by
+\begin{equation*}
+	\xi_n^k \to k \mod l^n
+\end{equation*}
+We have that
+\begin{equation*}
+	(\xi_n^k)^l = \xi_n^{kl} = \xi_{n-1}^k
+\end{equation*}
+and so the following diagram commutes:
+\begin{equation*}
+\begin{tikzcd}
+\mu_{l^n} \arrow[d, "\cong"] \arrow[r, "(\cdot)^l"] & \mu_{l^{n-1}}
+\arrow[d,"\cong"] \\
+\Z/l^n\Z \arrow[r, "\mod l^{n-1}"]         & \Z/l^{n-1}\Z           
+\end{tikzcd}
+\end{equation*}
+
+So we see that $T_l(\mu) \cong \Z_l$
 as a group (where multiplication in $T_l(\mu)$ corresponds to addition in
 $\Z_l$).
 
@@ -1338,6 +1363,7 @@ The strategy is to first construct a pairing
 \begin{equation*}
 	e_m: E[m] \times E[m] \to \mu_m
 \end{equation*}
+which has the desired properties,
 and then construct the Weil pairing using the inverse limit.
 Let $T \in E[m]$, then using \ref{prop:div-principal}
 there is a function $f \in K(E)$ such that
@@ -1349,8 +1375,8 @@ with $[m]T' = T$.
 
 Since $[m]$ is a separable isogeny, $e_{[m]}(P) = 1$ for all $P \in E$.
 \begin{align*}
-	[m]^*(T) - [m]^*(O) &= \sum_{P \in [m]^{-1}(T)}e_{[m]}(P) - \sum_{P \in
-	[m]^{-1}(0)}e_{[m]}(P)\\
+	[m]^*(T) - [m]^*(O) &= \sum_{P \in [m]^{-1}(T)}e_{[m]}(P)\cdot(P) -
+	\sum_{P \in [m]^{-1}(0)}e_{[m]}(P)\cdot(P)\\
 	&= \sum_{P \in E[m]}(T' + P) - (P)
 \end{align*}
 and since $\sum_{P \in E[m]} T' + P - P = [m^2]T' = O$, it follows that there
@@ -1448,7 +1474,7 @@ The inverse limits for $T_l(E)$ and $\T_l(\mu)$ are formed using the maps
 	\qquad\textrm{and}\qquad
 	\mu_{l^{n+1}}\xrightarrow{(\cdot)^l}\mu_{l^n}
 \end{equation*}
-i.e.
+so
 we require that
 \begin{equation*}
 	e_{l^{n+1}}(S, T)^l = e_{l^n}([l]S, [l]T).	

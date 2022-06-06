@@ -102,7 +102,7 @@ let $\Lambda \subseteq \C$ be an arbitrary lattice.
 
 \begin{notation}
 	The set of elliptic functions relative to the lattice $\Lambda$ is denoted
-	$\C(\lambda)$.
+	$\C(\Lambda)$.
 \end{notation}
 
 \begin{remark}
@@ -284,7 +284,7 @@ $\wp$-function are well defined and elliptic.
 		we can compute the derivative of $\wp$ by termwise differentiation.
 		We obtain
 		\begin{equation*}
-			\wp'(z) = -2\sum_{\lambda \in \Lambda} \frac{1}{z - \lambda}^3.
+			\wp'(z) = -2\sum_{\lambda \in \Lambda} \frac{1}{(z - \lambda)^3}.
 		\end{equation*}
 		It is clear from this expansion that $\wp'$ is an elliptic function,
 		hence for all $\lambda \in \Lambda$,
@@ -302,7 +302,7 @@ $\wp$-function are well defined and elliptic.
 	\end{enumerate}
 \end{proof}
 
-As in the case of elliptic curves, we can define divisors for elliptic
+As in the case of curves, we can define divisors for elliptic
 functions.
 \begin{definition}
 	Let $\Lambda$ be a lattice, the \emph{divisor group}
@@ -359,7 +359,8 @@ In fact, we can use them to show the following powerful result.
 	$f^{(k)}(z) = 0$ for all odd $k$. Hence $\ord_z f$ must be even.
 
 	Let $D$ be a fundamental parallelogram for $\Lambda$ and let $H$ 
-	be ``half" of $D$ in the sense that it is a fundamental domain for $(\C/\Lambda)/\{\pm 1\}$ in $\C$,
+	be ``half" of $D$ in the sense that it is a fundamental domain for
+	$(\C/\Lambda)/\{\pm 1\}$ in $\C$,
 	i.e. $\C = (H + \Lambda) \cup (-H + \Lambda)$.
 	Then the divisor of $f$ has the form
 	\begin{equation*}
@@ -462,7 +463,7 @@ this product will define an elliptic function.
 			\begin{equation*}
 				\sum_{\substack{
 					\lambda \in \Lambda\setminus 0\\
-					|\lambda| > \frac{3}{2}M}}
+					|\lambda| \geq \frac{3}{2}M}}
 				\left|\log\left(1 - \frac{z}{\lambda}\right) +
 				\frac{z}{\lambda} + \frac{1}{2}\left(
 				\frac{z}{\lambda}\right)^2\right|
@@ -616,7 +617,8 @@ we will first calculate the Laurent series of $\wp$.
 	out.
 \end{proof}
 
-We can now use the Laurent series to show that $\wp$ satisfy \ref{prop:diffeq}.
+We can now use the Laurent series to show that $\wp$ satisfies
+\ref{prop:diffeq}.
 Since an elliptic function with no poles is constant, it suffices to look
 at the first few terms of the Laurent series.
 
@@ -633,7 +635,8 @@ at the first few terms of the Laurent series.
 	\end{equation*}
 	is holomorphic around $z = 0$, since the negative power terms cancel
 	each other out. But since $\wp$ is elliptic and holomorphic on $\C \setminus
-	\Lambda$, we get that $f$ is holomorphic elliptic, and so constant.
+	\Lambda$, we get that $f$ is elliptic and holomorphic everywhere,
+	so constant.
 	Since $f$ vanishes at $0$, we get $f\equiv 0$.
 \end{proof}
 
@@ -673,7 +676,7 @@ corresponding equation.
 			[0, 1, 0] &\textrm{if } z \in \Lambda
 		\end{cases}
 	\end{align*}
-	is a complex analytic isomorphism of complex Lie groups.
+	is an isomorphism of complex Lie groups.
 \end{theorem}
 
 \begin{proof}
@@ -712,7 +715,7 @@ corresponding equation.
 	The function $\wp(z) - \wp(z_1)$ admits the roots $z_1, -z_1, z_2$, but being
 	of order 2, two of these values are congruent mod $\Lambda$.
 	Hence $z_2 \equiv \pm z_1 \mod \Lambda$. But since
-	$\wp'(z_1) = \wp'(z_2)$, we get necessarily $z_2 \equiv z_1 \mod \lambda$.
+	$\wp'(z_1) = \wp'(z_2)$, we get necessarily $z_2 \equiv z_1 \mod \Lambda$.
 	
 	Now, if $z_1 \equiv -z_1 \mod \Lambda$, then
 	\begin{equation*}
