@@ -308,7 +308,7 @@ functions.
 	Let $\Lambda$ be a lattice, the \emph{divisor group}
 	$\Div(\C/\Lambda)$ to be the free abelian group on the set
 	$\C/\Lambda$. We write elements of $\Div(\C/\Lambda)$ as
-	$\sum_{z \in\C/\Lambda} n_z(z)$ with $n_z \in \Z$ and
+	$\sum_{z \in\C/\Lambda} n_z\cdot(z)$ with $n_z \in \Z$ and
 	$n_z = 0$ for all but finitely many $z$.
 
 	We define analogously to the case of elliptic curves,
@@ -758,13 +758,14 @@ corresponding equation.
 		\div(f) = (z_1 + z_2) - (z_1) - (z_2) + (0)
 	\end{equation*}
 	Now, by \ref{thm:wp-generates}, we can write $f(z) = F(\wp(z), \wp'(z))$ for
-	some rational function $F(X, Y) \in \C(X, Y)$. We can see $F$ in
+	some polynomial fraction $F(X, Y) \in \C(X, Y)$.
+	Let $x: E \to \C, [X, Y, Z] \mapsto X/Z$ and
+	$y: E \to \C, [X, Y, Z] \mapsto Y/Z$ be the coordinate functions on
+	$E$. Then we have that
+	$F(x, y) \in \C(x, y) = \C(E)$.
+	and hence $f = F(x, y) \circ \phi$. It follows that
 	\begin{equation*}
-		\C(E) = \C(E\cap \A^2) = \Frac\left(\C[x, y]/(y^2 - 4x^3 + g_2x + g_3)\right)	
-	\end{equation*}
-	and hence $f = F \circ \phi$. It follows that
-	\begin{equation*}
-		\div (F) = (\phi(z_1 + z_2)) - (\phi(z_1)) - (\phi(z_2)) + (0)
+		\div (F(x, y)) = (\phi(z_1 + z_2)) - (\phi(z_1)) - (\phi(z_2)) + (0)
 	\end{equation*}
 	By Proposition \ref{prop:div-principal}, it follows that
 	\begin{equation*}
