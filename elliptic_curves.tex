@@ -108,7 +108,7 @@ with smooth curves given by a Weierstrass equation.
 	Consider the vector spaces $\L(n\,(O))$ for $n \in \N$.
 	By the Riemann-Roch theorem, since elliptic curves have genus 1,
 	\begin{equation*}
-		l(n\,(O)) = \dim(n\,(O)) = \deg(n\,(O)) = n
+		l(n\,(O)) = \dim(\L(n\,(O))) = \deg(n\,(O)) = n
 	\end{equation*}
 	for all $n \geq 1$. Hence we can choose $x, y \in K(E)$, such that
 	$\{1, x\}$ is a basis for $\L(2\,(O))$ and $\{1, x, y\}$
@@ -146,7 +146,7 @@ with smooth curves given by a Weierstrass equation.
 	\end{equation*}
 	Consider the map $[x, 1]: E \to \proj^1$. Since $x$ has a double pole
 	at $(O)$ and no other poles, we have that (using that
-	$Y/X$ is a uniformizer of $K[\proj^1]_{[1, 0]}$)
+	$Y/X$ is a uniformizer of $\O_{[1, 0]}(\proj^1)$)
 	\begin{align*}
 		\deg[x, 1] &= \sum_{P \in [x, 1]^{-1}([1, 0])}
 		e_{[x, 1]}(P)\\
@@ -165,7 +165,7 @@ with smooth curves given by a Weierstrass equation.
 	yields a rational map $\psi: C \to \proj^1$ of degree 1. Hence
 	the composition $\psi\circ\phi: E \to \proj^1$ is a map of degree 1 between
 	smooth curves and hence an isomorphism (\ref{cor:deg-1-isom}).
-	This contradicts the fact that $E$ has genus 1 and $\proj^1$ has genus 0.
+	This contradicts the fact that $E$ has genus 1 and $\proj^1$ has genus 0
 	(\ref{ex:proj-genus}). Hence $C$ is smooth, so again by
 	\ref{cor:deg-1-isom},
 	we have that the degree 1 map $\phi: E \to \C$ is

@@ -7,7 +7,7 @@ elliptic curves and the Weil conjectures.
 
 For the Weil conjectures we will be concerned with counting the
 number of points on an algebraic variety that have coordinates
-in some subfield of $L \subset K$. In order for this to make sense
+in some subfield of $L \subset K$. In order for this to make sense,
 the variety $V$ in question has to be given by polynomials whose
 coefficients all lie in $L$, otherwise the notion of points belonging to $L$
 is not invariant by isomorphism. For example the curves defined
@@ -198,7 +198,8 @@ varieties.
 		= \frac{p(gf_0, \dots, gf_m)}{q(gf_0, \dots, gf_m)}
 	\end{equation*}
 	We have that both $p(gf_0, \dots, gf_m)$ and $q(gf_0, \dots, gf_m)$ are
-	regular. Furthermore, $q(gf_0, \dots, gf_m)(P) = q(\phi(P)) \neq 0$
+	regular. Furthermore, $q(gf_0, \dots, gf_m)(P) \neq 0$,
+	since we supposed $q(\phi(P)) \neq 0$.
 	and hence we deduce that $f\circ \phi$ is regular.
 	This implies that $\phi$ is a morphism.
 \end{proof}
@@ -231,7 +232,7 @@ stated otherwise.
 \end{proof}
 
 Since $\O_P(C)$ is a DVR we can use its valuation to define the
-notion of order on $K(C)$. Recall that $K(C) = \Frac(\O_P(C))$ for
+notion of order of functions on $C$. Recall that $K(C) = \Frac(\O_P(C))$ for
 any $P \in C$.
 
 \begin{definition}
@@ -259,7 +260,7 @@ any $P \in C$.
 Thanks $O_P(C)$ being a DVR, we have that smooth projective curves
 have a really nice structure.
 For example, we can deduce that all rational maps between a curve
-and another variety is regular wherever the curve is smooth.
+and another variety are regular wherever the curve is smooth.
 
 \begin{proposition}
 	\label{prop:smooth-morphism}
@@ -340,13 +341,16 @@ similar theorem for compact Riemann surfaces.
 Recall that a rational map $\phi: C_1 \to C_2$ induces a map fixing $K$
 \begin{align*}
 	\phi^*: K(C_2) &\to K(C_1)\\
-	f &\mapsto f\circ\phi
+	f &\mapsto f\circ\phi.
 \end{align*}
+We call this map the \emph{pullback}.
+
 By the above theorem, if $\phi$ is not constant, then it is surjective
 and hence $\phi^*$ is an injection.
 One can show that $K(C_1) / \phi^*K(C_2)$ is a finite extension 
 (see \cite[II.6.8]{hartshorne}).
-It follows we can consider the norm on this extension. We can see $K(C_1)$ as a
+It follows that we can consider the norm on this extension.
+We can see $K(C_1)$ as a
 $\phi^*K(C_2)$-vector space in which case elements of $K(C_1)$ act on
 $K(C_1)$ via multiplication, which is a $\phi^*K(C_2)$-linear
 transformation. The norm $N_{K(C_1)/\phi^*K(C_2)}(f)$ of an element
@@ -357,7 +361,7 @@ injectivity of $\phi^*$, we can take the inverse
 \begin{equation*}
 	\phi_*(f) := (\phi^*)^{-1}\circ N_{K(C_1)/\phi^* K(C_2)}(f).
 \end{equation*}
-This defines a map of function fields 
+This defines a map of function fields, which we call the \emph{pushforward}.
 \begin{equation*}
 	\phi_*: K(C_1) \to K(C_2).
 \end{equation*}
@@ -373,9 +377,9 @@ which will define the degree of a map of curves.
 		\deg\phi = [K(C_1): \phi^*K(C_2)]
 	\end{equation*}
 	Let $S$ be the separable closure of $\phi^*K(C_2)$ inside $K(C_1)$.
-	we define the \emph{separable degree} of $\phi$ to be
+	We define the \emph{separable degree} of $\phi$ to be
 	\begin{equation*}
-		\deg_s\phi = [S: \phi^*K(C_2)]
+		\deg_s\phi = [S: \phi^*K(C_2)],
 	\end{equation*}
 	and the \emph{inseparable degree}
 	\begin{equation*}
@@ -411,10 +415,10 @@ injection.
 	\end{equation*}
 	We then have that
 	\begin{equation*}
-		\phi^*(g_i) = g_i[1, \iota(g_1), \dots, \iota(g_n)]	
+		\phi^*(g_i) = g_i\left([1, \iota(g_1), \dots, \iota(g_n)]\right)
 		= \iota(g_i)/1 = \iota(g_i)
 	\end{equation*}
-	Since the $K(C_2) = K(g_1, \dots, g_n)$, we deduce
+	Since $K(C_2) = K(g_1, \dots, g_n)$, we deduce
 	$\phi^* = \iota$.
 
 	Suppose there is some other map $\psi = [f_0, \dots, f_n]: C_1 \to C_2$
@@ -597,7 +601,7 @@ in this way. The divisors that do form a subgroup.
 \begin{definition}
 	A divisor $D \in \Div(C)$ is \emph{principal} if it has the form
 	$D = \div(f)$ for some $f \in K(C)$. The subgroup of principal divisors
-	is denoted $\PDiv(C)$
+	is denoted $\PDiv(C)$.
 	Two divisors $D_1, D_2$ are \emph{linearly equivalent}, which we denote
 	$D_1 \sim D_2$, if $D_1 - D_2$ is principal.
 \end{definition}
@@ -710,11 +714,19 @@ Thanks to these properties, we can show that principal divisors have degree
 
 \begin{proof}
 	Let $f \in K(C)^\times$ such that $D = \div f$. It follows from the
-	definition of $\div$ and \ref{prop:divisor-map-properties}(b) that
+	definition of $\div$ and \ref{prop:divisor-map-properties}(a) that
 	\begin{equation*}
 		\deg \div(f) = \deg([f, 1]^*((0) - (\infty)))
-		= \deg([f, 1]) - \deg([f, 1]) = 0
+		= \deg([f, 1])\deg((0) - (\infty)) = 0.
 	\end{equation*}
+	The first equality comes from the fact
+	\begin{align*}
+		[f, 1]^*((0) - (\infty)) &= \sum_{P \in [f, 1]^{-1}(0)}e_{[f, 1]}(P)
+		- \sum_{P \in [f, 1]^{-1}(\infty)}e_{[f, 1]}(P)\\
+		&= \sum_{P \in [f, 1]^{-1}(0)}\ord_P(f)
+		- \sum_{P \in [f, 1]^{-1}(\infty)}\ord_P(1/f)\\
+		&= \div (f)
+	\end{align*}
 	Hence $\deg D = 0$
 \end{proof}
 
@@ -818,7 +830,7 @@ on the spaces of differential forms.
 	The \emph{pullback} is defined by
 	\begin{align*}
 		\phi^*: \Omega_{C_2} &\to \Omega_{C_1}\\
-		fdx &\mapsto (\phi^* f)\,d(\phi^* x)
+		fdx &\mapsto (\phi^* f)\,d(\phi^* x).
 	\end{align*}
 \end{definition}
 
@@ -832,7 +844,7 @@ forms to also be one-dimensional. And indeed, that is the case.
 	then $dt$ generates $\Omega_C$.
 \end{proposition}
 \begin{proof}
-	See \cite[II.1.4, II.4.2]{silverman}
+	See \cite[II.1.4, II.4.2]{silverman}.
 \end{proof}
 
 This gives us a correspondence between differential forms and functions
@@ -856,7 +868,7 @@ proposition says that's not the case.
 	is independent of the choice of uniformizer $t$.
 \end{proposition}
 \begin{proof}
-	See \cite[II.4.3(c)]{silverman}
+	See \cite[II.4.3(c)]{silverman}.
 \end{proof}
 
 \begin{definition}
@@ -875,7 +887,7 @@ $\ord_P(dt) = \ord_P(dt/dt) = \ord_P(1) = 0$ by definition.
 \end{proposition}
 
 \begin{proof}
-	Follows directly from \ref{prop:zero-finiteness}.
+	See \cite[II.4.3(e)]{silverman}.
 \end{proof}
 
 This proposition guarantees that the divisor of a differential is
@@ -923,7 +935,13 @@ The case of $\proj^1$ is an important example.
 	Hence we obtain $\div(dt) = -2(\infty)$ and hence $dt$ is not holomorphic.
 	But for any non-zero $\omega \in \Omega_{\proj^1}$, 
 	we have that there exists some $g \in K(\proj^1)$ such that 
-	$\omega = gdt$, but then
+	$\omega = gdt$, but then for all $P \in \proj^1$, and $u$ a uniformizer
+	at $P$,
+	\begin{equation*}
+		\ord_P(\omega) = \ord_P\left(g\frac{dt}{du}\right) = \ord_P(g)
+		+ \ord_P\left(\frac{dt}{du}\right) = \ord_P(g) + \ord_P(dt).
+	\end{equation*}
+	It follows that 
 	\begin{equation*}
 		\deg\div \omega = \deg(\div(g) + \div(dt)) = -2
 	\end{equation*}
@@ -958,15 +976,14 @@ We can finally define what the genus of a curve is.
 	\label{ex:proj-genus}
 	The projective line $\proj^1$ has genus 0.
 	Let $K_C = \div(\omega)$ be a canonical divisor of $\proj^1$.
-	By \ref{ex:proj-holomorphic}, $\deg(K_C) < 0$. In particular, 
+	By \ref{ex:proj-holomorphic}, $\deg(K_C) = -2 < 0$. In particular, 
 	since $\deg \div f = 0$ for all $f \in K(C)^\times$,
 	$\div f \not\geq -K_C$,
 	so $f \notin \L(K_C)$. It follows that $\L(K_C) = \{0\}$ and
 	hence $l(K_C) = 0$.
 \end{example}
 
-The genus is an important invariant \comment{Do I have to show it is an
-invariant?} of algebraic curves.
+The genus is an important invariant of algebraic curves.
 For example, we have the Riemann-Roch theorem, which will
 allow us to calculate $l(D)$ for any divisor $D$ if we know the genus of
 the curve.
@@ -975,7 +992,8 @@ which are by definition smooth curves of genus 1, are
 isomorphic to plane curves given by a specific cubic equation.
 \begin{theorem}[Riemann-Roch]
 	\label{thm:riemann-roch}
-	Let $C$ be a smooth curve of genus $g$ and $K_C$ a canonical divisor on $C$.
+	Let $C$ be a smooth curve of genus $g$ and $K_C$ a
+	canonical divisor on $C$.
 	Then for every divisor $D \in \Div(C)$,
 	\begin{equation*}
 		l(D) - l(K_C - D) = \deg D - g + 1.
@@ -1057,7 +1075,9 @@ The following theorem makes this concrete.
 			$P \in C_1$.
 	\end{enumerate}
 \end{theorem}
-\comment{Prove?}
+\begin{proof}
+	Admitted. See \cite[II.5.9]{silverman}
+\end{proof}
 
 For our purposes, the inequality in the Riemann-Hurwitz formula
 will always be an equality, as we can always suppose $\chr(K)$ to be
@@ -1109,9 +1129,13 @@ the genus of a plane curve.
 
 	By definition of $\phi$, for all but finitely many $Q \in \proj^1$, 
 	\begin{equation*}
-		\#\phi^{-1}(Q) = d,
+		\#\phi^{-1}(Q) = d.
 	\end{equation*}
-	but this implies by \ref{prop:ramification-properties} that
+	Indeed, for $Q = [x_Q, 1] \in \proj^1$, we get that all points in
+	$\#\phi^{-1}(Q)$ are exactly those that lie on the line $X = Zx_Q$
+	and hence by Bézout's theorem, there will be in general $d$ intersection
+	points of this line with $C$.
+	This implies by \ref{prop:ramification-properties} that
 	$d = \deg_s(\phi) \leq \deg(\phi) \leq d$ and hence $\phi$ is separable of
 	degree $d$.
 
